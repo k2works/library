@@ -6,9 +6,9 @@ import java.util.List;
  * 返却一覧
  */
 public class Returns {
-    List<Returned> list;
+    List<返却> list;
 
-    public Returns(List<Returned> list) {
+    public Returns(List<返却> list) {
         this.list = list;
     }
 

@@ -11,7 +11,7 @@
   | <a th:href="@{/retentions}">準備完了・貸出待ち</a>
 </nav>
 <h1>準備完了・貸出待ち</h1>
-  <p th:text="${retainedList.showCount()}">件</p>
+  <p th:text="${準備完了の一覧.showCount()}">件</p>
   <form th:action="@{/retentions/loans}" method="post">
   <table class="table">
     <thead>
@@ -23,17 +23,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="retained : ${retainedList.asList()}">
-      <td th:text="${retained.memberNumber()}"></td>
-      <td th:text="${retained.showBook()}"></td>
-      <th:block th:switch="${retained.isExpired()}">
+    <tr th:each="準備完了 : ${準備完了の一覧.asList()}">
+      <td th:text="${準備完了.会員番号()}"></td>
+      <td th:text="${準備完了.showBook()}"></td>
+      <th:block th:switch="${準備完了.isExpired()}">
         <th:block th:case="false">
-          <td th:text="${retained.showExpireDate()}"></td>
-          <td><button type="submit" name="loaned" th:value="${retained.itemNumber()}">貸出</button></td>
+          <td th:text="${準備完了.showExpireDate()}"></td>
+          <td><button type="submit" name="loaned" th:value="${準備完了.蔵書番号()}">貸出</button></td>
         </th:block>
         <th:block th:case="true" >
-          <td><mark><span th:text="${retained.showExpireDate()}"></span></mark></td>
-          <td><button type="submit" name="expired" th:value="${retained.itemNumber()}">期限切れ処理</button></td>
+          <td><mark><span th:text="${準備完了.showExpireDate()}"></span></mark></td>
+          <td><button type="submit" name="expired" th:value="${準備完了.蔵書番号()}">期限切れ処理</button></td>
         </th:block>
       </th:block>
     </tr>

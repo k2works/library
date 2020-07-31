@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
-<head th:replace="_fragments/member/layout :: htmlhead(~{::title})">
+<head th:replace="_fragments/会員/layout :: htmlhead(~{::title})">
   <meta charset="utf-8"/>
   <title>貸出の返却</title>
 </head>
@@ -8,34 +8,34 @@
 <header th:replace="_fragments/librarian/navigation::navigation('貸出の返却')"></header>
 
 <main class="container">
-  <header th:replace="_fragments/member/header::header('貸出の返却')"></header>
+  <header th:replace="_fragments/会員/header::header('貸出の返却')"></header>
 
   <section class="attendanceInput has-text-centered">
     <form id="custom-form" class="form" name="body"
           method="post" action="#"
-          th:object="${returned}"
+          th:object="${返却}"
           th:action="@{/returns/register}">
 
       <ul th:if="${#fields.hasGlobalErrors()}" class="notification is-danger">
         <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
       </ul>
 
-      <div th:replace="_fragments/member/field::macro('蔵書番号', ~{::div#holdingCodeField})">
+      <div th:replace="_fragments/会員/field::macro('蔵書番号', ~{::div#holdingCodeField})">
         <div id="holdingCodeField" class="field-body">
           <div class="field">
             <p class="control">
               <input class="input" type="text" placeholder="蔵書番号　1-A,2-Aなど"
-                     th:field="*{itemNumber.value}">
+                     th:field="*{蔵書番号.value}">
             </p>
             <p class="help is-danger has-text-left"
-               th:if="${#fields.hasErrors('itemNumber.value')}">
-              <span th:errors="*{itemNumber.value}"></span>
+               th:if="${#fields.hasErrors('蔵書番号.value')}">
+              <span th:errors="*{蔵書番号.value}"></span>
             </p>
           </div>
         </div>
       </div>
 
-      <div th:replace="_fragments/member/field::macro('返却日', ~{::div#returnDateField})">
+      <div th:replace="_fragments/会員/field::macro('返却日', ~{::div#returnDateField})">
         <div id="returnDateField" class="field-body">
           <div class="field">
             <p class="control">

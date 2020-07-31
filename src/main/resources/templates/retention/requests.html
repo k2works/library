@@ -11,7 +11,7 @@
   | <a th:href="@{/retentions}">準備完了・貸出待ち</a>
 </nav>
 <h1>未準備の予約</h1>
-  <p th:text="${reservations.numberOfReservation()}">件</p>
+  <p th:text="${貸出予約一覧.numberOfReservation()}">件</p>
   <table class="table">
     <thead>
     <tr>
@@ -22,17 +22,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="reservation : ${reservations.asList()}">
-      <td th:text="${reservation.member().number()}"></td>
-      <td th:text="${reservation.showBook()}"></td>
+    <tr th:each="貸出予約 : ${貸出予約一覧.asList()}">
+      <td th:text="${貸出予約.会員().number()}"></td>
+      <td th:text="${貸出予約.showBook()}"></td>
       <td>
-        <form th:action="@{/retentions/requests/{reservation}(reservation=${reservation.number()})}" method="get">
+        <form th:action="@{/retentions/requests/{貸出予約}(貸出予約=${貸出予約.number()})}" method="get">
         <button type="submit">取置</button>
         </form>
       </td>
       <td>
         <form th:action="@{/retentions/requests/canceled}" method="post">
-        <button type="submit" name="notAvailable" th:value="${reservation.number()}">在庫なし</button>
+        <button type="submit" name="notAvailable" th:value="${貸出予約.number()}">在庫なし</button>
         </form>
       </td>
     </tr>

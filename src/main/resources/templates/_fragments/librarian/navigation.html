@@ -8,12 +8,12 @@
 <header class="hero is-warning" th:fragment="navigation(active)">
   <nav class="navbar">
     <div class="navbar-menu is-flex">
-      <a class="navbar-item" th:classappend="${active.equals('貸出の登録')} ? 'is-active' : ''"
+      <a class="navbar-蔵書" th:classappend="${active.equals('貸出の登録')} ? 'is-active' : ''"
          th:href="@{/loan/register}">
         <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
         <span>貸出の登録</span>
       </a>
-      <a class="navbar-item" th:classappend="${active.equals('貸出の返却')} ? 'is-active' : ''"
+      <a class="navbar-蔵書" th:classappend="${active.equals('貸出の返却')} ? 'is-active' : ''"
          th:href="@{/returns/register}">
           <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
           <span>貸出の返却</span>

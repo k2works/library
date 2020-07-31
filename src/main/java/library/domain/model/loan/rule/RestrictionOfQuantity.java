@@ -17,11 +17,11 @@ enum RestrictionOfQuantity {
         this.limit = limit;
     }
 
-    public Loanability shouldRestrict(Loans loans) {
+    public 貸出可否 shouldRestrict(Loans loans) {
         if (limit > loans.count()) {
-            return Loanability.貸出可能;
+            return 貸出可否.貸出可能;
         }
-        return Loanability.貸出不可;
+        return 貸出可否.貸出不可;
     }
 
 }

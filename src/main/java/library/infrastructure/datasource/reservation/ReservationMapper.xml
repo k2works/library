@@ -2,38 +2,38 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="library.infrastructure.datasource.reservation.ReservationMapper">
-    <select id="nextNumber" resultType="library.domain.model.reservation.request.ReservationNumber">
+<mapper namespace="library.infrastructure.datasource.貸出予約.ReservationMapper">
+    <select id="nextNumber" resultType="library.domain.model.貸出予約.request.ReservationNumber">
         SELECT NEXTVAL('予約.予約番号') AS "value"
     </select>
 
     <insert id="insertReservation">
         INSERT INTO 予約.予約履歴(予約番号, 会員番号, 本番号)
-        VALUES (#{reservationNumber.value}, #{memberNumber.value}, #{bookNumber.value})
+        VALUES (#{予約番号.value}, #{会員番号.value}, #{書籍番号.value})
     </insert>
 
-    <resultMap id="reservation" type="library.domain.model.reservation.request.Reservation">
-        <association property="member"
-                     column="memberNumber.value"
-                     select="library.infrastructure.datasource.member.MemberMapper.selectMember" />
-        <association property="book"
-                     column="bookNumber.value"
-                     select="library.infrastructure.datasource.book.BookMapper.findBook" />
+    <resultMap id="貸出予約" type="library.domain.model.貸出予約.request.貸出予約">
+        <association property="会員"
+                     column="会員番号.value"
+                     select="library.infrastructure.datasource.会員.MemberMapper.selectMember" />
+        <association property="本"
+                     column="書籍番号.value"
+                     select="library.infrastructure.datasource.本.BookMapper.findBook" />
     </resultMap>
 
-    <select id="selectAllReservation" resultMap="reservation">
-        SELECT 未準備.予約番号 as "reservationNumber.value",
-               予約履歴.会員番号 as "memberNumber.value",
-               予約履歴.本番号 as "bookNumber.value"
+    <select id="selectAllReservation" resultMap="貸出予約">
+        SELECT 未準備.予約番号 as "予約番号.value",
+               予約履歴.会員番号 as "会員番号.value",
+               予約履歴.本番号 as "書籍番号.value"
         FROM 予約.未準備
         INNER JOIN 予約.予約履歴 USING (予約番号)
         ORDER BY 未準備.予約番号
     </select>
 
-    <select id="selectReservation" resultMap="reservation">
-        SELECT 予約番号 as "reservationNumber.value",
-               会員番号 as "memberNumber.value",
-               本番号 as "bookNumber.value"
+    <select id="selectReservation" resultMap="貸出予約">
+        SELECT 予約番号 as "予約番号.value",
+               会員番号 as "会員番号.value",
+               本番号 as "書籍番号.value"
         FROM 予約.予約履歴
         WHERE 予約番号 = #{value}
     </select>

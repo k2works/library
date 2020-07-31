@@ -1,25 +1,24 @@
 package library.infrastructure.datasource.item;
 
-import library.domain.model.item.Item;
-import library.domain.model.item.ItemNumber;
+import library.domain.model.item.蔵書;
+import library.domain.model.item.蔵書番号;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ItemMapper {
-    boolean exists(ItemNumber itemNumber);
-    boolean loanable(ItemNumber itemNumber);
-    boolean retained(ItemNumber itemNumber);
-    boolean loaned(ItemNumber itemNumber);
+    boolean exists(蔵書番号 蔵書番号);
+    boolean loanable(蔵書番号 蔵書番号);
+    boolean retained(蔵書番号 蔵書番号);
+    boolean loaned(蔵書番号 蔵書番号);
 
-    Item selectItem(ItemNumber itemNumber);
+    蔵書 selectItem(蔵書番号 蔵書番号);
 
-    void insert貸出可能(ItemNumber itemNumber);
-    void delete貸出可能(ItemNumber itemNumber);
+    void insert貸出可能(蔵書番号 蔵書番号);
+    void delete貸出可能(蔵書番号 蔵書番号);
 
-    void insert貸出中(ItemNumber itemNumber);
-    void delete貸出中(ItemNumber itemNumber);
+    void insert貸出中(蔵書番号 蔵書番号);
+    void delete貸出中(蔵書番号 蔵書番号);
 
-    void insert取置中(ItemNumber itemNumber);
-    void delete取置中(ItemNumber itemNumber);
+    void insert取置中(蔵書番号 蔵書番号);
+    void delete取置中(蔵書番号 蔵書番号);
 }

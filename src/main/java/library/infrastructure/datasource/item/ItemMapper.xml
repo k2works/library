@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="library.infrastructure.datasource.item.ItemMapper">
+<mapper namespace="library.infrastructure.datasource.蔵書.ItemMapper">
    <select id="exists" resultType="boolean">
        SELECT EXISTS(SELECT 蔵書番号 FROM 蔵書.登録 WHERE 蔵書番号 = #{value})
    </select>
@@ -15,19 +15,19 @@
         SELECT EXISTS(SELECT 蔵書番号 FROM 蔵書.貸出中 WHERE 蔵書番号 = #{value})
     </select>
 
-    <select id="retained" resultType="boolean">
+    <select id="準備完了" resultType="boolean">
         SELECT EXISTS(SELECT 蔵書番号 FROM 蔵書.取置中 WHERE 蔵書番号 = #{value})
     </select>
 
-    <resultMap id="蔵書" type="library.domain.model.item.Item">
-        <association property="book"
-                     column="bookNumber"
-                     select="library.infrastructure.datasource.book.BookMapper.findBook" />
+    <resultMap id="蔵書" type="library.domain.model.蔵書.蔵書">
+        <association property="本"
+                     column="書籍番号"
+                     select="library.infrastructure.datasource.本.BookMapper.findBook" />
     </resultMap>
     <select id="selectItem" resultMap="蔵書">
         SELECT
-            登録.蔵書番号 as "itemNumber.value",
-            本.本番号 as "bookNumber"
+            登録.蔵書番号 as "蔵書番号.value",
+            本.本番号 as "書籍番号"
         FROM 蔵書.登録
         INNER JOIN 蔵書.本 on (登録.本番号 = 本.本番号)
         WHERE 登録.蔵書番号 = #{value}

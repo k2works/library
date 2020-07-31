@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
-<head th:replace="_fragments/member/layout :: htmlhead(~{::title})">
+<head th:replace="_fragments/会員/layout :: htmlhead(~{::title})">
   <meta charset="utf-8"/>
   <title>貸出の登録</title>
 </head>
@@ -8,10 +8,10 @@
 <header th:replace="_fragments/librarian/navigation::navigation('貸出の登録')"></header>
 
 <main class="container">
-  <header th:replace="_fragments/member/header::header('貸出の登録')"></header>
+  <header th:replace="_fragments/会員/header::header('貸出の登録')"></header>
 
   <div class="notification">
-    会員番号: <span th:text="${loanStatus.memberNumber()}"></span> の貸出を登録しました。
+    会員番号: <span th:text="${貸出状況.会員番号()}"></span> の貸出を登録しました。
   </div>
   <table class="table">
     <thead>
@@ -21,8 +21,8 @@
     </tr>
     </thead>
     <tbody>
-      <tr th:each="loan : ${loanStatus.loans().asList()}">
-        <td th:text="${loan.item().show()}"></td>
+      <tr th:each="loan : ${貸出状況.loans().asList()}">
+        <td th:text="${loan.蔵書().show()}"></td>
         <td th:text="${loan.date().show()}"></td>
       </tr>
     </tbody>

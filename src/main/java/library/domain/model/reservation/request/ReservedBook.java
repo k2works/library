@@ -1,34 +1,34 @@
 package library.domain.model.reservation.request;
 
-import library.domain.model.item.bibliography.Book;
-import library.domain.model.item.bibliography.BookNumber;
+import library.domain.model.item.bibliography.書籍番号;
+import library.domain.model.item.bibliography.本;
 
 /**
  * 予約図書
  */
 public class ReservedBook {
-    Book book;
+    本 本;
 
-    public ReservedBook(Book book) {
-        this.book = book;
+    public ReservedBook(本 本) {
+        this.本 = 本;
     }
 
     @Deprecated
     ReservedBook() {
     }
 
-    public Book book() {
-        return book;
+    public 本 book() {
+        return 本;
     }
 
-    public boolean isA(BookNumber bookNumber) {
-        return book.bookNumber().sameValue(bookNumber);
+    public boolean isA(書籍番号 書籍番号) {
+        return 本.bookNumber().sameValue(書籍番号);
     }
 
     @Override
     public String toString() {
         return "ReservedBook{" +
-                "book=" + book +
+                "book=" + 本 +
                 '}';
     }
 }

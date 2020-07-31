@@ -1,13 +1,12 @@
 package library.infrastructure.datasource.member;
 
-import library.domain.model.member.Member;
-import library.domain.model.member.MemberNumber;
+import library.domain.model.member.会員;
+import library.domain.model.member.会員番号;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MemberMapper {
 
-    boolean exists(MemberNumber memberNumber);
-    Member selectMember(MemberNumber memberNumber);
+    boolean exists(会員番号 会員番号);
+    会員 selectMember(会員番号 会員番号);
 }

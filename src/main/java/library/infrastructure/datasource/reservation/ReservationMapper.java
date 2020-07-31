@@ -1,9 +1,9 @@
 package library.infrastructure.datasource.reservation;
 
-import library.domain.model.item.bibliography.BookNumber;
-import library.domain.model.member.MemberNumber;
-import library.domain.model.reservation.request.ReservationNumber;
-import library.domain.model.reservation.request.Reservation;
+import library.domain.model.item.bibliography.書籍番号;
+import library.domain.model.member.会員番号;
+import library.domain.model.reservation.request.予約番号;
+import library.domain.model.reservation.request.貸出予約;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,16 +11,16 @@ import java.util.List;
 
 @Mapper
 public interface ReservationMapper {
-    ReservationNumber nextNumber();
+    予約番号 nextNumber();
 
     void insertReservation(
-            @Param("reservationNumber") ReservationNumber reservationNumber,
-            @Param("memberNumber") MemberNumber memberNumber,
-            @Param("bookNumber") BookNumber bookNumber);
+            @Param("reservationNumber") 予約番号 予約番号,
+            @Param("memberNumber") 会員番号 会員番号,
+            @Param("bookNumber") 書籍番号 書籍番号);
 
-    List<Reservation> selectAllReservation();
+    List<貸出予約> selectAllReservation();
 
-    Reservation selectReservation(ReservationNumber reservationNumber);
+    貸出予約 selectReservation(予約番号 予約番号);
 
-    void cancelReservation(ReservationNumber reservationNumber);
+    void cancelReservation(予約番号 予約番号);
 }

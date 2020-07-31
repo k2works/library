@@ -1,6 +1,6 @@
 package library.domain.model.reservation.retention;
 
-import library.domain.model.item.bibliography.Book;
+import library.domain.model.item.bibliography.本;
 
 /**
  * 蔵書と本の照合結果
@@ -19,7 +19,7 @@ public enum BookMatching {
         return description;
     }
 
-    public static BookMatching isSame(Book one, Book another) {
+    public static BookMatching isSame(本 one, 本 another) {
         return one.isSame(another) ? 一致 : 不一致;
     }
 }

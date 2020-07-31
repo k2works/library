@@ -1,12 +1,12 @@
 package library.infrastructure.datasource.loan;
 
-import library.domain.model.loan.LoanRequest;
+import library.domain.model.loan.貸出依頼;
 
 public class RegisterLoanException extends RuntimeException {
-    LoanRequest loanRequest;
+    貸出依頼 貸出依頼;
 
-    public RegisterLoanException(LoanRequest loanRequest) {
+    public RegisterLoanException(貸出依頼 貸出依頼) {
         super("貸出中の蔵書に対して貸出登録が行われました。");
-        this.loanRequest = loanRequest;
+        this.貸出依頼 = 貸出依頼;
     }
 }

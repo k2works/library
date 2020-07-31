@@ -6,13 +6,13 @@ import java.util.List;
  * 書籍番号のリスト
  */
 public class BookNumbers {
-    List<BookNumber> list;
+    List<書籍番号> list;
 
-    public BookNumbers(List<BookNumber> list) {
+    public BookNumbers(List<書籍番号> list) {
         this.list = list;
     }
 
-    public List<BookNumber> asList() {
+    public List<書籍番号> asList() {
         return list;
     }
 

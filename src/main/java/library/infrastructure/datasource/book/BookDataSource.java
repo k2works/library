@@ -1,15 +1,15 @@
 package library.infrastructure.datasource.book;
 
-import library.application.repository.BookRepository;
+import library.application.repository.本リポジトリ;
 import library.domain.model.item.bibliography.*;
-import library.domain.model.reservation.availability.BookAvailabilities;
+import library.domain.model.reservation.availability.本の一覧と貸出可否;
 import library.domain.model.reservation.availability.BookAvailability;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class BookDataSource implements BookRepository {
+public class BookDataSource implements 本リポジトリ {
     BookMapper bookMapper;
 
 
@@ -19,13 +19,13 @@ public class BookDataSource implements BookRepository {
     }
 
     @Override
-    public BookAvailabilities search(Keyword keyword) {
-        List<BookAvailability> books = bookMapper.searchBooks(keyword, NumberOfBook.MAX_TO_SHOW + 1);
-        return new BookAvailabilities(books);
+    public 本の一覧と貸出可否 探す(キーワード キーワード) {
+        List<BookAvailability> books = bookMapper.searchBooks(キーワード, NumberOfBook.MAX_TO_SHOW + 1);
+        return new 本の一覧と貸出可否(books);
     }
 
     @Override
-    public Book findBook(BookNumber bookNumber) {
-        return bookMapper.findBook(bookNumber);
+    public 本 見つける(書籍番号 書籍番号) {
+        return bookMapper.findBook(書籍番号);
     }
 }

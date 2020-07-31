@@ -7,9 +7,9 @@ import java.util.List;
  * 本のリスト
  */
 public class Books {
-    List<Book> list;
+    List<本> list;
 
-    public Books(List<Book> list) {
+    public Books(List<本> list) {
         this.list = list;
     }
 
@@ -19,7 +19,7 @@ public class Books {
     public int size() {
         return list.size();
     }
-    public List<Book> asList() {
+    public List<本> asList() {
         return Collections.unmodifiableList(list);
     }
 }

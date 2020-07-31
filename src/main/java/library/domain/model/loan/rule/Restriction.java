@@ -2,19 +2,19 @@ package library.domain.model.loan.rule;
 
 import library.domain.model.loan.delay.DelayStatus;
 import library.domain.model.loan.Loans;
-import library.domain.model.member.Member;
+import library.domain.model.member.会員;
 import library.domain.type.date.CurrentDate;
 
 /**
  * 貸出制限
  */
 class Restriction {
-    Member member;
+    会員 会員;
     Loans loans;
     CurrentDate date;
 
-    Restriction(Member member, Loans loans, CurrentDate date) {
-        this.member = member;
+    Restriction(会員 会員, Loans loans, CurrentDate date) {
+        this.会員 = 会員;
         this.loans = loans;
         this.date = date;
     }
@@ -23,7 +23,7 @@ class Restriction {
 
     RestrictionOfQuantity ofQuantity() {
         DelayStatus delayStatus = loans.worst(date);
-        DelayOfMember delayOfMember = new DelayOfMember(delayStatus, member.type());
+        DelayOfMember delayOfMember = new DelayOfMember(delayStatus, 会員.type());
         return map.of(delayOfMember);
     }
 }

@@ -11,18 +11,18 @@
   | <a th:href="@{/retentions}">取置中の一覧</a>
 </nav>
 <h1>取置の登録</h1>
-  <form th:action="@{/retentions}" th:object="${retention}" method="post">
-    <p th:text="${reservation.showBook()}"></p>
-    <label for="item">取り置く蔵書番号</label>
-    <input id="item" type="text" name="itemNumber.value"
-    th:value="*{itemNumber()}" placeholder="1-A,2-Aなど">
-    <p th:if="${#fields.hasErrors('itemNumber.value')}">
+  <form th:action="@{/retentions}" th:object="${取置依頼}" method="post">
+    <p th:text="${貸出予約.showBook()}"></p>
+    <label for="蔵書">取り置く蔵書番号</label>
+    <input id="蔵書" type="text" name="蔵書番号.value"
+    th:value="*{蔵書番号()}" placeholder="1-A,2-Aなど">
+    <p th:if="${#fields.hasErrors('蔵書番号.value')}">
       <mark>
-        <!--/*@thymesVar id="itemNumber" type="library.domain.model.item.ItemNumber"*/-->
-        <span th:errors="*{itemNumber.value}"></span>
+        <!--/*@thymesVar id="蔵書番号" type="library.domain.model.蔵書.ItemNumber"*/-->
+        <span th:errors="*{蔵書番号.value}"></span>
       </mark>
     </p>
-    <input type="hidden" name="reservationNumber.value" th:value="${reservation.number()}">
+    <input type="hidden" name="予約番号.value" th:value="${貸出予約.number()}">
     <input type="submit" value="取置">
   </form>
 </body>

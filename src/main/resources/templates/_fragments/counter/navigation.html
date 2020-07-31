@@ -8,8 +8,8 @@
 <header class="hero is-primary" th:fragment="navigation(active)">
   <nav class="navbar">
     <div class="navbar-menu is-flex">
-        <a class="navbar-item" th:classappend="${active.equals('予約図書一覧')} ? 'is-active' : ''"
-           th:href="@{/reservation/list}">
+        <a class="navbar-蔵書" th:classappend="${active.equals('予約図書一覧')} ? 'is-active' : ''"
+           th:href="@{/貸出予約/list}">
             <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
             <span>予約図書一覧</span>
         </a>

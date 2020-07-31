@@ -1,8 +1,8 @@
 package library.infrastructure.datasource.book;
 
-import library.domain.model.item.bibliography.Book;
-import library.domain.model.item.bibliography.BookNumber;
-import library.domain.model.item.bibliography.Keyword;
+import library.domain.model.item.bibliography.キーワード;
+import library.domain.model.item.bibliography.書籍番号;
+import library.domain.model.item.bibliography.本;
 import library.domain.model.reservation.availability.BookAvailability;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -12,9 +12,9 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
     List<BookAvailability> searchBooks(
-            @Param("keyword") Keyword keyword,
+            @Param("keyword") キーワード キーワード,
             @Param("limit") int limit
     );
 
-    Book findBook(@Param("bookNumber") BookNumber bookNumber);
+    本 findBook(@Param("bookNumber") 書籍番号 書籍番号);
 }
