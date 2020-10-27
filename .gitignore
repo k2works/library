@@ -9,3 +9,4 @@ build/
 .project
 *.class
 .settings
+.vscode
