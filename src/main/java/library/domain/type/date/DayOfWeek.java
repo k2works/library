@@ -3,7 +3,7 @@ package library.domain.type.date;
 /**
  * 曜日
  */
-public class DayOfWeek {
+public enum DayOfWeek {
     日(java.time.DayOfWeek.SUNDAY),
     月(java.time.DayOfWeek.MONDAY),
     火(java.time.DayOfWeek.TUESDAY),

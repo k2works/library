@@ -1,10 +1,16 @@
 package library.domain.type.date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * 日付
  */
 public class Date {
-     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate value;
 
     @Deprecated

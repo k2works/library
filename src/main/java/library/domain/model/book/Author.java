@@ -7,6 +7,6 @@ public class Author {
     String value;
 
     public Author(String value) {
-        this.value = value
+        this.value = value;
     }
 }
