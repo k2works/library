@@ -1,4 +1,4 @@
-package library.domain.model;
+package library.domain.model.loan;
 
 /**
  * 貸出準備完了
