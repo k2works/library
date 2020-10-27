@@ -11,4 +11,8 @@ public class LoanPreparationCompletionDate {
     public LoanPreparationCompletionDate(Date value) {
         this.value = value;
     }
+
+    public Date value() {
+        return value;
+    }
 }
