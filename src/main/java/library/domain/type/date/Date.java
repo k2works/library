@@ -33,6 +33,10 @@ public class Date {
         return new Date(LocalDate.of(9999, 12, 31));
     }
 
+    public static Date now() {
+        return new Date(LocalDate.now());
+    }
+
     public LocalDate value() {
         return value;
     }

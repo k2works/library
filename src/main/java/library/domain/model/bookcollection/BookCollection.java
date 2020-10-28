@@ -9,5 +9,5 @@ import library.domain.model.bookonloan.LoanPeriod;
 public class BookCollection {
     Book book;
     BookCollectionStatus bookCollectionStatus;
-    LoanPeriod.WebReservingReserveStatus webReservingReserveStatus;
+    LoanPeriod loanPeriod;
 }
