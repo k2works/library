@@ -12,19 +12,11 @@ public class LoanPeriod {
         this.value = value;
     }
 
-    public LoanPeriod loanPeriod() {
-        return new LoanPeriod(value.plusDays(14));
+    public static LoanPeriod loanPeriod(LoanDate loanDate) {
+        return new LoanPeriod(loanDate.value().plusDays(14));
     }
 
     public LoanPeriodStatus loanPeriodStatus() {
         return null;
-    }
-
-    /**
-     * Web予約中の状態
-     */
-    public enum WebReservingReserveStatus {
-        未準備,
-        準備完了
     }
 }
