@@ -86,7 +86,12 @@ public class Date {
         return value.isAfter(date.value);
     }
 
+    public boolean isBefore(Date date) {
+        return value.isBefore(date.value);
+    }
+
     public String yyyyMMdd() {
         return value.format(DateTimeFormatter.ofPattern("uuuuMMdd"));
     }
+
 }
