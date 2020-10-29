@@ -15,16 +15,16 @@ public class DelayPeriodTest {
         LoanPeriod loanPeriod4 = new LoanPeriod(Date.from("2020-10-23"));
         LoanPeriod loanPeriod5 = new LoanPeriod(Date.from("2020-10-22"));
 
-        DelayPeriod delayPeriod1 = DelayPeriod.from(loanPeriod1);
-        DelayPeriod delayPeriod2 = DelayPeriod.from(loanPeriod2);
-        DelayPeriod delayPeriod3 = DelayPeriod.from(loanPeriod3);
-        DelayPeriod delayPeriod4 = DelayPeriod.from(loanPeriod4);
-        DelayPeriod delayPeriod5 = DelayPeriod.from(loanPeriod5);
+        DelayStatus delayPeriod1 = DelayStatus.from(loanPeriod1);
+        DelayStatus delayPeriod2 = DelayStatus.from(loanPeriod2);
+        DelayStatus delayPeriod3 = DelayStatus.from(loanPeriod3);
+        DelayStatus delayPeriod4 = DelayStatus.from(loanPeriod4);
+        DelayStatus delayPeriod5 = DelayStatus.from(loanPeriod5);
 
-        assertEquals(delayPeriod1, DelayPeriod.遅延日数３日未満);
-        assertEquals(delayPeriod2, DelayPeriod.遅延日数３日未満);
-        assertEquals(delayPeriod3, DelayPeriod.遅延日数７日未満);
-        assertEquals(delayPeriod4, DelayPeriod.遅延日数７日未満);
-        assertEquals(delayPeriod5, DelayPeriod.それ以外);
+        assertEquals(delayPeriod1, DelayStatus.遅延日数３日未満);
+        assertEquals(delayPeriod2, DelayStatus.遅延日数３日未満);
+        assertEquals(delayPeriod3, DelayStatus.遅延日数７日未満);
+        assertEquals(delayPeriod4, DelayStatus.遅延日数７日未満);
+        assertEquals(delayPeriod5, DelayStatus.それ以外);
     }
 }
