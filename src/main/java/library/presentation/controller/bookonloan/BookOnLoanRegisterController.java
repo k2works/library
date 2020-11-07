@@ -1,10 +1,12 @@
 package library.presentation.controller.bookonloan;
 
 import library.application.coordinator.BookOnLoanRegisterCoordinator;
+import library.application.coordinator.BookOnLoanValidResult;
 import library.application.service.bookonloan.BookOnLoanRecordService;
 import library.domain.model.bookonloan.BookOnLoanRegister;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +33,11 @@ public class BookOnLoanRegisterController {
     }
 
     @PostMapping
-    String register(@ModelAttribute("boolOnLoanRegister")BookOnLoanRegister bookOnLoanRegister) {
+    String register(@ModelAttribute("boolOnLoanRegister") BookOnLoanRegister bookOnLoanRegister, BindingResult result) {
+        BookOnLoanValidResult valid = bookOnLoanRegisterCoordinator.isValid(bookOnLoanRegister);
+
+        if (valid.hasError()) return "bookonloan/register/form";
+
         bookOnLoanRecordService.registerBookOnLoan(bookOnLoanRegister);
 
         return "redirect:/bookonloan/register";
