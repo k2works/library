@@ -13,16 +13,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MemberAllBookOnLoansTest {
+class MemberAllBookOnLoansTest {
+
     @ParameterizedTest
     @CsvSource({
-        "大人, 2020-01-04, , 貸出５冊まで",
-        "大人, 2020-01-04, 2020-01-03, 貸出不可",
-        "大人, 2020-01-04, 2019-12-31, 貸出不可",
-        "大人, 2020-01-04, 2019-12-30, 貸出不可",
-        "子供, 2020-01-04, , 貸出７冊まで",
-        "子供, 2020-01-04, 2020-01-03, 貸出４冊まで",
-        "子供, 2020-01-04, 2019-12-31, 貸出４冊まで",
+            "大人, 2020-01-04, , 貸出５冊まで",
+            "大人, 2020-01-04, 2020-01-03, 貸出不可",
+            "大人, 2020-01-04, 2019-12-31, 貸出不可",
+            "大人, 2020-01-04, 2019-12-30, 貸出不可",
+            "子供, 2020-01-04, , 貸出７冊まで",
+            "子供, 2020-01-04, 2020-01-03, 貸出４冊まで",
+            "子供, 2020-01-04, 2019-12-31, 貸出４冊まで",
         "子供, 2020-01-04, 2019-12-30, 貸出不可"
     })
     void 貸出制限の判定ができる(MemberType memberType, String loanDate1, String loanDate2, LoanRestrictions expected) {

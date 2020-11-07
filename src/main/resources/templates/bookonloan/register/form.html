@@ -11,23 +11,21 @@
     <header th:replace="fragments/header::header('貸出図書の登録')"></header>
 
     <section class="attendanceInput has-text-centered">
-
-
-        <form id="custom-form" class="form" name="body"
-              method="post" action="#"
-              th:object="${bookOnLoan}"
-              th:action="@{/bookonloan/register}">
+        <form action="#" class="form" id="custom-form"
+              method="post" name="body"
+              th:action="@{/bookonloan/register}"
+              th:object="${bookOnLoan}">
 
             <ul class="notification is-danger" th:if="${#fields.hasGlobalErrors()}">
                 <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
             </ul>
 
             <div th:replace="fragments/field::macro('会員番号', ~{::div#memberNumberField})">
-                <div id="memberNumberField" class="field-body">
+                <div class="field-body" id="memberNumberField">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="text" placeholder="1"
-                                   th:field="*{memberNumber.value}"/>
+                            <input class="input" placeholder="1" th:field="*{memberNumber.value}"
+                                   type="text"/>
                         </p>
                         <p class="help is-danger has-text-left"
                            th:if="${#fields.hasErrors('memberNumber.value')}">
@@ -38,11 +36,11 @@
             </div>
 
             <div th:replace="fragments/field::macro('蔵書コード', ~{::div#bookCollectionCodeField})">
-                <div id="bookCollectionCodeField" class="field-body">
+                <div class="field-body" id="bookCollectionCodeField">
                     <div class="field">
                         <p class="control">
-                            <input class="input" placeholder="1-A" type="text"
-                                   th:field="*{bookCollectionCode.value}"/>
+                            <input class="input" placeholder="1-A" th:field="*{bookCollectionCode.value}"
+                                   type="text"/>
                         </p>
                         <p class="help is-danger has-text-left"
                            th:if="${#fields.hasErrors('bookCollectionCode.value')}">
@@ -53,11 +51,11 @@
             </div>
 
             <div th:replace="fragments/field::macro('貸出日', ~{::div#loanDateField})">
-                <div id="loanDateField" class="field-body">
+                <div class="field-body" id="loanDateField">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="date" placeholder="2020-01-01"
-                                   th:field="*{loanDate.value}"/>
+                            <input class="input" placeholder="2020-01-01" th:field="*{loanDate.value}"
+                                   type="date"/>
                         </p>
                         <p class="help is-danger has-text-left"
                            th:if="${#fields.hasErrors('loanDate.value')}">
@@ -75,4 +73,4 @@
 
 </main>
 </body>
-</html>>
+</html>
