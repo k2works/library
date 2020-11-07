@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * 貸出図書の登録
  */
 @Controller
-@RequestMapping("bookonloan/{memberNumber}/register")
+@RequestMapping("bookonloan/register")
 public class BookOnLoanRegisterController {
     MemberQueryService memberQueryService;
     BookCollectionQueryService bookCollectionQueryService;
@@ -30,11 +30,6 @@ public class BookOnLoanRegisterController {
         this.bookCollectionQueryService = bookCollectionQueryService;
         this.bookOnLoanRecordService = bookOnLoanRecordService;
         this.bookCollectionRecordService = bookCollectionRecordService;
-    }
-
-    @ModelAttribute("member")
-    Member member(@PathVariable(value = "memberNumber") String memberNumber) { // TODO: MemberNumberにする
-        return memberQueryService.findMember(new MemberNumber(Integer.parseInt(memberNumber)));
     }
 
     @GetMapping
