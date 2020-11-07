@@ -15,6 +15,7 @@ public class BookOnLoan {
     BookCollectionCode bookCollectionCode;
     LoanDate loanDate;
 
+    @Deprecated
     public BookOnLoan() {
     }
 

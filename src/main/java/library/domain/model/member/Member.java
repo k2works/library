@@ -8,6 +8,7 @@ public class Member {
     Name name;
     MemberType memberType;
 
+    @Deprecated
     public Member() {
     }
 

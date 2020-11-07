@@ -6,6 +6,7 @@ package library.domain.model.member;
 public class Name {
     String value;
 
+    @Deprecated
     public Name() {
     }
 
