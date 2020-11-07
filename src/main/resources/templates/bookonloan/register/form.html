@@ -18,6 +18,10 @@
               th:object="${bookOnLoan}"
               th:action="@{/bookonloan/register}">
 
+            <ul class="notification is-danger" th:if="${#fields.hasGlobalErrors()}">
+                <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+            </ul>
+
             <div th:replace="fragments/field::macro('会員番号', ~{::div#memberNumberField})">
                 <div id="memberNumberField" class="field-body">
                     <div class="field">
