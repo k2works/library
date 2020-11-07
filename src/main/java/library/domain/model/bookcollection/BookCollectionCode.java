@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
  * 蔵書コード
  */
 public class BookCollectionCode {
-    @NotBlank(message = "蔵書コードを入力してくだい。")
+    @NotBlank(message = "蔵書コードを入力してください。")
     String value;
 
     public BookCollectionCode(String value) {
@@ -14,7 +14,7 @@ public class BookCollectionCode {
     }
 
     @Deprecated
-    public BookCollectionCode() {
+    BookCollectionCode() {
     }
 
     @Override

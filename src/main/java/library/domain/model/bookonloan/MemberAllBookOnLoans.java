@@ -27,7 +27,7 @@ public class MemberAllBookOnLoans {
         return bookOnLoans.list.size();
     }
 
-    public LoanRestrictions todayLoanRestrictions() {
+    LoanRestrictions todayLoanRestrictions() {
         Date today = Date.now();
         return loanRestrictions(today);
     }

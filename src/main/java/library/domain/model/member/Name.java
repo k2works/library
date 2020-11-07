@@ -7,7 +7,7 @@ public class Name {
     String value;
 
     @Deprecated
-    public Name() {
+    Name() {
     }
 
     public Name(String value) {

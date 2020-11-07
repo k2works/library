@@ -14,7 +14,7 @@ public class LoanDate {
     Date value;
 
     @Deprecated
-    public LoanDate() {
+    LoanDate() {
     }
 
     public LoanDate(Date value) {

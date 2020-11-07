@@ -22,7 +22,7 @@ public class BookOnLoan {
     LoanDate loanDate;
 
     @Deprecated
-    public BookOnLoan() {
+    BookOnLoan() {
     }
 
     public BookOnLoan(MemberNumber memberNumber, BookCollectionCode bookCollectionCode, LoanDate loanDate) {

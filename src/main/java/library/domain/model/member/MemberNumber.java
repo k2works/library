@@ -14,7 +14,7 @@ public class MemberNumber {
     }
 
     @Deprecated
-    public MemberNumber() {
+    MemberNumber() {
     }
 
     public static MemberNumber from(String value) {

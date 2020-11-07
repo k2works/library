@@ -15,7 +15,7 @@ public class Member {
     }
 
     @Deprecated
-    public Member() {
+    Member() {
     }
 
     public MemberNumber memberNumber() {
