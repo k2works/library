@@ -1,4 +1,4 @@
-package library.application.service.bookonloan;
+package library.application.service.bookcollection;
 
 import library.application.repository.BookCollectionRepository;
 import library.domain.model.bookcollection.BookCollections;
