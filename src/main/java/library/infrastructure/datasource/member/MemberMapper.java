@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MemberMapper {
-    Member selectMember(@Param("memberNumber")MemberNumber memberNumber);
+    Member selectMember(@Param("memberNumber") MemberNumber memberNumber);
 
     void insertMember(Member member);
 }

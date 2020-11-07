@@ -12,6 +12,10 @@ import java.util.List;
 public class BookOnLoanDataSource implements BookOnLoanRepository {
     BookOnLoanMapper mapper;
 
+    public BookOnLoanDataSource(BookOnLoanMapper mapper) {
+        this.mapper = mapper;
+    }
+
     @Override
     public void registerBookOnLoan(BookOnLoan bookOnLoan) {
         Integer bookOnLoanId = mapper.newBookOnLoanIdentifier();
@@ -27,4 +31,5 @@ public class BookOnLoanDataSource implements BookOnLoanRepository {
         List<BookOnLoan> bookOnLoans = mapper.selectByMemberNumber(memberNumber);
         return new BookOnLoans(bookOnLoans);
     }
+
 }

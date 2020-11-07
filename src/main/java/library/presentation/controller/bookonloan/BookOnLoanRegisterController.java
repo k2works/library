@@ -1,8 +1,8 @@
 package library.presentation.controller.bookonloan;
 
-import library.application.coordinator.BookOnLoanQueryCoordinator;
-import library.application.coordinator.BookOnLoanRegisterCoordinator;
-import library.application.coordinator.BookOnLoanValidResult;
+import library.application.coordinator.bookonloan.BookOnLoanQueryCoordinator;
+import library.application.coordinator.bookonloan.BookOnLoanRegisterCoordinator;
+import library.application.coordinator.bookonloan.BookOnLoanValidResult;
 import library.application.service.bookonloan.BookOnLoanRecordService;
 import library.domain.model.bookonloan.BookOnLoan;
 import library.domain.model.bookonloan.MemberAllBookOnLoans;
@@ -28,9 +28,9 @@ public class BookOnLoanRegisterController {
             BookOnLoanRecordService bookOnLoanRecordService,
             BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator,
             BookOnLoanQueryCoordinator bookOnLoanQueryCoordinator) {
-        this.bookOnLoanQueryCoordinator = bookOnLoanQueryCoordinator;
         this.bookOnLoanRecordService = bookOnLoanRecordService;
         this.bookOnLoanRegisterCoordinator = bookOnLoanRegisterCoordinator;
+        this.bookOnLoanQueryCoordinator = bookOnLoanQueryCoordinator;
     }
 
     @GetMapping

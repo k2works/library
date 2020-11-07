@@ -1,6 +1,6 @@
-package library.application.coordinator;
+package library.application.coordinator.bookonloan;
 
-import library.application.service.BookOnLoanQueryService;
+import library.application.service.bookonloan.BookOnLoanQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.bookonloan.BookOnLoans;
 import library.domain.model.bookonloan.MemberAllBookOnLoans;

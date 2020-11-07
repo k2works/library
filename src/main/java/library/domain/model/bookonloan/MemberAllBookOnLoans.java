@@ -59,7 +59,7 @@ public class MemberAllBookOnLoans {
         return worstDelayPeriod.delayStatus();
     }
 
-    public BookOnLoans bookOnLoan() {
+    public BookOnLoans bookOnLoans() {
         return bookOnLoans;
     }
 
