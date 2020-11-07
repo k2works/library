@@ -1,14 +1,18 @@
 package library.presentation.controller.bookonloan;
 
+import library.application.coordinator.BookOnLoanQueryCoordinator;
 import library.application.coordinator.BookOnLoanRegisterCoordinator;
 import library.application.coordinator.BookOnLoanValidResult;
 import library.application.service.bookonloan.BookOnLoanRecordService;
 import library.domain.model.bookonloan.BookOnLoan;
+import library.domain.model.bookonloan.MemberAllBookOnLoans;
+import library.domain.model.member.MemberNumber;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * 貸出図書の登録
@@ -18,10 +22,13 @@ import org.springframework.web.bind.annotation.*;
 public class BookOnLoanRegisterController {
     BookOnLoanRecordService bookOnLoanRecordService;
     BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator;
+    BookOnLoanQueryCoordinator bookOnLoanQueryCoordinator;
 
     public BookOnLoanRegisterController(
             BookOnLoanRecordService bookOnLoanRecordService,
-            BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator) {
+            BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator,
+            BookOnLoanQueryCoordinator bookOnLoanQueryCoordinator) {
+        this.bookOnLoanQueryCoordinator = bookOnLoanQueryCoordinator;
         this.bookOnLoanRecordService = bookOnLoanRecordService;
         this.bookOnLoanRegisterCoordinator = bookOnLoanRegisterCoordinator;
     }
@@ -33,14 +40,22 @@ public class BookOnLoanRegisterController {
     }
 
     @PostMapping
-    String register(@ModelAttribute("bookOnLoan") BookOnLoan bookOnLoan, BindingResult result) {
+    String register(@ModelAttribute("bookOnLoan") BookOnLoan bookOnLoan, BindingResult result, RedirectAttributes attributes) {
         BookOnLoanValidResult valid = bookOnLoanRegisterCoordinator.isValid(bookOnLoan);
 
         if (valid.hasError()) return "bookonloan/register/form";
 
         bookOnLoanRecordService.registerBookOnLoan(bookOnLoan);
 
-        return "redirect:/bookonloan/register";
+        attributes.addAttribute("memberNumber", bookOnLoan.memberNumber());
+        return "redirect:/bookonloan/register/completed";
+    }
+
+    @GetMapping("completed")
+    String completed(Model model, @RequestParam("memberNumber") MemberNumber memberNumber) {
+        MemberAllBookOnLoans memberAllBookOnLoans = bookOnLoanQueryCoordinator.findMemberAllBookOnLoans(memberNumber);
+        model.addAttribute("memberAllBookOnLoans", memberAllBookOnLoans);
+        return "bookonloan/register/completed";
     }
 
     @InitBinder
