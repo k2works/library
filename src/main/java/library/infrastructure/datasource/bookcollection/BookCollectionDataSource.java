@@ -7,12 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BookCollectionDataSource implements BookCollectionRepository {
-
-    @Override
-    public void registerBookCollection(BookCollection bookCollection) {
-
-    }
-
     @Override
     public BookCollection findBookCollection(BookCollectionCode bookCollectionCode) {
         return null;
