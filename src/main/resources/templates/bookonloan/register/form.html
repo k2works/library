@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/layout :: htmlhead(~{::title})">
     <meta charset="utf-8"/>
     <title>貸出図書の登録</title>
@@ -11,7 +11,9 @@
     <header th:replace="fragments/header::header('貸出図書の登録')"></header>
 
     <section class="attendanceInput has-text-centered">
-        <form id="custom-form" class="form" name="body" method="post" action="#">
+        <form id="custom-form" class="form" name="body"
+              method="post" action="#">
+
             <table>
                 <tr>
                     <td>会員番号</td>
@@ -19,7 +21,7 @@
                 </tr>
                 <tr>
                     <td>氏名</td>
-                    <td th:text="${memeber.name()}"></td>
+                    <td th:text="${member.name()}"></td>
                 </tr>
             </table>
 

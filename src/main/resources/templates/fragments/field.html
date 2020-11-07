@@ -6,13 +6,13 @@
 </head>
 <body>
 
-<div th:fragment="macro{label, fieldBody}" class="field is-horizontal">
+<div th:fragment="macro(label, fieldBody)" class="field is-horizontal">
     <div class="field-label is-normal">
         <label class="label" th:text="${label}">ラベル</label>
     </div>
     <th:block th:replace="${fieldBody}" />
 </div>
-</body>
 
+</body>
 </html>
 
