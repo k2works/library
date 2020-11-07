@@ -1,8 +1,8 @@
 package library.domain.model.bookshelf;
 
-import java.util.List;
-
 import library.domain.model.bookcollection.BookCollection;
+
+import java.util.List;
 
 /**
  * 書架

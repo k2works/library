@@ -10,4 +10,5 @@ public class Reservation {
     Member member;
     Book book;
     RetentionStatus retentionStatus;
+
 }

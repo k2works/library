@@ -23,6 +23,7 @@ public class MemberQueryService {
     public Member findMember(MemberNumber memberNumber) {
         return memberRepository.findMember(memberNumber);
     }
+
     /**
      * 会員一覧
      */

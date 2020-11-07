@@ -1,9 +1,6 @@
 package library.domain.model.bookonloan;
 
-
 import library.domain.type.date.Days;
-
-import java.time.Period;
 
 /**
  * 遅延日数
@@ -18,7 +15,7 @@ public class DelayPeriod {
     public DelayStatus delayStatus() {
         int delay = value.value();
 
-        if(delay < 3) {
+        if (delay < 3) {
             return DelayStatus.遅延日数３日未満;
         }
 

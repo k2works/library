@@ -15,7 +15,7 @@ public class BookOnLoan {
     BookCollection bookCollection;
     LoanDate loanDate;
 
-    public  BookOnLoan(Member member,BookCollection bookCollection, LoanDate loanDate) {
+    public BookOnLoan(Member member, BookCollection bookCollection, LoanDate loanDate) {
         this.member = member;
         this.bookCollection = bookCollection;
         this.loanDate = loanDate;

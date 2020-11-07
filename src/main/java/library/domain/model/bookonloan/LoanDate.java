@@ -1,4 +1,5 @@
 package library.domain.model.bookonloan;
+
 import library.domain.type.date.Date;
 
 /**

@@ -1,7 +1,5 @@
 package library.domain.model.bookonloan;
 
-import library.domain.model.member.MemberType;
-
 /**
  * 貸出制限
  */

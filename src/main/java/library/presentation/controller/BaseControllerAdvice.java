@@ -1,4 +1,4 @@
-package library.presentation;
+package library.presentation.controller;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,8 +16,8 @@ public class BaseControllerAdvice {
                 "to be specified",
         };
 
-        disallowFields = new String[] {
-                "protected*"
+        disallowFields = new String[]{
+                "protected*",
         };
     }
 

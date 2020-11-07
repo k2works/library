@@ -4,11 +4,10 @@ import library.application.service.bookcollection.BookCollectionQueryService;
 import library.application.service.bookcollection.BookCollectionRecordService;
 import library.application.service.bookonloan.BookOnLoanRecordService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.member.Member;
-import library.domain.model.member.MemberNumber;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 貸出図書の登録
@@ -21,7 +20,7 @@ public class BookOnLoanRegisterController {
     BookOnLoanRecordService bookOnLoanRecordService;
     BookCollectionRecordService bookCollectionRecordService;
 
-    public BookOnLoanRegisterController (
+    public BookOnLoanRegisterController(
         MemberQueryService memberQueryService,
         BookCollectionQueryService bookCollectionQueryService,
         BookOnLoanRecordService bookOnLoanRecordService,

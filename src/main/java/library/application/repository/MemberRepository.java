@@ -5,7 +5,7 @@ import library.domain.model.member.MemberNumber;
 import library.domain.model.member.Members;
 
 /**
- * 会員レポジトリ
+ * 会員リポジトリ
  */
 public interface MemberRepository {
     void registerMember(Member member);

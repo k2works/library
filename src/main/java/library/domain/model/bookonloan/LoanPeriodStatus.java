@@ -1,6 +1,6 @@
 package library.domain.model.bookonloan;
 
-/***
+/**
  * 貸出期限状態
  */
 public enum LoanPeriodStatus {

@@ -51,7 +51,7 @@ public class MemberAllBookOnLoans {
         return worstDelayStatus(today);
     }
 
-    DelayStatus worstDelayStatus(Date date)  {
+    DelayStatus worstDelayStatus(Date date) {
         DelayPeriod worstDelayPeriod = bookOnLoans.stream()
                 .map(loan -> loan.delayPeriod(date))
                 .max(Comparator.comparingInt(period -> period.value.value()))

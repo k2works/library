@@ -6,6 +6,5 @@ package library.domain.model.book;
 public class Book {
     Title title;
     Author author;
-
     BookType bookType;
 }
