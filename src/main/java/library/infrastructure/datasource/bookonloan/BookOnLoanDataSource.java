@@ -3,7 +3,7 @@ package library.infrastructure.datasource.bookonloan;
 import library.application.repository.BookOnLoanRepository;
 import library.domain.model.bookcollection.BookCollection;
 import library.domain.model.bookcollection.BookCollectionCode;
-import library.domain.model.bookcollection.ReturnDate;
+import library.domain.model.bookcollection.ReturnedBook;
 import library.domain.model.bookonloan.BookOnLoan;
 import library.domain.model.bookonloan.BookOnLoans;
 import library.domain.model.bookonloan.MemberAllBookOnLoans;
@@ -38,13 +38,14 @@ public class BookOnLoanDataSource implements BookOnLoanRepository {
     }
 
     @Override
-    public void registerReturnBook(BookOnLoan bookOnLoan, ReturnDate returnDate) {
+    public void registerReturnBook(ReturnedBook returnedBook) {
+        BookOnLoan bookOnLoan = returnedBook.bookOnLoan();
         Integer bookOnLoanId =
                 mapper.getBookOnLoanIdentifier(
                         bookOnLoan.member().memberNumber(),
                         bookOnLoan.bookCollection().bookCollectionCode(),
                         bookOnLoan.loanDate());
-        mapper.insertReturnBook(bookOnLoanId, returnDate);
+        mapper.insertReturnBook(bookOnLoanId, returnedBook.returnDate());
     }
 
     @Override
