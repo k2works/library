@@ -3,10 +3,12 @@ package library.application.service.bookonloan;
 import library.application.repository.BookOnLoanRepository;
 import library.domain.model.bookcollection.ReturnDate;
 import library.domain.model.bookonloan.BookOnLoan;
+import org.springframework.stereotype.Service;
 
 /**
  * 貸出図書の返却登録サービス
  */
+@Service
 public class ReturnBookRecordService {
     BookOnLoanRepository bookOnLoanRepository;
 
