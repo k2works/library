@@ -1,6 +1,6 @@
-package library.domain.model.bookcollection;
+package library.domain.model.bookonloan;
 
-import library.domain.model.bookonloan.BookOnLoan;
+import library.domain.model.bookcollection.ReturnDate;
 
 /**
  * 返却された貸出図書
