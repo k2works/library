@@ -1,6 +1,7 @@
 package library.infrastructure.datasource.bookonloan;
 
 import library.domain.model.bookcollection.BookCollectionCode;
+import library.domain.model.bookcollection.ReturnDate;
 import library.domain.model.bookonloan.LoanDate;
 import library.domain.model.member.MemberNumber;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,4 +20,8 @@ public interface BookOnLoanMapper {
             @Param("memberNumber") MemberNumber memberNumber,
             @Param("bookCollectionCode") BookCollectionCode bookCollectionCode,
             @Param("loanDate") LoanDate loanDate);
+
+    void insertReturnBook(
+            @Param("bookOnLoanId") Integer bookOnLoanId,
+            @Param("returnDate") ReturnDate returnDate);
 }

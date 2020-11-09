@@ -1,6 +1,7 @@
 package library.application.service.bookonloan;
 
 import library.application.repository.BookOnLoanRepository;
+import library.domain.model.bookcollection.ReturnDate;
 import library.domain.model.bookonloan.BookOnLoan;
 
 /**
@@ -13,7 +14,7 @@ public class ReturnBookRecordService {
         this.bookOnLoanRepository = bookOnLoanRepository;
     }
 
-    public void registerReturnBook(BookOnLoan bookOnLoan) {
-        bookOnLoanRepository.registerReturnBook(bookOnLoan);
+    public void registerReturnBook(BookOnLoan bookOnLoan, ReturnDate returnDate) {
+        bookOnLoanRepository.registerReturnBook(bookOnLoan, returnDate);
     }
 }
