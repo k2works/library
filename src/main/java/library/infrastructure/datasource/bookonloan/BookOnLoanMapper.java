@@ -1,7 +1,6 @@
 package library.infrastructure.datasource.bookonloan;
 
 import library.domain.model.bookcollection.BookCollectionCode;
-import library.domain.model.bookonloan.BookOnLoan;
 import library.domain.model.bookonloan.LoanDate;
 import library.domain.model.member.MemberNumber;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,7 +12,7 @@ import java.util.List;
 public interface BookOnLoanMapper {
     Integer newBookOnLoanIdentifier();
 
-    List<BookOnLoan> selectByMemberNumber(@Param("memberNumber") MemberNumber memberNumber);
+    List<BookOnLoanData> selectByMemberNumber(@Param("memberNumber") MemberNumber memberNumber);
 
     void insertBookOnLoan(
             @Param("bookOnLoanId") Integer bookOnLoanId,
