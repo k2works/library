@@ -8,9 +8,13 @@ import library.domain.type.date.Date;
 import javax.validation.Valid;
 
 public class BookOnLoanForm {
-    @Valid MemberNumber memberNumber = null;
 
-    @Valid BookCollectionCode bookCollectionCode = null;
+    @Valid
+    MemberNumber memberNumber = null;
 
-    @Valid LoanDate loanDate = new LoanDate(Date.now());
+    @Valid
+    BookCollectionCode bookCollectionCode = null;
+
+    @Valid
+    LoanDate loanDate = new LoanDate(Date.now());
 }

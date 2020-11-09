@@ -11,6 +11,5 @@ import java.util.List;
 public interface BookCollectionMapper {
     BookCollection selectBookCollection(@Param("bookCollectionCode") BookCollectionCode bookCollectionCode);
 
-
     List<BookCollection> selectBookCollections(@Param("bookCollectionCodes") List<BookCollectionCode> bookCollectionCodes);
 }

@@ -24,7 +24,7 @@ class MemberAllBookOnLoansTest {
             "子供, 2020-01-04, , 貸出７冊まで",
             "子供, 2020-01-04, 2020-01-03, 貸出４冊まで",
             "子供, 2020-01-04, 2019-12-31, 貸出４冊まで",
-        "子供, 2020-01-04, 2019-12-30, 貸出不可"
+            "子供, 2020-01-04, 2019-12-30, 貸出不可"
     })
     void 貸出制限の判定ができる(MemberType memberType, String loanDate1, String loanDate2, LoanRestrictions expected) {
         Date today = Date.from("2020-01-20");
