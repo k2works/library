@@ -8,16 +8,16 @@ import javax.validation.Valid;
 /**
  * 貸し出されようとしている図書
  */
-public class LoadingOfBook {
+public class LoaningOfBook {
     @Valid Member member;
     @Valid BookCollection bookCollection;
     @Valid LoanDate loanDate;
 
     @Deprecated
-    LoadingOfBook() {
+    LoaningOfBook() {
     }
 
-    public LoadingOfBook(Member member, BookCollection bookCollection, LoanDate loanDate) {
+    public LoaningOfBook(Member member, BookCollection bookCollection, LoanDate loanDate) {
         this.member = member;
         this.bookCollection = bookCollection;
         this.loanDate = loanDate;
