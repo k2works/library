@@ -26,16 +26,12 @@ public class BookOnLoanRegisterCoordinator {
         this.bookOnLoanQueryService = bookOnLoanQueryService;
     }
 
-    public BookOnLoanValidResult isValid(LoaningOfBookCollection loaningOfBookCollection) {
+    public BookOnLoanValidResult isValid(LoaningOfBookCollection loaningOfBookCollection) throws IllegalAccessException {
         if (loaningOfBookCollection.bookCollection().bookCollectionStatus() == BookCollectionStatus.貸出中) {
             return BookOnLoanValidResult.貸出中の蔵書;
         }
 
         MemberAllBookOnLoans memberAllBookOnLoans = bookOnLoanQueryService.findMemberAllBookOnLoans(loaningOfBookCollection.member());
-        if (!memberAllBookOnLoans.canBorrowBookToday()) {
-            return BookOnLoanValidResult.貸出制限エラー;
-        }
-
-        return BookOnLoanValidResult.貸出可能;
+        return BookOnLoanValidResult.bookOnLoanValidResult(memberAllBookOnLoans.canBorrowBookToday());
     }
 }

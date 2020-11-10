@@ -20,7 +20,7 @@ public class MemberAllBookOnLoans {
         this.bookOnLoans = bookOnLoans;
     }
 
-    public boolean canBorrowBookToday() {
+    public CanLoan canBorrowBookToday() {
         LoanRestrictions loanRestrictions = todayLoanRestrictions();
         return loanRestrictions.canLoan(this.bookOnLoans);
     }

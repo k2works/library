@@ -47,7 +47,7 @@ public class BookOnLoanRegisterController {
     }
 
     @PostMapping
-    String register(@Validated @ModelAttribute("loaningOfBookForm") LoaningOfBookForm loaningOfBookForm, BindingResult result, RedirectAttributes attributes) {
+    String register(@Validated @ModelAttribute("loaningOfBookForm") LoaningOfBookForm loaningOfBookForm, BindingResult result, RedirectAttributes attributes) throws IllegalAccessException {
         if (result.hasErrors()) return "bookonloan/register/form";
 
         // TODO: コーディネーターにまとめる
