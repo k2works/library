@@ -42,7 +42,7 @@ public class BookOnLoanRegisterController {
 
     @GetMapping
     String init(Model model) {
-        model.addAttribute("bookOnLoanForm", new LoaningOfBookForm());
+        model.addAttribute("loaningOfBookForm", new LoaningOfBookForm());
         return "bookonloan/register/form";
     }
 
