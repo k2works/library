@@ -1,12 +1,14 @@
 package library.application.service.book;
 
 import library.application.repository.BookRepository;
+import library.domain.model.book.BookSearchKeyword;
 import library.domain.model.book.Books;
-import library.domain.model.book.SearchKeyword;
+import org.springframework.stereotype.Service;
 
 /**
  * 本検索サービス
  */
+@Service
 public class BookQueryService {
     BookRepository bookRepository;
 
@@ -17,7 +19,7 @@ public class BookQueryService {
     /**
      * 本検索
      */
-    public Books search(SearchKeyword keyword) {
+    public Books search(BookSearchKeyword keyword) {
         return bookRepository.search(keyword);
     }
 }
