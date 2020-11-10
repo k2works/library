@@ -15,7 +15,7 @@ public enum LoanRestrictions {
         this.limit = limit;
     }
 
-    public int limit() {
-        return limit;
+    public boolean canLoan(BookOnLoans bookOnLoans) {
+        return limit > bookOnLoans.numberOfBookOnLoans().value();
     }
 }

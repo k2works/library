@@ -26,4 +26,8 @@ public class BookOnLoans {
                 .max(Comparator.comparingInt(period -> period.value.value()))
                 .orElse(new DelayPeriod(new Days(0)));
     }
+
+    public NumberOfBookOnLoans numberOfBookOnLoans() {
+        return new NumberOfBookOnLoans(list.size());
+    }
 }
