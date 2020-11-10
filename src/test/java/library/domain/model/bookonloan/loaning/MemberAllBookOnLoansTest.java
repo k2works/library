@@ -1,5 +1,9 @@
-package library.domain.model.bookonloan.loan;
+package library.domain.model.bookonloan.loaning;
 
+import library.domain.model.bookonloan.loan.BookOnLoan;
+import library.domain.model.bookonloan.loan.BookOnLoans;
+import library.domain.model.bookonloan.loan.LoanDate;
+import library.domain.model.bookonloan.loan.LoanRestrictions;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.model.member.MemberType;
