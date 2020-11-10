@@ -3,6 +3,7 @@ package library.domain.model.bookonloan.loan;
 import library.domain.type.date.Date;
 import library.domain.type.date.Days;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -16,12 +17,8 @@ public class BookOnLoans {
         this.list = list;
     }
 
-    public List<BookOnLoan> list() {
-        return list;
-    }
-
     public DelayPeriod worstDelayPeriod(Date date) {
-        return list().stream()
+        return list.stream()
                 .map(loan -> loan.delayPeriod(date))
                 .max(Comparator.comparingInt(period -> period.value.value()))
                 .orElse(new DelayPeriod(new Days(0)));
@@ -29,5 +26,9 @@ public class BookOnLoans {
 
     public NumberOfBookOnLoans numberOfBookOnLoans() {
         return new NumberOfBookOnLoans(list.size());
+    }
+
+    public List<BookOnLoan> asList() {
+        return Collections.unmodifiableList(list);
     }
 }
