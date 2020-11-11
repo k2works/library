@@ -10,3 +10,5 @@ build/
 *.class
 .settings
 .vscode
+
+bin
