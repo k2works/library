@@ -2,30 +2,30 @@ package library.application.coordinator.returnbook;
 
 import library.application.ExecutionResult;
 import library.domain.model.bookcollection.BookCollectionStatus;
-import library.domain.model.bookonloan.loaning.Message;
+import library.domain.model.bookonloan.loaning.RejectReason;
 
 /**
  * 返却結果
  */
 public class ReturnBookResult {
     ExecutionResult result;
-    Message message;
+    RejectReason rejectReason;
 
-    public ReturnBookResult(ExecutionResult result, Message message) {
+    public ReturnBookResult(ExecutionResult result, RejectReason rejectReason) {
         this.result = result;
-        this.message = message;
+        this.rejectReason = rejectReason;
     }
 
     static public ReturnBookResult from(BookCollectionStatus bookCollectionStatus) {
         if (bookCollectionStatus == BookCollectionStatus.在庫中) {
-            return new ReturnBookResult(ExecutionResult.NG, new Message("貸し出されていない蔵書です。"));
+            return new ReturnBookResult(ExecutionResult.NG, new RejectReason("貸し出されていない蔵書です。"));
         }
 
-        return new ReturnBookResult(ExecutionResult.OK, new Message("OK"));
+        return new ReturnBookResult(ExecutionResult.OK, new RejectReason("OK"));
     }
 
     public String message() {
-        return message.toString();
+        return rejectReason.toString();
     }
 
     public boolean hasError() {

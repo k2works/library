@@ -8,31 +8,31 @@ import library.domain.model.bookcollection.BookCollectionStatus;
  */
 public class LoaningCard {
     ExecutionResult result;
-    Message message;
+    RejectReason rejectReason;
 
-    public LoaningCard(ExecutionResult result, Message message) {
+    public LoaningCard(ExecutionResult result, RejectReason rejectReason) {
         this.result = result;
-        this.message = message;
+        this.rejectReason = rejectReason;
     }
 
     static public LoaningCard from(CanLoan canLoan) {
         if (canLoan == CanLoan.貸出不可) {
-            return new LoaningCard(ExecutionResult.NG, new Message("これ以上本を貸し出すことができません。"));
+            return new LoaningCard(ExecutionResult.NG, new RejectReason("これ以上本を貸し出すことができません。"));
         }
 
-        return new LoaningCard(ExecutionResult.OK, new Message("OK"));
+        return new LoaningCard(ExecutionResult.OK, new RejectReason("OK"));
     }
 
     static public LoaningCard from(BookCollectionStatus bookCollectionStatus) {
         if (bookCollectionStatus == BookCollectionStatus.貸出中) {
-            return new LoaningCard(ExecutionResult.NG, new Message("現在貸出中の蔵書です。"));
+            return new LoaningCard(ExecutionResult.NG, new RejectReason("現在貸出中の蔵書です。"));
         }
 
-        return new LoaningCard(ExecutionResult.OK, new Message("OK"));
+        return new LoaningCard(ExecutionResult.OK, new RejectReason("OK"));
     }
 
     public String message() {
-        return message.toString();
+        return rejectReason.toString();
     }
 
     public boolean hasError() {
