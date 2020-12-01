@@ -2,7 +2,7 @@ package library.application.coordinator.returnbook;
 
 import library.application.ExecutionResult;
 import library.domain.model.bookcollection.BookCollectionStatus;
-import library.domain.model.bookonloan.loan.Message;
+import library.domain.model.bookonloan.loaning.Message;
 
 /**
  * 返却結果
