@@ -31,14 +31,15 @@ public class BookOnLoanDataSource implements BookOnLoanRepository {
 
     @Override
     @Transactional
-    public void registerBookOnLoan(BookOnLoanRequest bookOnLoanRequest) {
-        bookCollectionMapper.getBookCollectionCodeWithLock(bookOnLoanRequest.bookCollection().bookCollectionCode());
+    public BookOnLoan registerBookOnLoan(BookOnLoanRequest bookOnLoanRequest) {
+        BookCollectionCode bookCollectionCode = bookOnLoanRequest.bookCollection().bookCollectionCode();
+        bookCollectionMapper.getBookCollectionCodeWithLock(bookCollectionCode);
 
-        // 蔵書を取得して、在庫状況を確認
-        // 他から処理があったらこまる
-        // 貸出中なら例外
+        BookCollection bookCollection = bookCollectionMapper.selectBookCollection(bookCollectionCode);
 
-        // 在庫中なら貸出図書を登録
+        if (bookCollection.bookCollectionStatus().unLoanable()) {
+            throw new RegisterBookOnLoanException(bookOnLoanRequest);
+        }
 
         Integer bookOnLoanId = mapper.newBookOnLoanIdentifier();
         mapper.insertBookOnLoan(
@@ -47,7 +48,7 @@ public class BookOnLoanDataSource implements BookOnLoanRepository {
                 bookOnLoanRequest.bookCollection().bookCollectionCode(),
                 bookOnLoanRequest.loanDate());
 
-        // ロック解除
+        return findBookOnLoanByBookCollectionCode(bookCollectionCode);
     }
 
     @Override

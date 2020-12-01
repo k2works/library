@@ -1,45 +1,36 @@
 package library.domain.model.bookonloan.loaning;
 
-import library.application.ExecutionResult;
-import library.domain.model.bookcollection.BookCollectionStatus;
+import library.domain.model.bookonloan.loan.BookOnLoan;
 
 /**
  * 貸出票
  */
 public class LoaningCard {
-    ExecutionResult result;
+    BookOnLoan bookOnLoan;
     RejectReason rejectReason;
 
-    public LoaningCard(ExecutionResult result, RejectReason rejectReason) {
-        this.result = result;
+    private LoaningCard(BookOnLoan bookOnLoan, RejectReason rejectReason) {
+        this.bookOnLoan = bookOnLoan;
         this.rejectReason = rejectReason;
     }
 
-    static public LoaningCard from(CanLoan canLoan) {
-        if (canLoan == CanLoan.貸出不可) {
-            return new LoaningCard(null, RejectReason.貸出冊数超過);
-        }
-
-        return new LoaningCard(null, null);
+    public LoaningCard(RejectReason rejectReason) {
+        this(null, rejectReason);
     }
 
-    static public LoaningCard from(BookCollectionStatus bookCollectionStatus) {
-        if (bookCollectionStatus == BookCollectionStatus.貸出中) {
-            return new LoaningCard(null, RejectReason.蔵書が貸出中);
-        }
-
-        return new LoaningCard(null, null);
+    public LoaningCard(BookOnLoan bookOnLoan) {
+        this(bookOnLoan, null);
     }
 
     public String message() {
         return rejectReason.toString();
     }
 
-    public boolean hasError() {
-        return result == ExecutionResult.NG;
+    public boolean rejected() {
+        return bookOnLoan == null;
     }
 
     public boolean ok() {
-        return result == ExecutionResult.OK;
+        return bookOnLoan != null;
     }
 }
