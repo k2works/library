@@ -18,10 +18,11 @@ public class ReturnBookResult {
 
     static public ReturnBookResult from(BookCollectionStatus bookCollectionStatus) {
         if (bookCollectionStatus == BookCollectionStatus.在庫中) {
-            return new ReturnBookResult(ExecutionResult.NG, new RejectReason("貸し出されていない蔵書です。"));
+//            return new ReturnBookResult(ExecutionResult.NG, new RejectReason("貸し出されていない蔵書です。"));
         }
 
-        return new ReturnBookResult(ExecutionResult.OK, new RejectReason("OK"));
+        //       return new ReturnBookResult(ExecutionResult.OK, new RejectReason("OK"));
+        return null;
     }
 
     public String message() {
@@ -29,10 +30,12 @@ public class ReturnBookResult {
     }
 
     public boolean hasError() {
-        return result == ExecutionResult.NG;
+        // FIXME:
+        return false;
     }
 
     public boolean ok() {
-        return result == ExecutionResult.OK;
+        // FIXME:
+        return false;
     }
 }
