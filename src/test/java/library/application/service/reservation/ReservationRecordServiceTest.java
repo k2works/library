@@ -6,11 +6,13 @@ import library.domain.model.book.Book;
 import library.domain.model.book.BookSearchKeyword;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
+import library.domain.model.reservation.Reservation;
 import library.domain.model.reservation.TryingToReserveBook;
-import library.infrastructure.datasource.reservation.ReservationData;
 import library.infrastructure.datasource.reservation.ReservationMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,8 +38,8 @@ public class ReservationRecordServiceTest {
         TryingToReserveBook tryingToReserveBook = new TryingToReserveBook(member, book);
         reservationRecordService.registerReservation(tryingToReserveBook);
 
-        ReservationData reuslt = reservationMapper.selectByBookId(book.bookId());
+        List<Reservation> reuslt = reservationMapper.selectAllNotRetainedReservation();
 
-        assertEquals(reuslt.memberNumber().value(), 1);
+        assertEquals(reuslt.size(), 1);
     }
 }
