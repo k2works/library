@@ -1,6 +1,6 @@
 package library.domain.model.reservation;
 
-import library.domain.model.bookcollection.SameBooksBookCollections;
+import library.domain.model.book.Book;
 import library.domain.model.member.Member;
 
 /**
@@ -8,16 +8,16 @@ import library.domain.model.member.Member;
  */
 public class Reservation {
     Member member;
-    SameBooksBookCollections sameBooksCollections;
+    Book book;
     RetentionStatus retentionStatus;
 
     @Deprecated
     Reservation() {
     }
 
-    public Reservation(Member member, SameBooksBookCollections sameBooksCollections, RetentionStatus retentionStatus) {
+    public Reservation(Member member, Book book, RetentionStatus retentionStatus) {
         this.member = member;
-        this.sameBooksCollections = sameBooksCollections;
+        this.book = book;
         this.retentionStatus = retentionStatus;
     }
 
@@ -25,8 +25,8 @@ public class Reservation {
         return member;
     }
 
-    public SameBooksBookCollections sameBooksCollections() {
-        return sameBooksCollections;
+    public Book sameBooksCollections() {
+        return book;
     }
 
     public RetentionStatus retentionStatus() {
