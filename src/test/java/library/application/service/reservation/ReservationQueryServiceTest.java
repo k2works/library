@@ -11,6 +11,7 @@ import library.domain.model.reservation.TryingToReserveBook;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @LibraryDBTest
@@ -36,6 +37,8 @@ class ReservationQueryServiceTest {
 
         Reservations reservations = reservationQueryService.findReservations();
 
-        assertEquals(1, reservations.numberOfReservation().value());
+        assertAll(
+                () -> assertEquals(1, reservations.numberOfReservation().value()),
+                () -> assertEquals(1, reservations.list().get(0).sameBooksCollections().book().bookId().value()));
     }
 }
