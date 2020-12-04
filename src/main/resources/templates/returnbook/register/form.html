@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/layout :: htmlhead(~{::title})">
-    <meta charset="utf-8"/>
-    <title>貸出図書の返却</title>
+  <meta charset="utf-8"/>
+  <title>貸出図書の返却</title>
 </head>
 <body>
 <header th:replace="fragments/navigation::navigation('貸出図書の返却')"></header>
 
 <main class="container">
-    <header th:replace="fragments/header::header('貸出図書の返却')"></header>
+  <header th:replace="fragments/header::header('貸出図書の返却')"></header>
 
-    <section class="attendanceInput has-text-centered">
-        <form action="#" class="form" id="custom-form"
-              method="post" name="body"
-              th:action="@{/returnbook/register}"
-              th:object="${returnBookForm}">
+  <section class="attendanceInput has-text-centered">
+    <form id="custom-form" class="form" name="body"
+          method="post" action="#"
+          th:object="${returnBookForm}"
+          th:action="@{/returnbook/register}">
 
-            <ul class="notification is-danger" th:if="${#fields.hasGlobalErrors()}">
-                <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
-            </ul>
+      <ul th:if="${#fields.hasGlobalErrors()}" class="notification is-danger">
+        <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+      </ul>
 
-            <div th:replace="fragments/field::macro('蔵書コード', ~{::div#bookCollectionCodeField})">
-                <div class="field-body" id="bookCollectionCodeField">
-                    <div class="field">
-                        <p class="control">
-                            <input class="input" placeholder="1-A" th:field="*{bookCollectionCode.value}"
-                                   type="text"/>
-                        </p>
-                        <p class="help is-danger has-text-left"
-                           th:if="${#fields.hasErrors('bookCollectionCode.value')}">
-                            <span th:errors="*{bookCollectionCode.value}"></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <div th:replace="fragments/field::macro('蔵書コード', ~{::div#holdingCodeField})">
+        <div id="holdingCodeField" class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="text" placeholder="1-A"
+                     th:field="*{holdingCode.value}"/>
+            </p>
+            <p class="help is-danger has-text-left"
+               th:if="${#fields.hasErrors('holdingCode.value')}">
+              <span th:errors="*{holdingCode.value}"></span>
+            </p>
+          </div>
+        </div>
+      </div>
 
-            <div th:replace="fragments/field::macro('返却日', ~{::div#returnDateField})">
-                <div class="field-body" id="returnDateField">
-                    <div class="field">
-                        <p class="control">
-                            <input class="input" placeholder="2020-01-01" th:field="*{returnDate.value}"
-                                   type="date"/>
-                        </p>
-                        <p class="help is-danger has-text-left"
-                           th:if="${#fields.hasErrors('returnDate.value')}">
-                            <span th:errors="*{returnDate.value}"></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <div th:replace="fragments/field::macro('返却日', ~{::div#returnDateField})">
+        <div id="returnDateField" class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="date" placeholder="2020-01-01"
+                     th:field="*{returnDate.value}"/>
+            </p>
+            <p class="help is-danger has-text-left"
+               th:if="${#fields.hasErrors('returnDate.value')}">
+              <span th:errors="*{returnDate.value}"></span>
+            </p>
+          </div>
+        </div>
+      </div>
 
-            <div class="formFooter has-text-centered">
-                <button class="button is-primary is-outlined">登録</button>
-            </div>
-        </form>
-    </section>
+      <div class="formFooter has-text-centered">
+        <button class="button is-primary is-outlined">登録</button>
+      </div>
+    </form>
+  </section>
 
 </main>
 </body>

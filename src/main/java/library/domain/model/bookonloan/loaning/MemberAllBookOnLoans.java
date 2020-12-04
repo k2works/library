@@ -3,7 +3,6 @@ package library.domain.model.bookonloan.loaning;
 import library.domain.model.bookonloan.loan.BookOnLoans;
 import library.domain.model.bookonloan.loan.DelayPeriod;
 import library.domain.model.bookonloan.loan.DelayStatus;
-import library.domain.model.bookonloan.loan.LoanRestrictions;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberType;
 import library.domain.type.date.Date;

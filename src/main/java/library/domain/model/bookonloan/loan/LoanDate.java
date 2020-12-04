@@ -33,5 +33,4 @@ public class LoanDate {
     public DueDate dueDateWith(LoanPeriod loanPeriod) {
         return new DueDate(value.plus(loanPeriod.value()));
     }
-
 }

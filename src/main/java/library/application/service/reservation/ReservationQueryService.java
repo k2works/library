@@ -15,7 +15,7 @@ public class ReservationQueryService {
         this.reservationRepository = reservationRepository;
     }
 
-    /***
+    /**
      * 貸出予約一覧
      */
     public Reservations findReservations() {

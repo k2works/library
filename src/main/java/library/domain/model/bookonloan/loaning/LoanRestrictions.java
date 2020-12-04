@@ -1,6 +1,6 @@
-package library.domain.model.bookonloan.loan;
+package library.domain.model.bookonloan.loaning;
 
-import library.domain.model.bookonloan.loaning.CanLoan;
+import library.domain.model.bookonloan.loan.BookOnLoans;
 
 /**
  * 貸出制限
@@ -23,4 +23,5 @@ public enum LoanRestrictions {
         }
         return CanLoan.貸出不可;
     }
+
 }

@@ -5,5 +5,5 @@ package library.domain.model.bookonloan.loaning;
  */
 public enum CanLoan {
     貸出可能,
-    貸出不可
+    貸出不可;
 }

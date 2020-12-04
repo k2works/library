@@ -7,6 +7,7 @@ public class NumberOfBookOnLoans {
     int value;
 
     public NumberOfBookOnLoans(int value) {
+
         this.value = value;
     }
 

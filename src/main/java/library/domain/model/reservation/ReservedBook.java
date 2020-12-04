@@ -22,8 +22,4 @@ public class ReservedBook {
     public Member member() {
         return member;
     }
-
-    public Book sameBooksCollections() {
-        return book;
-    }
 }

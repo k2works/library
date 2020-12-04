@@ -3,7 +3,7 @@ package library.domain.model.bookonloan.loan;
 import java.time.Period;
 
 /**
- * 貸出期限
+ * 貸出期間
  */
 public class LoanPeriod {
 

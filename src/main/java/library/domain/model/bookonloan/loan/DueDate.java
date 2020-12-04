@@ -12,7 +12,7 @@ public class DueDate {
         this.value = value;
     }
 
-    public LoanStatus loanPeriodStatus() {
+    public LoanStatus loanStatus() {
         Date today = Date.now();
         if (value.isBefore(today)) {
             return LoanStatus.期限切れ;

@@ -21,9 +21,9 @@ public class ReservationDatasource implements ReservationRepository {
         Integer reservationId = reservationMapper.newReservationIdentifier();
 
         reservationMapper.insertReservation(
-                reservationId,
-                tryingToReserveBook.member().memberNumber(),
-                tryingToReserveBook.book().bookId());
+            reservationId,
+            tryingToReserveBook.member().memberNumber(),
+            tryingToReserveBook.book().bookId());
     }
 
     @Override

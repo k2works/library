@@ -1,7 +1,7 @@
 package library.domain.model.bookonloan.loaning;
 
-import library.domain.model.bookcollection.BookCollectionInStock;
 import library.domain.model.bookonloan.loan.LoanDate;
+import library.domain.model.holding.HoldingInStock;
 import library.domain.model.member.Member;
 
 import javax.validation.Valid;
@@ -10,17 +10,22 @@ import javax.validation.Valid;
  * 図書の貸出申請
  */
 public class BookOnLoanRequest {
-    @Valid Member member;
-    @Valid BookCollectionInStock bookCollectionInStock;
-    @Valid LoanDate loanDate;
+    @Valid
+    Member member;
+
+    @Valid
+    HoldingInStock holdingInStock;
+
+    @Valid
+    LoanDate loanDate;
 
     @Deprecated
     BookOnLoanRequest() {
     }
 
-    public BookOnLoanRequest(Member member, BookCollectionInStock bookCollectionInStock, LoanDate loanDate) {
+    public BookOnLoanRequest(Member member, HoldingInStock holdingInStock, LoanDate loanDate) {
         this.member = member;
-        this.bookCollectionInStock = bookCollectionInStock;
+        this.holdingInStock = holdingInStock;
         this.loanDate = loanDate;
     }
 
@@ -28,8 +33,8 @@ public class BookOnLoanRequest {
         return member;
     }
 
-    public BookCollectionInStock bookCollectionInStock() {
-        return bookCollectionInStock;
+    public HoldingInStock holdingInStock() {
+        return holdingInStock;
     }
 
     public LoanDate loanDate() {

@@ -17,7 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @LibraryDBTest
-public class ReservationBookRecordServiceTest {
+class ReservedBookRecordServiceTest {
     @Autowired
     ReservationRecordService reservationRecordService;
 
@@ -38,8 +38,8 @@ public class ReservationBookRecordServiceTest {
         TryingToReserveBook tryingToReserveBook = new TryingToReserveBook(member, book);
         reservationRecordService.registerReservation(tryingToReserveBook);
 
-        List<ReservedBook> reuslt = reservationMapper.selectAllNotRetainedReservation();
+        List<ReservedBook> result = reservationMapper.selectAllNotRetainedReservation();
 
-        assertEquals(reuslt.size(), 1);
+        assertEquals(result.size(), 1);
     }
 }

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @LibraryDBTest
-class ReservationBookQueryServiceTest {
+class ReservedBookQueryServiceTest {
     @Autowired
     ReservationQueryService reservationQueryService;
 
@@ -38,6 +38,6 @@ class ReservationBookQueryServiceTest {
         Reservations reservations = reservationQueryService.findReservations();
 
         assertAll(
-                () -> assertEquals(1, reservations.numberOfReservation().value()));
+            () -> assertEquals(1, reservations.numberOfReservation().value()));
     }
 }

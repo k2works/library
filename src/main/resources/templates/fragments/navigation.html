@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -7,30 +6,30 @@
 </head>
 <body>
 <header class="hero is-primary" th:fragment="navigation(active)">
-    <nav class="navbar">
-        <div class="navbar-menu is-flex">
-            <a class="navbar-item" th:classappend="${active.equals('貸出図書の登録')} ? 'is-active' : ''"
-               th:href="@{/bookonloan/register}">
-                <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
-                <span>貸出図書の登録</span>
-            </a>
-            <a class="navbar-item" th:classappend="${active.equals('貸出図書の返却')} ? 'is-active' : ''"
-               th:href="@{/returnbook/register}">
-                <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
-                <span>貸出図書の返却</span>
-            </a>
-            <a class="navbar-item" th:classappend="${active.equals('蔵書検索')} ? 'is-active' : ''"
-               th:href="@{/reservation/books/search}">
-                <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
-                <span>蔵書検索</span>
-            </a>
-            <a class="navbar-item" th:classappend="${active.equals('本の貸出予約')} ? 'is-active' : ''"
-               th:href="@{/reservation/register}">
-                <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
-                <span>本の貸出予約</span>
-            </a>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="navbar-menu is-flex">
+      <a class="navbar-item" th:classappend="${active.equals('貸出図書の登録')} ? 'is-active' : ''"
+         th:href="@{/bookonloan/register}">
+        <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
+        <span>貸出図書の登録</span>
+      </a>
+      <a class="navbar-item" th:classappend="${active.equals('貸出図書の返却')} ? 'is-active' : ''"
+         th:href="@{/returnbook/register}">
+          <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
+          <span>貸出図書の返却</span>
+      </a>
+        <a class="navbar-item" th:classappend="${active.equals('蔵書検索')} ? 'is-active' : ''"
+           th:href="@{/reservation/books/search}">
+            <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
+            <span>蔵書検索</span>
+        </a>
+      <a class="navbar-item" th:classappend="${active.equals('本の貸出予約')} ? 'is-active' : ''"
+         th:href="@{/reservation/register}">
+          <span class="icon"><i class="fas mdiBookOpenVariant"></i></span>
+          <span>本の貸出予約</span>
+      </a>
+    </div>
+  </nav>
 </header>
 </body>
 </html>
