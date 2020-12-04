@@ -1,3 +1,4 @@
+
 package library.infrastructure.datasource.holding;
 
 import library.domain.model.book.BookId;
@@ -13,6 +14,8 @@ public interface HoldingMapper {
     Holding selectHolding(@Param("holdingCode") HoldingCode holdingCode);
 
     List<Holding> selectHoldings(@Param("holdingCodes") List<HoldingCode> holdingCodes);
+
+    List<Holding> selectAllHoldingsInStock();
 
     List<Holding> selectHoldingsByBookIds(@Param("bookIds") List<BookId> bookIds);
 

@@ -1,3 +1,4 @@
+
 package library.domain.model.reservation.reservation;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public class ReservedBooks {
     public List<ReservedBook> list() {
         return list;
     }
+
 }

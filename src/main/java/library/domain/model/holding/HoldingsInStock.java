@@ -1,3 +1,4 @@
+
 package library.domain.model.holding;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class HoldingsInStock {
     List<HoldingInStock> list;
 
-    HoldingsInStock(List<HoldingInStock> list) {
+    public HoldingsInStock(List<HoldingInStock> list) {
         this.list = list;
     }
 
