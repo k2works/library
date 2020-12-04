@@ -27,8 +27,8 @@ public class BookOnLoan {
         this.loanDate = loanDate;
     }
 
-    public LoanPeriod loanPeriod() {
-        return LoanPeriod.loanPeriod(loanDate);
+    public DueDate loanPeriod() {
+        return DueDate.loanPeriod(loanDate);
     }
 
     public DelayPeriod todayDelayPeriod() {
