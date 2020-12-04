@@ -24,6 +24,6 @@
                '未準備'   as "retentionStatus"
         FROM 予約
                  INNER JOIN 会員 on 予約.会員番号 = 会員.会員番号
-        INNER JOIN 本 on 予約.本ID = 本.本ID
+                 INNER JOIN 本 on 予約.本ID = 本.本ID
     </select>
 </mapper>

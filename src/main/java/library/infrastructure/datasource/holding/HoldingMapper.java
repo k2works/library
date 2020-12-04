@@ -1,4 +1,3 @@
-
 package library.infrastructure.datasource.holding;
 
 import library.domain.model.book.BookId;

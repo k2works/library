@@ -1,4 +1,3 @@
-
 package library.infrastructure.datasource.holding;
 
 import library.application.repository.HoldingRepository;

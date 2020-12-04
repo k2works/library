@@ -1,7 +1,7 @@
 package library.domain.model.holding;
 
 /**
- * 取引中の蔵書
+ * 取置中の蔵書
  */
 public class HoldingInRetain {
     Holding holding;

@@ -1,4 +1,3 @@
-
 package library.domain.model.holding;
 
 import java.util.List;

@@ -1,4 +1,3 @@
-
 package library.application.repository;
 
 import library.domain.model.holding.HoldingCode;
