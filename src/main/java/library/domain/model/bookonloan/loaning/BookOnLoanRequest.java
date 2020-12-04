@@ -11,7 +11,7 @@ import javax.validation.Valid;
  */
 public class BookOnLoanRequest {
     @Valid Member member;
-    @Valid BookCollection bookCollection;
+    @Valid BookCollection bookCollection; // TODO: 在庫中の蔵書になる筈
     @Valid LoanDate loanDate;
 
     @Deprecated

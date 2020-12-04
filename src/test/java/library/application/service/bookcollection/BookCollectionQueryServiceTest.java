@@ -1,8 +1,8 @@
 package library.application.service.bookcollection;
 
 import library.LibraryDBTest;
-import library.domain.model.bookcollection.BookCollection;
 import library.domain.model.bookcollection.BookCollectionCode;
+import library.domain.model.bookcollection.BookCollectionOnLoan;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,8 +17,8 @@ class BookCollectionQueryServiceTest {
     @Test
     void 蔵書を取得できる() {
         BookCollectionCode bookCollectionCode = new BookCollectionCode("1-A");
-        BookCollection bookCollection = bookCollectionQueryService.findBookCollection(bookCollectionCode);
+        BookCollectionOnLoan bookCollection = bookCollectionQueryService.findBookCollection(bookCollectionCode);
 
-        assertTrue(bookCollection.bookCollectionCode().sameValue(bookCollectionCode));
+        assertTrue(bookCollection.bookCollection().bookCollectionCode().sameValue(bookCollectionCode));
     }
 }

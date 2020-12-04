@@ -1,8 +1,8 @@
 package library.infrastructure.datasource.bookcollection;
 
 import library.LibraryDBTest;
-import library.domain.model.bookcollection.BookCollection;
 import library.domain.model.bookcollection.BookCollectionCode;
+import library.domain.model.bookcollection.BookCollectionOnLoan;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -40,8 +40,8 @@ class BookCollectionDataSourceTest {
                         .param("bookCollectionCode.value", "2-A")
                         .param("loanDate.value", "2020-02-14"));
 
-        BookCollection bookCollection = bookCollectionDataSource.findBookCollection(new BookCollectionCode("2-A"));
+        BookCollectionOnLoan bookCollection = bookCollectionDataSource.findBookCollection(new BookCollectionCode("2-A"));
 
-        assertEquals("2-A", bookCollection.bookCollectionCode().toString());
+        assertEquals("2-A", bookCollection.bookCollection().bookCollectionCode().toString());
     }
 }
