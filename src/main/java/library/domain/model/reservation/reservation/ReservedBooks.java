@@ -5,10 +5,10 @@ import java.util.List;
 /**
  * 貸出予約リスト
  */
-public class Reservations {
+public class ReservedBooks {
     List<ReservedBook> list;
 
-    public Reservations(List<ReservedBook> list) {
+    public ReservedBooks(List<ReservedBook> list) {
         this.list = list;
     }
 
