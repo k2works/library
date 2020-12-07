@@ -1,5 +1,6 @@
 package library.domain.model.counter;
 
+import library.domain.model.holding.CatalogShelf;
 import library.domain.model.holding.HoldingStatus;
 import library.domain.model.reservation.reservation.Reservation;
 import library.domain.model.reservation.reservation.Reservations;
