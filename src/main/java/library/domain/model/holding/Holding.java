@@ -22,7 +22,7 @@ public class Holding {
         return holdingCode;
     }
 
-    // TODO: 予約本を探すメソッドにしたい（ReservedBookをうけるようにしたい）
+    // TODO: 予約本を探すメソッドにしたい (ReservedBookを受けるようにしたい)
     public boolean sameBook(Book other) {
         return this.book.sameBook(other);
     }

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface RetentionMapper {
+
     void insertRetainedHolding(
             @Param("reservationId") ReservationId reservationId,
             @Param("holdingCode") HoldingCode holdingCode,

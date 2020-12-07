@@ -7,5 +7,5 @@ import library.domain.model.counter.Counter;
  * カウンターリポジトリ
  */
 public interface CounterRepository {
-    Counter counter(BookId bookId);
+    Counter counters(BookId bookId);
 }

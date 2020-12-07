@@ -1,6 +1,4 @@
-package library.domain.model.counter;
-
-import library.domain.model.bookonloan.librarycard.LibraryCard;
+package library.domain.model.bookonloan.librarycard;
 
 import java.util.List;
 

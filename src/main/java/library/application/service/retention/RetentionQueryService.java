@@ -27,11 +27,10 @@ public class RetentionQueryService {
     public Counter counter(Reservations reservations) {
         HoldingsInStock holdingsInStock =
                 holdingRepository.findHoldingsInStockByBookIds(reservations.bookIds());
-        // TODO: Retentions取得
 
         List<Counter> list = new ArrayList<>();
         for (BookId bookId : reservations.bookIds().asList()) {
-            list.add(counterRepository.counter(bookId));
+            list.add(counterRepository.counters(bookId));
         }
 
         // TODO: Counter生成

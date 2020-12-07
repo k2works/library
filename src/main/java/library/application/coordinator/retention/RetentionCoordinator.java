@@ -28,4 +28,12 @@ public class RetentionCoordinator {
         Counter counter = retentionQueryService.counter(reservations);
         return counter.retentionableReservedBooks(reservations);
     }
+
+    /**
+     * 貸出予約
+     */
+    public Reservations findReservedBooks() {
+        // TODO:
+        return null;
+    }
 }

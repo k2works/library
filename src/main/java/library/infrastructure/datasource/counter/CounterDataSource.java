@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public class CounterDataSource implements CounterRepository {
 
     @Override
-    public Counter counter(BookId bookId) {
+    public Counter counters(BookId bookId) {
         // TODO:
         return null;
     }
