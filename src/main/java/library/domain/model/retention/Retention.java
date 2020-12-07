@@ -14,7 +14,7 @@ import java.util.List;
  * 取置
  */
 public class Retention {
-    HoldingsInStock holdingsInStock;
+    HoldingsInStock holdingsInStock; // TODO: すべての蔵書を持たないようにする
     Retentions retentions;
 
     public Retention(HoldingsInStock holdingsInStock, Retentions retentions) {
