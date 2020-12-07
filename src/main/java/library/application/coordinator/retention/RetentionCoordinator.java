@@ -2,8 +2,8 @@ package library.application.coordinator.retention;
 
 import library.application.service.reservation.ReservationQueryService;
 import library.application.service.retention.RetentionQueryService;
+import library.domain.model.counter.Retention;
 import library.domain.model.reservation.reservation.Reservations;
-import library.domain.model.retention.Retention;
 import library.domain.model.retention.RetentionableReservedBooks;
 import org.springframework.stereotype.Service;
 
