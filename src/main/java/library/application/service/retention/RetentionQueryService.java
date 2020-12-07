@@ -3,8 +3,7 @@ package library.application.service.retention;
 import library.application.repository.CounterRepository;
 import library.application.repository.HoldingRepository;
 import library.domain.model.book.BookId;
-import library.domain.model.counter.Counters;
-import library.domain.model.counter.Retention;
+import library.domain.model.counter.Counter;
 import library.domain.model.holding.HoldingsInStock;
 import library.domain.model.reservation.reservation.Reservations;
 import org.springframework.stereotype.Service;
@@ -25,16 +24,17 @@ public class RetentionQueryService {
         this.counterRepository = counterRepository;
     }
 
-    public Retention retention(Reservations reservations) {
+    public Counter counter(Reservations reservations) {
         HoldingsInStock holdingsInStock =
                 holdingRepository.findHoldingsInStockByBookIds(reservations.bookIds());
         // TODO: Retentions取得
 
-        List<Counters> list = new ArrayList<>();
+        List<Counter> list = new ArrayList<>();
         for (BookId bookId : reservations.bookIds().asList()) {
-            list.add(counterRepository.counters(bookId));
+            list.add(counterRepository.counter(bookId));
         }
 
-        return new Retention(list);
+        // TODO: Counter生成
+        return null;
     }
 }
