@@ -22,4 +22,5 @@ public class RetentionableReservedBooks {
     public List<ReservedBook> asList() {
         return list;
     }
+
 }

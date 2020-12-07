@@ -22,5 +22,5 @@ public interface ReservationMapper {
 
     void insertCancelReservation(@Param("reservationId") ReservationId reservationId);
 
-    List<ReservedBook> selectReservationsByMember(@Param("memberNumber") MemberNumber memberNumber);
+    List<ReservedBook> selectReservationsByMemberNumber(@Param("memberNumber") MemberNumber memberNumber);
 }

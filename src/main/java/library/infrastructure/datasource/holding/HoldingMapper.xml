@@ -4,13 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="library.infrastructure.datasource.holding.HoldingMapper">
     <select id="selectHolding" resultType="library.domain.model.holding.Holding">
-        SELECT 蔵書.蔵書コード as "holdingCode.value",
-               本.本ID    as "book.bookId.value",
-               本.タイトル   as "book.title.value",
-               本.著者     as "book.author.value",
-               本.本種別    as "book.bookType"
+        SELECT
+            蔵書.蔵書コード as "holdingCode.value",
+            本.本ID as "book.bookId.value",
+            本.タイトル as "book.title.value",
+            本.著者 as "book.author.value",
+            本.本種別 as "book.bookType"
         FROM 蔵書
-                 INNER JOIN 本 on (蔵書.本ID = 本.本ID)
+        INNER JOIN 本 on (蔵書.本ID = 本.本ID)
         WHERE 蔵書.蔵書コード = #{holdingCode.value}
     </select>
 
@@ -30,7 +31,8 @@
     </select>
 
     <select id="selectHoldingsInStockByBookIds" resultType="library.domain.model.holding.Holding">
-        SELECT 蔵書.蔵書コード as "holdingCode.value",
+        SELECT
+        蔵書.蔵書コード as "holdingCode.value",
         本.本ID as "book.bookId.value",
         本.タイトル as "book.title.value",
         本.著者 as "book.author.value",
@@ -47,7 +49,8 @@
     </select>
 
     <select id="lockHolding" resultType="library.domain.model.holding.HoldingCode">
-        SELECT 蔵書.蔵書コード as "value"
+        SELECT
+            蔵書.蔵書コード as "value"
         FROM 蔵書
         WHERE 蔵書.蔵書コード = #{holdingCode.value} FOR UPDATE NOWAIT
     </select>

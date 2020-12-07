@@ -40,7 +40,7 @@ public class ReservationDatasource implements ReservationRepository {
 
     @Override
     public ReservedBooks findReservationsByMember(Member member) {
-        List<ReservedBook> reservedBooks = reservationMapper.selectReservationsByMember(member.memberNumber());
+        List<ReservedBook> reservedBooks = reservationMapper.selectReservationsByMemberNumber(member.memberNumber());
         return new ReservedBooks(reservedBooks);
     }
 }

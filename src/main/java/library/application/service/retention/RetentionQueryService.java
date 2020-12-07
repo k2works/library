@@ -18,8 +18,9 @@ public class RetentionQueryService {
     }
 
     public Retention retention(ReservedBooks reservedBooks) {
-        HoldingsInStock holdingsInStock = holdingRepository.findHoldingsInStockByBookIds(reservedBooks.bookIds());
-        // TODO:  Retentions取得
+        HoldingsInStock holdingsInStock =
+                holdingRepository.findHoldingsInStockByBookIds(reservedBooks.bookIds());
+        // TODO: Retentions取得
 
         return new Retention(holdingsInStock, null);
     }

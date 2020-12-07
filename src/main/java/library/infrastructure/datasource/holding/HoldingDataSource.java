@@ -48,7 +48,7 @@ public class HoldingDataSource implements HoldingRepository {
         }
 
         List<HoldingInStock> holdingInStocks =
-                holdingMapper.selectHoldingsINStockByBookIds(bookIds.asList()).stream().map(HoldingInStock::new).collect(Collectors.toList());
+                holdingMapper.selectHoldingsInStockByBookIds(bookIds.asList()).stream().map(HoldingInStock::new).collect(Collectors.toList());
         return new HoldingsInStock(holdingInStocks);
     }
 }

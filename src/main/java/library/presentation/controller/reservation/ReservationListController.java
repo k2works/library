@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("reservation/list")
-class ReservationListController {
+public class ReservationListController {
     RetentionCoordinator retentionCoordinator;
 
     public ReservationListController(RetentionCoordinator retentionCoordinator) {

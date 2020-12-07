@@ -38,7 +38,7 @@ class BookOnLoanRegisterCoordinatorTest {
     @Test
     void 図書を貸し出すことができる() {
         BookOnLoanRequest bookOnLoanRequest =
-            generate(1, "2-A", "2020-02-20");
+                generate(1, "2-A", "2020-02-20");
         LoaningCard loaningCard = bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
 
         assertTrue(loaningCard.ok());
@@ -60,7 +60,7 @@ class BookOnLoanRegisterCoordinatorTest {
         List<String> list = List.of("2-C", "2-D", "2-E", "2-F", "2-G");
         for (String code : list) {
             BookOnLoanRequest bookOnLoanRequest =
-                generate(3, code, "2020-02-20");
+                    generate(3, code, "2020-02-20");
             bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
         }
 

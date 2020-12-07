@@ -82,7 +82,7 @@ class BookOnLoanQueryServiceTest {
         assertEquals(memberAllBookOnLoans.bookOnLoans().numberOfBookOnLoans().value(), 0);
     }
 
-    private void registerBookOnLoan(HoldingCode holdingCode, int memberNumber){
+    private void registerBookOnLoan(HoldingCode holdingCode, int memberNumber) {
         Member member = memberQueryService.findMember(new MemberNumber(memberNumber));
         HoldingInStock holdingInStock = holdingQueryService.findHoldingInStock(holdingCode);
         BookOnLoanRequest bookOnLoanRequest = new BookOnLoanRequest(member, holdingInStock, new LoanDate(Date.from("2020-02-20")));
