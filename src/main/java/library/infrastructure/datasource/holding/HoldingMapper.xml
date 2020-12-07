@@ -30,7 +30,7 @@
         </foreach>
     </select>
 
-    <select id="selectHoldingsInStockByBookIds" resultType="library.domain.model.holding.Holding">
+    <select id="selectHoldingsByBookIds" resultType="library.domain.model.holding.Holding">
         SELECT
         蔵書.蔵書コード as "holdingCode.value",
         本.本ID as "book.bookId.value",
