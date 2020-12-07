@@ -1,6 +1,5 @@
 package library.domain.model.reservation.reservation;
 
-import library.domain.model.book.Book;
 import library.domain.model.member.Member;
 
 /**
@@ -30,8 +29,8 @@ public class Reservation {
         return member;
     }
 
-    public Book book() {
-        return reservedBook.book();
+    public ReservedBook reservedBook() {
+        return reservedBook;
     }
 
     public ReservationId reservationId() {
