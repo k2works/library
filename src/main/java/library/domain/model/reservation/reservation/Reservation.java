@@ -9,21 +9,21 @@ import library.domain.model.member.Member;
 public class Reservation {
     ReservationId reservationId;
     Member member;
-    Book book;
+    ReservedBook reservedBook;
 
     @Deprecated
     Reservation() {
     }
 
-    public Reservation(Member member, Book book) {
+    public Reservation(Member member, ReservedBook reservedBook) {
         this.member = member;
-        this.book = book;
+        this.reservedBook = reservedBook;
     }
 
-    public Reservation(ReservationId reservationId, Member member, Book book) {
+    public Reservation(ReservationId reservationId, Member member, ReservedBook reservedBook) {
         this.reservationId = reservationId;
         this.member = member;
-        this.book = book;
+        this.reservedBook = reservedBook;
     }
 
     public Member member() {
@@ -31,7 +31,7 @@ public class Reservation {
     }
 
     public Book book() {
-        return book;
+        return reservedBook.book();
     }
 
     public ReservationId reservationId() {

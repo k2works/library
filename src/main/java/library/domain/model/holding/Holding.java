@@ -22,6 +22,7 @@ public class Holding {
         return holdingCode;
     }
 
+    // TODO: 予約本を探すメソッドにしたい（ReservedBookをうけるようにしたい）
     public boolean sameBook(Book other) {
         return this.book.sameBook(other);
     }
