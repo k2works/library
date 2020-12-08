@@ -15,7 +15,7 @@ public class ReservationId {
     }
 
     public static ReservationId generate() {
-        // TODO:
+        // TODO: UUID生成処理
         return new ReservationId(0);
     }
 
