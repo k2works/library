@@ -6,14 +6,14 @@ import library.domain.model.loan.loan.LoanNumber;
 import library.domain.model.loan.loan.ReturnDate;
 import library.domain.model.member.MemberNumber;
 
-public class ReturnBookData {
+public class ReturnedData {
     LoanNumber loanNumber;
     MemberNumber memberNumber;
     ItemNumber itemNumber;
     ReturnDate returnDate;
 
     @Deprecated
-    ReturnBookData() {
+    ReturnedData() {
     }
 
     public ItemNumber itemNumber() {

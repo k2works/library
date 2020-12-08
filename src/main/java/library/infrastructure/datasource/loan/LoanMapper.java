@@ -31,5 +31,5 @@ public interface LoanMapper {
 
     List<LoanData> selectByItemNumbers(@Param("itemNumbers") List<ItemNumber> itemNumbers);
 
-    List<ReturnBookData> selectReturnedBookByItemNumbers(@Param("itemNumbers") List<ItemNumber> itemNumbers);
+    List<ReturnedData> selectReturnedBookByItemNumbers(@Param("itemNumbers") List<ItemNumber> itemNumbers);
 }

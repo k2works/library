@@ -11,7 +11,7 @@ import library.domain.model.reservation.retention.RetentionShelf;
 import library.infrastructure.datasource.item.ItemMapper;
 import library.infrastructure.datasource.loan.LoanData;
 import library.infrastructure.datasource.loan.LoanMapper;
-import library.infrastructure.datasource.loan.ReturnBookData;
+import library.infrastructure.datasource.loan.ReturnedData;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -47,11 +47,11 @@ public class CounterDataSource implements CounterRepository {
 
     private WholeLoanHistory libraryCardShelf(Items items) {
         List<LoanData> bookOnLoansDataList = loanMapper.selectByItemNumbers(items.holdingsCodes());
-        List<ReturnBookData> returnBookDataList = loanMapper.selectReturnedBookByItemNumbers(items.holdingsCodes());
+        List<ReturnedData> returnedDataList = loanMapper.selectReturnedBookByItemNumbers(items.holdingsCodes());
 
         List<LoanHistory> loanHistories = items.holdingsCodes().stream().map(holdingCode -> {
             List<LoanRecord> loanRecords = toLoaningRecords(bookOnLoansDataList, holdingCode);
-            List<ReturnRecord> returnRecords = toReturningRecords(returnBookDataList, holdingCode);
+            List<ReturnRecord> returnRecords = toReturningRecords(returnedDataList, holdingCode);
 
             return new LoanHistory(holdingCode, new LoanRecords(loanRecords), new ReturnRecords(returnRecords));
         }).collect(Collectors.toList());
@@ -66,10 +66,10 @@ public class CounterDataSource implements CounterRepository {
                 .collect(Collectors.toList());
     }
 
-    private List<ReturnRecord> toReturningRecords(List<ReturnBookData> returnBookDataList, ItemNumber itemNumber) {
-        return returnBookDataList.stream()
-                .filter(returnBookData -> returnBookData.itemNumber().sameValue(itemNumber))
-                .map(ReturnBookData::toReturningRecord)
+    private List<ReturnRecord> toReturningRecords(List<ReturnedData> returnedDataList, ItemNumber itemNumber) {
+        return returnedDataList.stream()
+                .filter(returnedData -> returnedData.itemNumber().sameValue(itemNumber))
+                .map(ReturnedData::toReturningRecord)
                 .collect(Collectors.toList());
     }
 }
