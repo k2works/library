@@ -24,7 +24,7 @@ public class Catalog {
         return new Catalog(holdings);
     }
 
-    public List<HoldingCode> holdingCodes() {
-        return null;
+    public List<HoldingCode> holdingsCodes() {
+        return list.stream().map(Holding::holdingCode).collect(Collectors.toList());
     }
 }
