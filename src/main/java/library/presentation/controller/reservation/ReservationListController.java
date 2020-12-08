@@ -23,7 +23,7 @@ public class ReservationListController {
     String init(Model model) {
         // TODO: 在庫ありの本のみにするかどうかは画面側で切り替えられるようにしたい
         RetentionableReservations retentionableReservations = retentionCoordinator.retention();
-        model.addAttribute("reservedBooks", retentionableReservations);
+        model.addAttribute("reservations", retentionableReservations);
         return "reservation/list";
     }
 }

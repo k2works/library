@@ -12,7 +12,7 @@ public class ReturningHistory {
         this.returningRecords = returningRecords;
     }
 
-    public HistoryCount historyCount() {
+    HistoryCount historyCount() {
         return new HistoryCount(returningRecords.size());
     }
 }

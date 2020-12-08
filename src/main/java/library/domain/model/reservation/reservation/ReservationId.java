@@ -4,6 +4,7 @@ package library.domain.model.reservation.reservation;
  * 貸出予約ID
  */
 public class ReservationId {
+    // TODO: UUIDに変更する
     int value;
 
     @Deprecated

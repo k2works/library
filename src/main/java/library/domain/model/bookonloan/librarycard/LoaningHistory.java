@@ -12,7 +12,7 @@ public class LoaningHistory {
         this.loaningRecords = loaningRecords;
     }
 
-    public HistoryCount historyCount() {
+    HistoryCount historyCount() {
         return new HistoryCount(loaningRecords.size());
     }
 }
