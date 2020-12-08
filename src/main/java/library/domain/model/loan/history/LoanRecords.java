@@ -3,7 +3,7 @@ package library.domain.model.loan.history;
 import java.util.List;
 
 /**
- * 貸出履歴
+ * 貸出記録の一覧
  */
 public class LoanRecords {
     List<LoanRecord> loanRecords;
