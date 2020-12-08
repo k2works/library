@@ -1,14 +1,14 @@
 package library.infrastructure.datasource.bookonloan;
 
 import library.application.repository.BookOnLoanRepository;
-import library.domain.model.bookonloan.loan.BookOnLoan;
-import library.domain.model.bookonloan.loan.BookOnLoans;
-import library.domain.model.bookonloan.loaning.BookOnLoanRequest;
-import library.domain.model.bookonloan.loaning.MemberAllBookOnLoans;
-import library.domain.model.bookonloan.returning.ReturningBookOnLoan;
 import library.domain.model.item.HoldingOnLoan;
 import library.domain.model.item.Item;
 import library.domain.model.item.ItemNumber;
+import library.domain.model.loan.loan.BookOnLoan;
+import library.domain.model.loan.loan.BookOnLoans;
+import library.domain.model.loan.loan.ReturningBookOnLoan;
+import library.domain.model.loan.rule.BookOnLoanRequest;
+import library.domain.model.loan.rule.MemberAllBookOnLoans;
 import library.domain.model.member.Member;
 import library.infrastructure.datasource.item.HoldingMapper;
 import library.infrastructure.datasource.member.MemberMapper;
