@@ -4,7 +4,7 @@ import library.domain.model.loan.loan.ReturnDate;
 import library.domain.model.member.MemberNumber;
 
 /**
- * 返却記録の一覧
+ * 返却記録
  */
 public class ReturnRecord {
     MemberNumber memberNumber;

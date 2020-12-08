@@ -1,7 +1,7 @@
 package library.application.coordinator.bookonloan;
 
 import library.application.service.bookonloan.LoanQueryService;
-import library.application.service.bookonloan.LoanRecordService;
+import library.application.service.bookonloan.LoanRegisterService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.loan.loan.Loan;
@@ -16,17 +16,17 @@ public class LoanRegisterCoordinator {
     MemberQueryService memberQueryService;
     ItemQueryService itemQueryService;
     LoanQueryService loanQueryService;
-    LoanRecordService loanRecordService;
+    LoanRegisterService loanRegisterService;
 
     public LoanRegisterCoordinator(
             MemberQueryService memberQueryService,
             ItemQueryService itemQueryService,
             LoanQueryService loanQueryService,
-            LoanRecordService loanRecordService) {
+            LoanRegisterService loanRegisterService) {
         this.memberQueryService = memberQueryService;
         this.itemQueryService = itemQueryService;
         this.loanQueryService = loanQueryService;
-        this.loanRecordService = loanRecordService;
+        this.loanRegisterService = loanRegisterService;
     }
 
     /**
@@ -39,7 +39,7 @@ public class LoanRegisterCoordinator {
             return new LoaningCard(RejectReason.貸出冊数超過);
         }
 
-        Loan loan = loanRecordService.registerBookOnLoan(loanRequest);
+        Loan loan = loanRegisterService.registerLoan(loanRequest);
         return new LoaningCard(loan);
     }
 

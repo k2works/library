@@ -12,7 +12,7 @@ import library.domain.model.loan.rule.LoaningCard;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.type.date.Date;
-import library.infrastructure.datasource.loan.RegisterBookOnLoanException;
+import library.infrastructure.datasource.loan.RegisterLoanException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -50,7 +50,7 @@ class LoanRegisterCoordinatorTest {
                 generate(2, "2-B", new LoanDate(Date.now()).toString());
         loanRegisterCoordinator.loaning(loanRequest);
 
-        assertThrows(RegisterBookOnLoanException.class, () -> {
+        assertThrows(RegisterLoanException.class, () -> {
             LoaningCard loaning = loanRegisterCoordinator.loaning(loanRequest);
         });
     }
@@ -74,7 +74,7 @@ class LoanRegisterCoordinatorTest {
 
     private LoanRequest generate(int memberNumber, String itemNumber, String loanDate) {
         Member member = memberQueryService.findMember(new MemberNumber(memberNumber));
-        Item itemInStock = itemQueryService.findHoldingInStock(new ItemNumber(itemNumber));
+        Item itemInStock = itemQueryService.findItemInStock(new ItemNumber(itemNumber));
         return new LoanRequest(member, itemInStock, new LoanDate(Date.from(loanDate)));
     }
 }

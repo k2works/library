@@ -18,9 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @LibraryDBTest
-class LoanRecordServiceTest {
+class LoanRegisterServiceTest {
     @Autowired
-    LoanRecordService loanRecordService;
+    LoanRegisterService loanRegisterService;
 
     @Autowired
     MemberQueryService memberQueryService;
@@ -35,11 +35,11 @@ class LoanRecordServiceTest {
     void 貸出図書を登録できる() {
         Member member = memberQueryService.findMember(new MemberNumber(1));
         ItemNumber itemNumber = new ItemNumber("2-A");
-        Item itemInStock = itemQueryService.findHoldingInStock(itemNumber);
+        Item itemInStock = itemQueryService.findItemInStock(itemNumber);
         LoanRequest loanRequest = new LoanRequest(member, itemInStock, new LoanDate(Date.from("2020-02-20")));
-        loanRecordService.registerBookOnLoan(loanRequest);
+        loanRegisterService.registerLoan(loanRequest);
 
-        Loan loan = loanQueryService.findBookOnLoanByItemNumber(itemNumber);
+        Loan loan = loanQueryService.findLoanByItemNumber(itemNumber);
 
         assertAll(
                 () -> assertEquals(loan.member().memberNumber().value(), 1),

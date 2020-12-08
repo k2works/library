@@ -2,7 +2,7 @@ package library.domain.model.loan.loan;
 
 /**
  * 貸出図書の返却
- * (イベント)
+ * （イベント）
  */
 public class Returned {
     Loan loan;

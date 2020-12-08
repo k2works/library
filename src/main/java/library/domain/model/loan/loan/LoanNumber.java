@@ -1,12 +1,12 @@
 package library.domain.model.loan.loan;
 
 /**
- * 貸出図書ID
+ * 貸出番号
  */
 public class LoanNumber {
-    Integer value;
+    int value;
 
-    public Integer value() {
+    public int value() {
         return value;
     }
 

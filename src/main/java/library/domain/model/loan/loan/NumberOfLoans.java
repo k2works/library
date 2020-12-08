@@ -1,7 +1,7 @@
 package library.domain.model.loan.loan;
 
 /**
- * 貸出図書の冊数
+ * 貸出冊数
  */
 public class NumberOfLoans {
     int value;

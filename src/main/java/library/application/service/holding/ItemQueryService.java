@@ -19,14 +19,14 @@ public class ItemQueryService {
     /**
      * 貸出中の蔵書を取得する
      */
-    public Item findHoldingOnLoan(ItemNumber itemNumber) {
+    public Item findItemOnLoan(ItemNumber itemNumber) {
         return itemRepository.findItemOnLoan(itemNumber);
     }
 
     /**
      * 在庫中の蔵書を取得する
      */
-    public Item findHoldingInStock(ItemNumber itemNumber) {
+    public Item findItemInStock(ItemNumber itemNumber) {
         return itemRepository.findItemInStock(itemNumber);
     }
 }

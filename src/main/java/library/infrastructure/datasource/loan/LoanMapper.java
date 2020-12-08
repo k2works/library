@@ -14,12 +14,12 @@ import java.util.Optional;
 
 @Mapper
 public interface LoanMapper {
-    Integer newBookOnLoanIdentifier();
+    int newLoanNumber();
 
     List<Loan> selectByMemberNumber(@Param("memberNumber") MemberNumber memberNumber);
 
-    void insertBookOnLoan(
-            @Param("loanNumber") Integer bookOnLoanId,
+    void insertLoan(
+            @Param("loanNumber") int loanNumber,
             @Param("memberNumber") MemberNumber memberNumber,
             @Param("itemNumber") ItemNumber itemNumber,
             @Param("loanDate") LoanDate loanDate);
@@ -32,5 +32,5 @@ public interface LoanMapper {
 
     List<Loan> selectByItemNumbers(@Param("itemNumbers") List<ItemNumber> itemNumbers);
 
-    List<ReturnedData> selectReturnedBookByItemNumbers(@Param("itemNumbers") List<ItemNumber> itemNumbers);
+    List<ReturnData> selectReturnedByItemNumbers(@Param("itemNumbers") List<ItemNumber> itemNumbers);
 }

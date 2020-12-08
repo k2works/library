@@ -28,7 +28,7 @@ public class LoanQueryService {
     /**
      * 蔵書コードによる貸出図書を取得する
      */
-    public Loan findBookOnLoanByItemNumber(ItemNumber itemNumber) {
-        return loanRepository.findBookOnLoanByItemNumber(itemNumber);
+    public Loan findLoanByItemNumber(ItemNumber itemNumber) {
+        return loanRepository.findLoanByItemNumber(itemNumber);
     }
 }

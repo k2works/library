@@ -24,7 +24,7 @@ class ReturnBookCoordinatorTest {
         returnBookCoordinator.returnBook(itemNumber, new ReturnDate(Date.from("2020-02-25")));
 
         assertThrows(IllegalArgumentException.class, () -> {
-            loanQueryService.findBookOnLoanByItemNumber(new ItemNumber("1-A"));
+            loanQueryService.findLoanByItemNumber(new ItemNumber("1-A"));
         });
     }
 

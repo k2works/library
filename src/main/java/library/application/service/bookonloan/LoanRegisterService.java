@@ -6,20 +6,20 @@ import library.domain.model.loan.rule.LoanRequest;
 import org.springframework.stereotype.Service;
 
 /**
- * 貸出図書登録サービス
+ * 貸出記録サービス
  */
 @Service
-public class LoanRecordService {
+public class LoanRegisterService {
     LoanRepository loanRepository;
 
-    LoanRecordService(LoanRepository loanRepository) {
+    LoanRegisterService(LoanRepository loanRepository) {
         this.loanRepository = loanRepository;
     }
 
     /**
      * 貸出図書を登録する
      */
-    public Loan registerBookOnLoan(LoanRequest loanRequest) {
-        return loanRepository.registerBookOnLoan(loanRequest);
+    public Loan registerLoan(LoanRequest loanRequest) {
+        return loanRepository.registerLoan(loanRequest);
     }
 }

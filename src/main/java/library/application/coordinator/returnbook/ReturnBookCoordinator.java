@@ -28,9 +28,7 @@ public class ReturnBookCoordinator {
      * 貸出図書の返却を登録する
      */
     public void returnBook(ItemNumber itemNumber, ReturnDate returnDate) {
-        itemQueryService.findHoldingOnLoan(itemNumber);
-
-        Loan loan = loanQueryService.findBookOnLoanByItemNumber(itemNumber);
+        Loan loan = loanQueryService.findLoanByItemNumber(itemNumber);
         returnBookRecordService.registerReturnBook(new Returned(loan, returnDate));
     }
 }

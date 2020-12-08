@@ -17,7 +17,7 @@ class ItemQueryServiceTest {
     @Test
     void 貸出中の蔵書を取得できる() {
         ItemNumber itemNumber = new ItemNumber("1-A");
-        Item itemOnLoan = itemQueryService.findHoldingOnLoan(itemNumber);
+        Item itemOnLoan = itemQueryService.findItemOnLoan(itemNumber);
 
         assertTrue(itemOnLoan.itemNumber().sameValue(itemNumber));
     }

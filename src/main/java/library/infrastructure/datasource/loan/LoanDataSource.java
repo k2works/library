@@ -32,22 +32,22 @@ public class LoanDataSource implements LoanRepository {
 
     @Override
     @Transactional
-    public Loan registerBookOnLoan(LoanRequest loanRequest) {
-        ItemNumber itemNumber = loanRequest.holdingInStock().itemNumber();
+    public Loan registerLoan(LoanRequest loanRequest) {
+        ItemNumber itemNumber = loanRequest.item().itemNumber();
         itemMapper.lockItem(itemNumber);
 
         if (loanMapper.selectByItemNumber(itemNumber).isPresent()) {
-            throw new RegisterBookOnLoanException(loanRequest);
+            throw new RegisterLoanException(loanRequest);
         }
 
-        Integer bookOnLoanId = loanMapper.newBookOnLoanIdentifier();
-        loanMapper.insertBookOnLoan(
+        Integer bookOnLoanId = loanMapper.newLoanNumber();
+        loanMapper.insertLoan(
                 bookOnLoanId,
                 loanRequest.member().memberNumber(),
-                loanRequest.holdingInStock().itemNumber(),
+                loanRequest.item().itemNumber(),
                 loanRequest.loanDate());
 
-        return findBookOnLoanByItemNumber(itemNumber);
+        return findLoanByItemNumber(itemNumber);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class LoanDataSource implements LoanRepository {
     }
 
     @Override
-    public Loan findBookOnLoanByItemNumber(ItemNumber itemNumber) {
+    public Loan findLoanByItemNumber(ItemNumber itemNumber) {
         Loan loan = loanMapper.selectByItemNumber(itemNumber).orElseThrow(() ->
                 new IllegalArgumentException(String.format("現在貸し出されていない蔵書です。蔵書コード：%s", itemNumber)));
 

@@ -7,7 +7,7 @@ import library.domain.model.member.Member;
 import javax.validation.Valid;
 
 /**
- * 図書の貸出申請
+ * 貸出申請
  */
 public class LoanRequest {
     @Valid
@@ -23,9 +23,9 @@ public class LoanRequest {
     LoanRequest() {
     }
 
-    public LoanRequest(Member member, Item itemInStock, LoanDate loanDate) {
+    public LoanRequest(Member member, Item item, LoanDate loanDate) {
         this.member = member;
-        this.item = itemInStock;
+        this.item = item;
         this.loanDate = loanDate;
     }
 
@@ -33,7 +33,7 @@ public class LoanRequest {
         return member;
     }
 
-    public Item holdingInStock() {
+    public Item item() {
         return item;
     }
 

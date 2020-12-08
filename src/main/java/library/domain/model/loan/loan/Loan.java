@@ -48,10 +48,6 @@ public class Loan {
         return member;
     }
 
-    public Item holdingOnLoan() {
-        return item;
-    }
-
     public LoanDate loanDate() {
         return loanDate;
     }
@@ -72,4 +68,5 @@ public class Loan {
     public LoanRecord toLoaningRecord() {
         return new LoanRecord(member.memberNumber(), loanDate);
     }
+
 }

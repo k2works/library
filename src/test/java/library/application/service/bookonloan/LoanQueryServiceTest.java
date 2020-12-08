@@ -30,7 +30,7 @@ class LoanQueryServiceTest {
     ReturnBookRecordService returnBookRecordService;
 
     @Autowired
-    LoanRecordService loanRecordService;
+    LoanRegisterService loanRegisterService;
 
     @Autowired
     MemberQueryService memberQueryService;
@@ -42,7 +42,7 @@ class LoanQueryServiceTest {
     void 貸出図書を取得できる() {
         registerBookOnLoan(new ItemNumber("2-A"), 1);
 
-        Loan loan = loanQueryService.findBookOnLoanByItemNumber(new ItemNumber("2-A"));
+        Loan loan = loanQueryService.findLoanByItemNumber(new ItemNumber("2-A"));
 
         assertEquals(loan.member().memberNumber().value(), 1);
     }
@@ -51,11 +51,11 @@ class LoanQueryServiceTest {
     void 返却された貸出図書は取得できない() {
         ItemNumber itemNumber = new ItemNumber("2-B");
         registerBookOnLoan(itemNumber, 1);
-        Loan loan = loanQueryService.findBookOnLoanByItemNumber(itemNumber);
+        Loan loan = loanQueryService.findLoanByItemNumber(itemNumber);
         returnBookRecordService.registerReturnBook(new Returned(loan, new ReturnDate(Date.from("2020-02-21"))));
 
         assertThrows(IllegalArgumentException.class, () -> {
-            loanQueryService.findBookOnLoanByItemNumber(itemNumber);
+            loanQueryService.findLoanByItemNumber(itemNumber);
         });
     }
 
@@ -66,26 +66,26 @@ class LoanQueryServiceTest {
         Member member = memberQueryService.findMember(new MemberNumber(2));
         MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(member);
 
-        assertEquals(memberAllBookOnLoans.bookOnLoans().numberOfBookOnLoans().value(), 1);
+        assertEquals(memberAllBookOnLoans.bookOnLoans().numberOfLoans().value(), 1);
     }
 
     @Test
     void 会員が現在借りている全貸出図書取得時に返却した貸出図書が含まれない() {
         ItemNumber itemNumber = new ItemNumber("2-B");
         registerBookOnLoan(itemNumber, 2);
-        Loan loan = loanQueryService.findBookOnLoanByItemNumber(itemNumber);
+        Loan loan = loanQueryService.findLoanByItemNumber(itemNumber);
         returnBookRecordService.registerReturnBook(new Returned(loan, new ReturnDate(Date.from("2020-02-21"))));
 
         Member member = memberQueryService.findMember(new MemberNumber(2));
         MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(member);
 
-        assertEquals(memberAllBookOnLoans.bookOnLoans().numberOfBookOnLoans().value(), 0);
+        assertEquals(memberAllBookOnLoans.bookOnLoans().numberOfLoans().value(), 0);
     }
 
     private void registerBookOnLoan(ItemNumber itemNumber, int memberNumber) {
         Member member = memberQueryService.findMember(new MemberNumber(memberNumber));
-        Item itemInStock = itemQueryService.findHoldingInStock(itemNumber);
+        Item itemInStock = itemQueryService.findItemInStock(itemNumber);
         LoanRequest loanRequest = new LoanRequest(member, itemInStock, new LoanDate(Date.from("2020-02-20")));
-        loanRecordService.registerBookOnLoan(loanRequest);
+        loanRegisterService.registerLoan(loanRequest);
     }
 }

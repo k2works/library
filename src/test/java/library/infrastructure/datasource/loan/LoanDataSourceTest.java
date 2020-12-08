@@ -1,4 +1,4 @@
-package library.infrastructure.datasource.bookonloan;
+package library.infrastructure.datasource.loan;
 
 import library.LibraryDBTest;
 import library.application.coordinator.returnbook.ReturnBookCoordinator;
@@ -7,7 +7,6 @@ import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.ReturnDate;
 import library.domain.type.date.Date;
-import library.infrastructure.datasource.loan.LoanDataSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 class LoanDataSourceTest {
 
     @Autowired
-    LoanDataSource bookOnLoanDataSource;
+    LoanDataSource loanDataSource;
 
     @Autowired
     MockMvc mockMvc;
@@ -42,7 +41,7 @@ class LoanDataSourceTest {
                         .param("loanDate.value", "2020-02-14"));
 
         ItemNumber itemNumber = new ItemNumber("2-C");
-        Loan loan = bookOnLoanDataSource.findBookOnLoanByItemNumber(itemNumber);
+        Loan loan = loanDataSource.findLoanByItemNumber(itemNumber);
 
         assertEquals("2020-02-14", loan.loanDate().toString());
     }
@@ -59,7 +58,7 @@ class LoanDataSourceTest {
         returnBookCoordinator.returnBook(itemNumber, new ReturnDate(Date.from("2019-01-01")));
 
         assertThrows(IllegalArgumentException.class, () -> {
-            bookOnLoanDataSource.findBookOnLoanByItemNumber(itemNumber);
+            loanDataSource.findLoanByItemNumber(itemNumber);
         });
     }
 }

@@ -2,7 +2,7 @@ package library.presentation.controller.bookonloan;
 
 import library.application.coordinator.bookonloan.LoanRegisterCoordinator;
 import library.application.service.bookonloan.LoanQueryService;
-import library.application.service.bookonloan.LoanRecordService;
+import library.application.service.bookonloan.LoanRegisterService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.book.item.Item;
@@ -25,15 +25,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 @RequestMapping("bookonloan/register")
-public class BookOnLoanRegisterController {
-    LoanRecordService loanRecordService;
+public class LoanRegisterController {
+    LoanRegisterService loanRegisterService;
     LoanRegisterCoordinator loanRegisterCoordinator;
     LoanQueryService loanQueryService;
     MemberQueryService memberQueryService;
     ItemQueryService itemQueryService;
 
-    public BookOnLoanRegisterController(LoanRecordService loanRecordService, LoanRegisterCoordinator loanRegisterCoordinator, LoanQueryService loanQueryService, MemberQueryService memberQueryService, ItemQueryService itemQueryService) {
-        this.loanRecordService = loanRecordService;
+    public LoanRegisterController(LoanRegisterService loanRegisterService, LoanRegisterCoordinator loanRegisterCoordinator, LoanQueryService loanQueryService, MemberQueryService memberQueryService, ItemQueryService itemQueryService) {
+        this.loanRegisterService = loanRegisterService;
         this.loanRegisterCoordinator = loanRegisterCoordinator;
         this.loanQueryService = loanQueryService;
         this.memberQueryService = memberQueryService;
@@ -51,7 +51,7 @@ public class BookOnLoanRegisterController {
         if (result.hasErrors()) return "bookonloan/register/form";
 
         Member member = memberQueryService.findMember(loaningOfBookForm.memberNumber);
-        Item itemInStock = itemQueryService.findHoldingInStock(loaningOfBookForm.itemNumber);
+        Item itemInStock = itemQueryService.findItemInStock(loaningOfBookForm.itemNumber);
         LoanRequest loanRequest = new LoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
 
         LoaningCard loaningCard = loanRegisterCoordinator.loaning(loanRequest);
