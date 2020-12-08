@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ItemQueryServiceTest {
 
     @Autowired
-    HoldingQueryService holdingQueryService;
+    ItemQueryService itemQueryService;
 
     @Test
     void 貸出中の蔵書を取得できる() {
         ItemNumber itemNumber = new ItemNumber("1-A");
-        ItemOnLoan itemOnLoan = holdingQueryService.findHoldingOnLoan(itemNumber);
+        ItemOnLoan itemOnLoan = itemQueryService.findHoldingOnLoan(itemNumber);
 
         assertTrue(itemOnLoan.item().itemNumber().sameValue(itemNumber));
     }

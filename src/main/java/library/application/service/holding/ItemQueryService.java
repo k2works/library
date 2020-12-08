@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
  * 蔵書参照サービス
  */
 @Service
-public class HoldingQueryService {
+public class ItemQueryService {
     ItemRepository itemRepository;
 
-    HoldingQueryService(ItemRepository itemRepository) {
+    ItemQueryService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
 
