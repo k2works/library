@@ -6,7 +6,7 @@ import library.application.service.bookonloan.LoanRecordService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.book.item.ItemInStock;
-import library.domain.model.loan.rule.BookOnLoanRequest;
+import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.loan.rule.LoaningCard;
 import library.domain.model.loan.rule.MemberAllBookOnLoans;
 import library.domain.model.member.Member;
@@ -52,16 +52,16 @@ public class BookOnLoanRegisterController {
 
         Member member = memberQueryService.findMember(loaningOfBookForm.memberNumber);
         ItemInStock itemInStock = itemQueryService.findHoldingInStock(loaningOfBookForm.itemNumber);
-        BookOnLoanRequest bookOnLoanRequest = new BookOnLoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
+        LoanRequest loanRequest = new LoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
 
-        LoaningCard loaningCard = loanRegisterCoordinator.loaning(bookOnLoanRequest);
+        LoaningCard loaningCard = loanRegisterCoordinator.loaning(loanRequest);
 
         if (loaningCard.rejected()) {
             result.addError(new ObjectError("error", loaningCard.message()));
             return "bookonloan/register/form";
         }
 
-        attributes.addAttribute("memberNumber", bookOnLoanRequest.member().memberNumber());
+        attributes.addAttribute("memberNumber", loanRequest.member().memberNumber());
         return "redirect:/bookonloan/register/completed";
     }
 

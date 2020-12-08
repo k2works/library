@@ -1,4 +1,4 @@
-package library.infrastructure.datasource.bookonloan;
+package library.infrastructure.datasource.loan;
 
 import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.history.ReturningRecord;

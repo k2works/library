@@ -2,7 +2,7 @@ package library.application.service.bookonloan;
 
 import library.application.repository.LoanRepository;
 import library.domain.model.loan.loan.Loan;
-import library.domain.model.loan.rule.BookOnLoanRequest;
+import library.domain.model.loan.rule.LoanRequest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,7 +19,7 @@ public class LoanRecordService {
     /**
      * 貸出図書を登録する
      */
-    public Loan registerBookOnLoan(BookOnLoanRequest bookOnLoanRequest) {
-        return loanRepository.registerBookOnLoan(bookOnLoanRequest);
+    public Loan registerBookOnLoan(LoanRequest loanRequest) {
+        return loanRepository.registerBookOnLoan(loanRequest);
     }
 }

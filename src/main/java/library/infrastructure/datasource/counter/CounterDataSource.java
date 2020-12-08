@@ -8,10 +8,10 @@ import library.domain.model.book.item.Items;
 import library.domain.model.loan.history.*;
 import library.domain.model.reservation.availability.Availability;
 import library.domain.model.reservation.retention.RetentionShelf;
-import library.infrastructure.datasource.bookonloan.LoanData;
-import library.infrastructure.datasource.bookonloan.LoanMapper;
-import library.infrastructure.datasource.bookonloan.ReturnBookData;
 import library.infrastructure.datasource.item.ItemMapper;
+import library.infrastructure.datasource.loan.LoanData;
+import library.infrastructure.datasource.loan.LoanMapper;
+import library.infrastructure.datasource.loan.ReturnBookData;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

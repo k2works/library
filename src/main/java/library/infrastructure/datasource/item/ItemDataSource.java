@@ -4,7 +4,7 @@ import library.application.repository.ItemRepository;
 import library.domain.model.book.item.Item;
 import library.domain.model.book.item.ItemInStock;
 import library.domain.model.book.item.ItemNumber;
-import library.infrastructure.datasource.bookonloan.LoanMapper;
+import library.infrastructure.datasource.loan.LoanMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository

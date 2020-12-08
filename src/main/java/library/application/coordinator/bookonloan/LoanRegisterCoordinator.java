@@ -32,14 +32,14 @@ public class LoanRegisterCoordinator {
     /**
      * 図書の貸出を受付る
      */
-    public LoaningCard loaning(BookOnLoanRequest bookOnLoanRequest) {
-        MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(bookOnLoanRequest.member());
+    public LoaningCard loaning(LoanRequest loanRequest) {
+        MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(loanRequest.member());
 
         if (memberAllBookOnLoans.canBorrowBookToday() == CanLoan.貸出不可) {
             return new LoaningCard(RejectReason.貸出冊数超過);
         }
 
-        Loan loan = loanRecordService.registerBookOnLoan(bookOnLoanRequest);
+        Loan loan = loanRecordService.registerBookOnLoan(loanRequest);
         return new LoaningCard(loan);
     }
 

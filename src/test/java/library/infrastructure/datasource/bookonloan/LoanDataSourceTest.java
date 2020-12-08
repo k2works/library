@@ -7,6 +7,7 @@ import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.ReturnDate;
 import library.domain.type.date.Date;
+import library.infrastructure.datasource.loan.LoanDataSource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

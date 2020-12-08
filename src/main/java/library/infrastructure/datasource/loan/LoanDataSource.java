@@ -1,4 +1,4 @@
-package library.infrastructure.datasource.bookonloan;
+package library.infrastructure.datasource.loan;
 
 import library.application.repository.LoanRepository;
 import library.domain.model.book.item.Item;
@@ -6,7 +6,7 @@ import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.Loans;
 import library.domain.model.loan.loan.ReturningBookOnLoan;
-import library.domain.model.loan.rule.BookOnLoanRequest;
+import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.loan.rule.MemberAllBookOnLoans;
 import library.domain.model.member.Member;
 import library.infrastructure.datasource.item.ItemMapper;
@@ -32,20 +32,20 @@ public class LoanDataSource implements LoanRepository {
 
     @Override
     @Transactional
-    public Loan registerBookOnLoan(BookOnLoanRequest bookOnLoanRequest) {
-        ItemNumber itemNumber = bookOnLoanRequest.holdingInStock().holding().itemNumber();
+    public Loan registerBookOnLoan(LoanRequest loanRequest) {
+        ItemNumber itemNumber = loanRequest.holdingInStock().holding().itemNumber();
         itemMapper.lockItem(itemNumber);
 
         if (loanMapper.selectByItemNumber(itemNumber).isPresent()) {
-            throw new RegisterBookOnLoanException(bookOnLoanRequest);
+            throw new RegisterBookOnLoanException(loanRequest);
         }
 
         Integer bookOnLoanId = loanMapper.newBookOnLoanIdentifier();
         loanMapper.insertBookOnLoan(
                 bookOnLoanId,
-                bookOnLoanRequest.member().memberNumber(),
-                bookOnLoanRequest.holdingInStock().holding().itemNumber(),
-                bookOnLoanRequest.loanDate());
+                loanRequest.member().memberNumber(),
+                loanRequest.holdingInStock().holding().itemNumber(),
+                loanRequest.loanDate());
 
         return findBookOnLoanByItemNumber(itemNumber);
     }

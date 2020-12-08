@@ -7,7 +7,7 @@ import library.domain.model.book.item.ItemInStock;
 import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.LoanDate;
-import library.domain.model.loan.rule.BookOnLoanRequest;
+import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.type.date.Date;
@@ -36,8 +36,8 @@ class LoanRecordServiceTest {
         Member member = memberQueryService.findMember(new MemberNumber(1));
         ItemNumber itemNumber = new ItemNumber("2-A");
         ItemInStock itemInStock = itemQueryService.findHoldingInStock(itemNumber);
-        BookOnLoanRequest bookOnLoanRequest = new BookOnLoanRequest(member, itemInStock, new LoanDate(Date.from("2020-02-20")));
-        loanRecordService.registerBookOnLoan(bookOnLoanRequest);
+        LoanRequest loanRequest = new LoanRequest(member, itemInStock, new LoanDate(Date.from("2020-02-20")));
+        loanRecordService.registerBookOnLoan(loanRequest);
 
         Loan loan = loanQueryService.findBookOnLoanByItemNumber(itemNumber);
 
