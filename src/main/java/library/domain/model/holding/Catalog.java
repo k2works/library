@@ -15,6 +15,10 @@ public class Catalog {
         this.list = list;
     }
 
+    public static Catalog empty() {
+        return new Catalog(List.of());
+    }
+
     public List<Holding> list() {
         return list;
     }
