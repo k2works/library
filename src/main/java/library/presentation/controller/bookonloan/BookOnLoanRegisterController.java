@@ -1,8 +1,8 @@
 package library.presentation.controller.bookonloan;
 
-import library.application.coordinator.bookonloan.BookOnLoanRegisterCoordinator;
-import library.application.service.bookonloan.BookOnLoanQueryService;
-import library.application.service.bookonloan.BookOnLoanRecordService;
+import library.application.coordinator.bookonloan.LoanRegisterCoordinator;
+import library.application.service.bookonloan.LoanQueryService;
+import library.application.service.bookonloan.LoanRecordService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.book.item.ItemInStock;
@@ -26,16 +26,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("bookonloan/register")
 public class BookOnLoanRegisterController {
-    BookOnLoanRecordService bookOnLoanRecordService;
-    BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator;
-    BookOnLoanQueryService bookOnLoanQueryService;
+    LoanRecordService loanRecordService;
+    LoanRegisterCoordinator loanRegisterCoordinator;
+    LoanQueryService loanQueryService;
     MemberQueryService memberQueryService;
     ItemQueryService itemQueryService;
 
-    public BookOnLoanRegisterController(BookOnLoanRecordService bookOnLoanRecordService, BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator, BookOnLoanQueryService bookOnLoanQueryService, MemberQueryService memberQueryService, ItemQueryService itemQueryService) {
-        this.bookOnLoanRecordService = bookOnLoanRecordService;
-        this.bookOnLoanRegisterCoordinator = bookOnLoanRegisterCoordinator;
-        this.bookOnLoanQueryService = bookOnLoanQueryService;
+    public BookOnLoanRegisterController(LoanRecordService loanRecordService, LoanRegisterCoordinator loanRegisterCoordinator, LoanQueryService loanQueryService, MemberQueryService memberQueryService, ItemQueryService itemQueryService) {
+        this.loanRecordService = loanRecordService;
+        this.loanRegisterCoordinator = loanRegisterCoordinator;
+        this.loanQueryService = loanQueryService;
         this.memberQueryService = memberQueryService;
         this.itemQueryService = itemQueryService;
     }
@@ -54,7 +54,7 @@ public class BookOnLoanRegisterController {
         ItemInStock itemInStock = itemQueryService.findHoldingInStock(loaningOfBookForm.itemNumber);
         BookOnLoanRequest bookOnLoanRequest = new BookOnLoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
 
-        LoaningCard loaningCard = bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
+        LoaningCard loaningCard = loanRegisterCoordinator.loaning(bookOnLoanRequest);
 
         if (loaningCard.rejected()) {
             result.addError(new ObjectError("error", loaningCard.message()));
@@ -68,7 +68,7 @@ public class BookOnLoanRegisterController {
     @GetMapping("completed")
     String completed(Model model, @RequestParam("memberNumber") MemberNumber memberNumber) {
         Member member = memberQueryService.findMember(memberNumber);
-        MemberAllBookOnLoans memberAllBookOnLoans = bookOnLoanQueryService.findMemberAllBookOnLoans(member);
+        MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(member);
         model.addAttribute("memberAllBookOnLoans", memberAllBookOnLoans);
         return "bookonloan/register/completed";
     }

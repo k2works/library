@@ -1,10 +1,10 @@
 package library.application.coordinator.bookonloan;
 
-import library.application.service.bookonloan.BookOnLoanQueryService;
-import library.application.service.bookonloan.BookOnLoanRecordService;
+import library.application.service.bookonloan.LoanQueryService;
+import library.application.service.bookonloan.LoanRecordService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.loan.loan.BookOnLoan;
+import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.rule.*;
 import org.springframework.stereotype.Service;
 
@@ -12,35 +12,35 @@ import org.springframework.stereotype.Service;
  * 貸出図書登録コーディネーター
  */
 @Service
-public class BookOnLoanRegisterCoordinator {
+public class LoanRegisterCoordinator {
     MemberQueryService memberQueryService;
     ItemQueryService itemQueryService;
-    BookOnLoanQueryService bookOnLoanQueryService;
-    BookOnLoanRecordService bookOnLoanRecordService;
+    LoanQueryService loanQueryService;
+    LoanRecordService loanRecordService;
 
-    public BookOnLoanRegisterCoordinator(
+    public LoanRegisterCoordinator(
             MemberQueryService memberQueryService,
             ItemQueryService itemQueryService,
-            BookOnLoanQueryService bookOnLoanQueryService,
-            BookOnLoanRecordService bookOnLoanRecordService) {
+            LoanQueryService loanQueryService,
+            LoanRecordService loanRecordService) {
         this.memberQueryService = memberQueryService;
         this.itemQueryService = itemQueryService;
-        this.bookOnLoanQueryService = bookOnLoanQueryService;
-        this.bookOnLoanRecordService = bookOnLoanRecordService;
+        this.loanQueryService = loanQueryService;
+        this.loanRecordService = loanRecordService;
     }
 
     /**
      * 図書の貸出を受付る
      */
     public LoaningCard loaning(BookOnLoanRequest bookOnLoanRequest) {
-        MemberAllBookOnLoans memberAllBookOnLoans = bookOnLoanQueryService.findMemberAllBookOnLoans(bookOnLoanRequest.member());
+        MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(bookOnLoanRequest.member());
 
         if (memberAllBookOnLoans.canBorrowBookToday() == CanLoan.貸出不可) {
             return new LoaningCard(RejectReason.貸出冊数超過);
         }
 
-        BookOnLoan bookOnLoan = bookOnLoanRecordService.registerBookOnLoan(bookOnLoanRequest);
-        return new LoaningCard(bookOnLoan);
+        Loan loan = loanRecordService.registerBookOnLoan(bookOnLoanRequest);
+        return new LoaningCard(loan);
     }
 
 }

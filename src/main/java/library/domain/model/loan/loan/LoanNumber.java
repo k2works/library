@@ -3,7 +3,7 @@ package library.domain.model.loan.loan;
 /**
  * 貸出図書ID
  */
-public class BookOnLoanId {
+public class LoanNumber {
     Integer value;
 
     public Integer value() {

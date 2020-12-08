@@ -1,10 +1,10 @@
 package library.infrastructure.datasource.bookonloan;
 
-import library.application.repository.BookOnLoanRepository;
+import library.application.repository.LoanRepository;
 import library.domain.model.book.item.Item;
 import library.domain.model.book.item.ItemNumber;
-import library.domain.model.loan.loan.BookOnLoan;
-import library.domain.model.loan.loan.BookOnLoans;
+import library.domain.model.loan.loan.Loan;
+import library.domain.model.loan.loan.Loans;
 import library.domain.model.loan.loan.ReturningBookOnLoan;
 import library.domain.model.loan.rule.BookOnLoanRequest;
 import library.domain.model.loan.rule.MemberAllBookOnLoans;
@@ -18,30 +18,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class BookOnLoanDataSource implements BookOnLoanRepository {
-    BookOnLoanMapper bookOnLoanMapper;
+public class LoanDataSource implements LoanRepository {
+    LoanMapper loanMapper;
     ItemMapper itemMapper;
     MemberMapper memberMapper;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public BookOnLoanDataSource(BookOnLoanMapper bookOnLoanMapper, ItemMapper itemMapper, MemberMapper memberMapper) {
-        this.bookOnLoanMapper = bookOnLoanMapper;
+    public LoanDataSource(LoanMapper loanMapper, ItemMapper itemMapper, MemberMapper memberMapper) {
+        this.loanMapper = loanMapper;
         this.itemMapper = itemMapper;
         this.memberMapper = memberMapper;
     }
 
     @Override
     @Transactional
-    public BookOnLoan registerBookOnLoan(BookOnLoanRequest bookOnLoanRequest) {
+    public Loan registerBookOnLoan(BookOnLoanRequest bookOnLoanRequest) {
         ItemNumber itemNumber = bookOnLoanRequest.holdingInStock().holding().itemNumber();
         itemMapper.lockItem(itemNumber);
 
-        if (bookOnLoanMapper.selectByItemNumber(itemNumber).isPresent()) {
+        if (loanMapper.selectByItemNumber(itemNumber).isPresent()) {
             throw new RegisterBookOnLoanException(bookOnLoanRequest);
         }
 
-        Integer bookOnLoanId = bookOnLoanMapper.newBookOnLoanIdentifier();
-        bookOnLoanMapper.insertBookOnLoan(
+        Integer bookOnLoanId = loanMapper.newBookOnLoanIdentifier();
+        loanMapper.insertBookOnLoan(
                 bookOnLoanId,
                 bookOnLoanRequest.member().memberNumber(),
                 bookOnLoanRequest.holdingInStock().holding().itemNumber(),
@@ -52,43 +52,43 @@ public class BookOnLoanDataSource implements BookOnLoanRepository {
 
     @Override
     public void registerReturnBook(ReturningBookOnLoan returningBookOnLoan) {
-        BookOnLoan bookOnLoan = returningBookOnLoan.bookOnLoan();
-        bookOnLoanMapper.insertReturnBook(bookOnLoan.bookOnLoanId(), returningBookOnLoan.returnDate());
+        Loan loan = returningBookOnLoan.bookOnLoan();
+        loanMapper.insertReturnBook(loan.bookOnLoanId(), returningBookOnLoan.returnDate());
     }
 
     @Override
     public MemberAllBookOnLoans findMemberAllBookOnLoans(Member member) {
-        List<BookOnLoanData> bookOnLoanDataList = bookOnLoanMapper.selectByMemberNumber(member.memberNumber());
-        List<BookOnLoan> bookOnLoans = bookOnLoans(member, bookOnLoanDataList);
+        List<LoanData> loanDataList = loanMapper.selectByMemberNumber(member.memberNumber());
+        List<Loan> loans = bookOnLoans(member, loanDataList);
 
-        return new MemberAllBookOnLoans(member, new BookOnLoans(bookOnLoans));
+        return new MemberAllBookOnLoans(member, new Loans(loans));
     }
 
     @Override
-    public BookOnLoan findBookOnLoanByItemNumber(ItemNumber itemNumber) {
-        BookOnLoanData bookOnLoanData = bookOnLoanMapper.selectByItemNumber(itemNumber).orElseThrow(() ->
+    public Loan findBookOnLoanByItemNumber(ItemNumber itemNumber) {
+        LoanData loanData = loanMapper.selectByItemNumber(itemNumber).orElseThrow(() ->
                 new IllegalArgumentException(String.format("現在貸し出されていない蔵書です。蔵書コード：%s", itemNumber)));
 
-        Member member = memberMapper.selectMember(bookOnLoanData.memberNumber);
-        BookOnLoan bookOnLoan = bookOnLoans(member, List.of(bookOnLoanData)).get(0);
-        return bookOnLoan;
+        Member member = memberMapper.selectMember(loanData.memberNumber);
+        Loan loan = bookOnLoans(member, List.of(loanData)).get(0);
+        return loan;
     }
 
-    List<BookOnLoan> bookOnLoans(Member member, List<BookOnLoanData> bookOnLoanDataList) {
-        if (bookOnLoanDataList.isEmpty()) return List.of();
+    List<Loan> bookOnLoans(Member member, List<LoanData> loanDataList) {
+        if (loanDataList.isEmpty()) return List.of();
 
         List<ItemNumber> itemNumbers =
-                bookOnLoanDataList.stream()
-                        .map(bookOnLoanData -> bookOnLoanData.itemNumber)
+                loanDataList.stream()
+                        .map(loanData -> loanData.itemNumber)
                         .collect(Collectors.toList());
         List<Item> items = itemMapper.selectItems(itemNumbers);
 
-        return bookOnLoanDataList.stream()
-                .map(bookOnLoanData ->
+        return loanDataList.stream()
+                .map(loanData ->
                         items.stream()
-                                .filter(holding -> holding.itemNumber().sameValue(bookOnLoanData.itemNumber))
+                                .filter(holding -> holding.itemNumber().sameValue(loanData.itemNumber))
                                 .findFirst()
-                                .map(item -> new BookOnLoan(bookOnLoanData.bookOnLoanId, member, item, bookOnLoanData.loanDate))
+                                .map(item -> new Loan(loanData.loanNumber, member, item, loanData.loanDate))
                                 .orElseThrow())
                 .collect(Collectors.toList());
     }

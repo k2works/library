@@ -1,7 +1,7 @@
 package library.application.coordinator.bookonloan;
 
 import library.LibraryDBTest;
-import library.application.service.bookonloan.BookOnLoanQueryService;
+import library.application.service.bookonloan.LoanQueryService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.book.item.ItemInStock;
@@ -22,9 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @LibraryDBTest
-class BookOnLoanRegisterCoordinatorTest {
+class LoanRegisterCoordinatorTest {
     @Autowired
-    BookOnLoanRegisterCoordinator bookOnLoanRegisterCoordinator;
+    LoanRegisterCoordinator loanRegisterCoordinator;
 
     @Autowired
     MemberQueryService memberQueryService;
@@ -33,13 +33,13 @@ class BookOnLoanRegisterCoordinatorTest {
     ItemQueryService itemQueryService;
 
     @Autowired
-    BookOnLoanQueryService bookOnLoanQueryService;
+    LoanQueryService loanQueryService;
 
     @Test
     void 図書を貸し出すことができる() {
         BookOnLoanRequest bookOnLoanRequest =
                 generate(1, "2-A", "2020-02-20");
-        LoaningCard loaningCard = bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
+        LoaningCard loaningCard = loanRegisterCoordinator.loaning(bookOnLoanRequest);
 
         assertTrue(loaningCard.ok());
     }
@@ -48,10 +48,10 @@ class BookOnLoanRegisterCoordinatorTest {
     void 貸出中の蔵書は貸し出すことができない() {
         BookOnLoanRequest bookOnLoanRequest =
                 generate(2, "2-B", new LoanDate(Date.now()).toString());
-        bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
+        loanRegisterCoordinator.loaning(bookOnLoanRequest);
 
         assertThrows(RegisterBookOnLoanException.class, () -> {
-            LoaningCard loaning = bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
+            LoaningCard loaning = loanRegisterCoordinator.loaning(bookOnLoanRequest);
         });
     }
 
@@ -61,13 +61,13 @@ class BookOnLoanRegisterCoordinatorTest {
         for (String code : list) {
             BookOnLoanRequest bookOnLoanRequest =
                     generate(3, code, "2020-02-20");
-            bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
+            loanRegisterCoordinator.loaning(bookOnLoanRequest);
         }
 
         BookOnLoanRequest bookOnLoanRequest =
                 generate(3, "2-H", "2020-02-20");
 
-        LoaningCard loaningCard = bookOnLoanRegisterCoordinator.loaning(bookOnLoanRequest);
+        LoaningCard loaningCard = loanRegisterCoordinator.loaning(bookOnLoanRequest);
 
         assertTrue(loaningCard.rejected());
     }

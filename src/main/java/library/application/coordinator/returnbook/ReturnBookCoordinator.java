@@ -1,10 +1,10 @@
 package library.application.coordinator.returnbook;
 
-import library.application.service.bookonloan.BookOnLoanQueryService;
+import library.application.service.bookonloan.LoanQueryService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.returnbook.ReturnBookRecordService;
 import library.domain.model.book.item.ItemNumber;
-import library.domain.model.loan.loan.BookOnLoan;
+import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.ReturnDate;
 import library.domain.model.loan.loan.ReturningBookOnLoan;
 import org.springframework.stereotype.Service;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReturnBookCoordinator {
     ReturnBookRecordService returnBookRecordService;
-    BookOnLoanQueryService bookOnLoanQueryService;
+    LoanQueryService loanQueryService;
     ItemQueryService itemQueryService;
 
-    public ReturnBookCoordinator(ReturnBookRecordService returnBookRecordService, BookOnLoanQueryService bookOnLoanQueryService, ItemQueryService itemQueryService) {
+    public ReturnBookCoordinator(ReturnBookRecordService returnBookRecordService, LoanQueryService loanQueryService, ItemQueryService itemQueryService) {
         this.returnBookRecordService = returnBookRecordService;
-        this.bookOnLoanQueryService = bookOnLoanQueryService;
+        this.loanQueryService = loanQueryService;
         this.itemQueryService = itemQueryService;
     }
 
@@ -30,7 +30,7 @@ public class ReturnBookCoordinator {
     public void returnBook(ItemNumber itemNumber, ReturnDate returnDate) {
         itemQueryService.findHoldingOnLoan(itemNumber);
 
-        BookOnLoan bookOnLoan = bookOnLoanQueryService.findBookOnLoanByItemNumber(itemNumber);
-        returnBookRecordService.registerReturnBook(new ReturningBookOnLoan(bookOnLoan, returnDate));
+        Loan loan = loanQueryService.findBookOnLoanByItemNumber(itemNumber);
+        returnBookRecordService.registerReturnBook(new ReturningBookOnLoan(loan, returnDate));
     }
 }
