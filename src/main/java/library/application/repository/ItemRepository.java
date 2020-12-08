@@ -7,8 +7,8 @@ import library.domain.model.book.item.ItemOnLoan;
 /**
  * 蔵書リポジトリ
  */
-public interface HoldingRepository {
-    ItemOnLoan findHoldingOnLoan(ItemNumber itemNumber);
+public interface ItemRepository {
+    ItemOnLoan findItemOnLoan(ItemNumber itemNumber);
 
-    ItemInStock findHoldingInStock(ItemNumber itemNumber);
+    ItemInStock findItemInStock(ItemNumber itemNumber);
 }
