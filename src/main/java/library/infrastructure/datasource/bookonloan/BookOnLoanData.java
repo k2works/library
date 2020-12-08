@@ -1,6 +1,6 @@
 package library.infrastructure.datasource.bookonloan;
 
-import library.domain.model.item.ItemNumber;
+import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.history.LoaningRecord;
 import library.domain.model.loan.loan.BookOnLoanId;
 import library.domain.model.loan.loan.LoanDate;

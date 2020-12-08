@@ -1,8 +1,8 @@
 package library.application.repository;
 
-import library.domain.model.item.HoldingInStock;
-import library.domain.model.item.HoldingOnLoan;
-import library.domain.model.item.ItemNumber;
+import library.domain.model.book.item.HoldingInStock;
+import library.domain.model.book.item.HoldingOnLoan;
+import library.domain.model.book.item.ItemNumber;
 
 /**
  * 蔵書リポジトリ

@@ -1,8 +1,8 @@
 package library.infrastructure.datasource.item;
 
-import library.domain.model.book.BookId;
-import library.domain.model.item.Item;
-import library.domain.model.item.ItemNumber;
+import library.domain.model.book.bibliography.BookId;
+import library.domain.model.book.item.Item;
+import library.domain.model.book.item.ItemNumber;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

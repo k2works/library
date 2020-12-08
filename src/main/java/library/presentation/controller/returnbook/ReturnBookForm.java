@@ -1,6 +1,6 @@
 package library.presentation.controller.returnbook;
 
-import library.domain.model.item.ItemNumber;
+import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.ReturnDate;
 import library.domain.type.date.Date;
 

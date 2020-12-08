@@ -1,7 +1,7 @@
 package library.domain.model.reservation.availability;
 
-import library.domain.model.item.Item;
-import library.domain.model.item.Items;
+import library.domain.model.book.item.Item;
+import library.domain.model.book.item.Items;
 import library.domain.model.loan.history.WholeLoanHistory;
 import library.domain.model.reservation.reservation.Reservation;
 import library.domain.model.reservation.reservation.Reservations;

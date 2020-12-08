@@ -3,7 +3,7 @@ package library.infrastructure.datasource.bookonloan;
 import library.LibraryDBTest;
 import library.application.coordinator.returnbook.ReturnBookCoordinator;
 import library.application.service.holding.HoldingQueryService;
-import library.domain.model.item.ItemNumber;
+import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.BookOnLoan;
 import library.domain.model.loan.loan.ReturnDate;
 import library.domain.type.date.Date;

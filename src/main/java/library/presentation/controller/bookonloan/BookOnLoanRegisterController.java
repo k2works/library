@@ -5,7 +5,7 @@ import library.application.service.bookonloan.BookOnLoanQueryService;
 import library.application.service.bookonloan.BookOnLoanRecordService;
 import library.application.service.holding.HoldingQueryService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.item.HoldingInStock;
+import library.domain.model.book.item.HoldingInStock;
 import library.domain.model.loan.rule.BookOnLoanRequest;
 import library.domain.model.loan.rule.LoaningCard;
 import library.domain.model.loan.rule.MemberAllBookOnLoans;

@@ -1,9 +1,9 @@
 package library.infrastructure.datasource.bookonloan;
 
 import library.application.repository.BookOnLoanRepository;
-import library.domain.model.item.HoldingOnLoan;
-import library.domain.model.item.Item;
-import library.domain.model.item.ItemNumber;
+import library.domain.model.book.item.HoldingOnLoan;
+import library.domain.model.book.item.Item;
+import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.BookOnLoan;
 import library.domain.model.loan.loan.BookOnLoans;
 import library.domain.model.loan.loan.ReturningBookOnLoan;
