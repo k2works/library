@@ -15,8 +15,8 @@ public class RetentionDatasource implements RetentionRepository {
     @Override
     public void registerRetention(RetainedHolding retainedHolding) {
         retentionMapper.insertRetainedHolding(
-                retainedHolding.reservedBook().reservationId(),
-                retainedHolding.holding().itemNumber(),
-                retainedHolding.retainedDate());
+            retainedHolding.reservedBook().reservationId(),
+            retainedHolding.holding().itemNumber(),
+            retainedHolding.retainedDate());
     }
 }

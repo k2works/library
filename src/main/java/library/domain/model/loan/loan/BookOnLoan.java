@@ -8,7 +8,7 @@ import library.domain.type.date.Days;
 import java.time.Period;
 
 /**
- * 貸出図書
+ * 貸出
  */
 public class BookOnLoan {
     BookOnLoanId bookOnLoanId;

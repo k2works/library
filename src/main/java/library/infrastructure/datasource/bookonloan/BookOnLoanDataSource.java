@@ -89,7 +89,7 @@ public class BookOnLoanDataSource implements BookOnLoanRepository {
                         items.stream()
                                 .filter(holding -> holding.itemNumber().sameValue(bookOnLoanData.itemNumber))
                                 .findFirst()
-                                .map(holding -> new BookOnLoan(bookOnLoanData.bookOnLoanId, member, new HoldingOnLoan(holding), bookOnLoanData.loanDate))
+                                .map(item -> new BookOnLoan(bookOnLoanData.bookOnLoanId, member, new HoldingOnLoan(item), bookOnLoanData.loanDate))
                                 .orElseThrow())
                 .collect(Collectors.toList());
     }

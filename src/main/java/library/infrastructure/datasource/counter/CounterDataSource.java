@@ -61,9 +61,9 @@ public class CounterDataSource implements CounterRepository {
 
     private List<LoaningRecord> toLoaningRecords(List<BookOnLoanData> bookOnLoansDataList, ItemNumber itemNumber) {
         return bookOnLoansDataList.stream()
-                .filter(bookOnLoanData -> bookOnLoanData.itemNumber().sameValue(itemNumber))
-                .map(BookOnLoanData::toLoaningRecord)
-                .collect(Collectors.toList());
+            .filter(bookOnLoanData -> bookOnLoanData.itemNumber().sameValue(itemNumber))
+            .map(BookOnLoanData::toLoaningRecord)
+            .collect(Collectors.toList());
     }
 
     private List<ReturningRecord> toReturningRecords(List<ReturnBookData> returnBookDataList, ItemNumber itemNumber) {

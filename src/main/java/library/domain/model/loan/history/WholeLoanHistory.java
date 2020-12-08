@@ -20,7 +20,7 @@ public class WholeLoanHistory {
 
     public LoanHistory findLibraryCard(Item item) {
         return loanHistoryList.stream()
-                .filter(loanHistory -> loanHistory.itemNumber.sameValue(item.itemNumber()) )
-                .findAny().orElseThrow(() -> new IllegalArgumentException("対象蔵書の貸出履歴が存在しません。 code:" + item.itemNumber()));
+            .filter(loanHistory -> loanHistory.itemNumber.sameValue(item.itemNumber()) )
+            .findAny().orElseThrow(() -> new IllegalArgumentException("対象蔵書の貸出履歴が存在しません。 code:" + item.itemNumber()));
     }
 }

@@ -25,7 +25,7 @@ public class Reservations {
 
     public BookIds bookIds() {
         return new BookIds(list.stream()
-                .map(reservedBook -> reservedBook.reservedBook().book().bookId())
-                .collect(Collectors.toList()));
+            .map(reservedBook -> reservedBook.reservedBook().book().bookId())
+            .collect(Collectors.toList()));
     }
 }

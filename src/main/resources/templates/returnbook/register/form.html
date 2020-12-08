@@ -27,10 +27,10 @@
               <input class="input" type="text" placeholder="1-A"
                      th:field="*{itemNumber.value}"/>
             </p>
-              <p class="help is-danger has-text-left"
-                 th:if="${#fields.hasErrors('itemNumber.value')}">
-                  <span th:errors="*{itemNumber.value}"></span>
-              </p>
+            <p class="help is-danger has-text-left"
+               th:if="${#fields.hasErrors('itemNumber.value')}">
+              <span th:errors="*{itemNumber.value}"></span>
+            </p>
           </div>
         </div>
       </div>

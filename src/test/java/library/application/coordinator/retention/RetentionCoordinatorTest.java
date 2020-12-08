@@ -49,7 +49,7 @@ class RetentionCoordinatorTest {
         Reservation reservation1 = retentionableReservations.asList().get(0);
 
         assertAll(
-                () -> assertTrue(reservation1.reservedBook().book().sameBook(book)),
+                () ->assertTrue(reservation1.reservedBook().book().sameBook(book)),
                 () -> assertEquals(1, reservation1.member().memberNumber().value()));
     }
 }
