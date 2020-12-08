@@ -5,7 +5,7 @@ import library.application.service.bookonloan.LoanQueryService;
 import library.application.service.bookonloan.LoanRecordService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.book.item.ItemInStock;
+import library.domain.model.book.item.Item;
 import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.loan.rule.LoaningCard;
 import library.domain.model.loan.rule.MemberAllBookOnLoans;
@@ -51,7 +51,7 @@ public class BookOnLoanRegisterController {
         if (result.hasErrors()) return "bookonloan/register/form";
 
         Member member = memberQueryService.findMember(loaningOfBookForm.memberNumber);
-        ItemInStock itemInStock = itemQueryService.findHoldingInStock(loaningOfBookForm.itemNumber);
+        Item itemInStock = itemQueryService.findHoldingInStock(loaningOfBookForm.itemNumber);
         LoanRequest loanRequest = new LoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
 
         LoaningCard loaningCard = loanRegisterCoordinator.loaning(loanRequest);
