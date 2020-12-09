@@ -6,10 +6,9 @@ import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.book.item.Item;
-import library.domain.model.loan.rule.CanLoan;
 import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.loan.rule.MemberAllBookOnLoans;
-import library.domain.model.loan.rule.RejectReason;
+import library.domain.model.loan.rule.Restriction;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import org.springframework.stereotype.Controller;
@@ -55,10 +54,10 @@ public class LoanRegisterController {
         Item itemInStock = itemQueryService.findItemInStock(loaningOfBookForm.itemNumber);
         LoanRequest loanRequest = new LoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
 
-        CanLoan canLoan = loanCoordinator.shouldRestrict(loanRequest);
+        Restriction restriction = loanCoordinator.shouldRestrict(loanRequest);
 
-        if (canLoan.equals(CanLoan.貸出不可)) {
-            result.addError(new ObjectError("error", RejectReason.貸出冊数超過.toString()));
+        if (restriction != Restriction.貸出可能) {
+            result.addError(new ObjectError("error", restriction.message()));
             return "bookonloan/register/form";
         }
 

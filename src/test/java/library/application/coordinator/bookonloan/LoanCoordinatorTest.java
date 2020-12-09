@@ -8,17 +8,15 @@ import library.domain.model.book.item.Item;
 import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.LoanDate;
 import library.domain.model.loan.rule.LoanRequest;
-import library.domain.model.loan.rule.LoaningCard;
+import library.domain.model.loan.rule.Restriction;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.type.date.Date;
-import library.infrastructure.datasource.loan.RegisterLoanException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @LibraryDBTest
@@ -39,20 +37,17 @@ class LoanCoordinatorTest {
     void 図書を貸し出すことができる() {
         LoanRequest loanRequest =
                 generate(1, "2-A", "2020-02-20");
-        LoaningCard loaningCard = loanCoordinator.loan(loanRequest);
+        Restriction restriction = loanCoordinator.shouldRestrict(loanRequest);
 
-        assertTrue(loaningCard.ok());
+        assertTrue(restriction == Restriction.貸出可能);
     }
 
     @Test
     void 貸出中の蔵書は貸し出すことができない() {
         LoanRequest loanRequest =
                 generate(2, "2-B", new LoanDate(Date.now()).toString());
-        loanCoordinator.loaning(loanRequest);
-
-        assertThrows(RegisterLoanException.class, () -> {
-            LoaningCard loaning = loanCoordinator.loaning(loanRequest);
-        });
+        Restriction restriction = loanCoordinator.shouldRestrict(loanRequest);
+        assertTrue(restriction != Restriction.貸出可能);
     }
 
     @Test
@@ -61,15 +56,15 @@ class LoanCoordinatorTest {
         for (String code : list) {
             LoanRequest loanRequest =
                     generate(3, code, "2020-02-20");
-            loanCoordinator.loaning(loanRequest);
+            loanCoordinator.shouldRestrict(loanRequest);
         }
 
         LoanRequest loanRequest =
                 generate(3, "2-H", "2020-02-20");
 
-        LoaningCard loaningCard = loanCoordinator.loaning(loanRequest);
+        Restriction restriction = loanCoordinator.shouldRestrict(loanRequest);
 
-        assertTrue(loaningCard.rejected());
+        assertTrue(restriction != Restriction.貸出可能);
     }
 
     private LoanRequest generate(int memberNumber, String itemNumber, String loanDate) {
