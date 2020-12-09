@@ -1,4 +1,4 @@
 /**
- * 貸出参照サービス
+ * 蔵書サービス
  */
 package library.application.service.item;

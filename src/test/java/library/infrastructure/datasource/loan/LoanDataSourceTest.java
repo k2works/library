@@ -59,6 +59,7 @@ class LoanDataSourceTest {
         ReturnDate returnDate = new ReturnDate(Date.from("2019-01-01"));
         returnBookRecordService.registerReturnBook(new Returned(itemNumber, returnDate));
 
+
         assertThrows(IllegalArgumentException.class, () -> {
             loanDataSource.findLoanByItemNumber(itemNumber);
         });

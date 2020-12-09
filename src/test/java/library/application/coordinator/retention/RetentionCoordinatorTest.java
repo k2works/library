@@ -1,8 +1,8 @@
 package library.application.coordinator.retention;
 
 import library.LibraryDBTest;
-import library.application.service.book.BookQueryService;
 import library.application.service.member.MemberQueryService;
+import library.application.service.book.BookQueryService;
 import library.application.service.reservation.ReservationQueryService;
 import library.application.service.reservation.ReservationRecordService;
 import library.domain.model.book.bibliography.Book;
@@ -39,8 +39,8 @@ class RetentionCoordinatorTest {
         reservationRecordService.registerReservation(reservation);
 
         // TODO 仕様から再定義
-//        RetentionableReservations retentionableReservations = retentionCoordinator.retention();
-//        Reservation reservation1 = retentionableReservations.asList().get(0);
+//        Reservations reservations = retentionCoordinator.retention();
+//        Reservation reservation1 = reservations.asList().get(0);
 //
 //        assertAll(
 //                () ->assertTrue(reservation1.reservedBook().book().sameBook(book)),

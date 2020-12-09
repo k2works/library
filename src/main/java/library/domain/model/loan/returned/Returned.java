@@ -1,9 +1,11 @@
 package library.domain.model.loan.returned;
 
 import library.domain.model.book.item.ItemNumber;
+import library.domain.model.loan.loan.Loan;
 
 /**
  * 返却
+ * （イベント）
  */
 public class Returned {
     ItemNumber itemNumber;

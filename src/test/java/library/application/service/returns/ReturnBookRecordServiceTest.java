@@ -1,11 +1,10 @@
-package library.application.service.returnbook;
+package library.application.service.returns;
 
 import library.LibraryDBTest;
 import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
-import library.application.service.returns.ReturnBookRecordService;
 import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.returned.ReturnDate;
 import library.domain.model.loan.returned.Returned;
@@ -35,7 +34,7 @@ class ReturnBookRecordServiceTest {
     @Test
     void 返却を登録できる() {
         ItemNumber itemNumber = new ItemNumber("1-A");
-        ReturnDate returnDate = new ReturnDate(Date.from("2020-02-28"));
+        ReturnDate returnDate = new ReturnDate(Date.from("2020-02-20"));
 
         Returned returned = new Returned(itemNumber, returnDate);
         returnBookRecordService.registerReturnBook(returned);

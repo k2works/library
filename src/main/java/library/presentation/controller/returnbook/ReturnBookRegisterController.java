@@ -31,12 +31,13 @@ public class ReturnBookRegisterController {
     @GetMapping
     String init(Model model) {
         Returned returned = new Returned(new ItemNumber(""), new ReturnDate(Date.now()));
-        model.addAttribute("returned", returned);
+        model.addAttribute("returned", returned );
         return "returnbook/register/form";
     }
 
     @PostMapping
-    String register(@Validated @ModelAttribute("returnBookForm") Returned returned, BindingResult result) {
+    String register(@Validated @ModelAttribute("returned") Returned returned,
+                    BindingResult result) {
         if (result.hasErrors()) return "returnbook/register/form";
 
         returnBookRecordService.registerReturnBook(returned);
