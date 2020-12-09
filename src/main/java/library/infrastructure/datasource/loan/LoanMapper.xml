@@ -58,7 +58,7 @@
         </foreach>
     </select>
 
-    <select id="selectReturnedByItemNumbers" resultType="library.infrastructure.datasource.loan.ReturnData">
+    <select id="selectReturnedByItemNumbers" resultType="library.domain.model.loan.returned.Returned">
         SELECT 貸出.貸出ID as "loanNumber.value",
         貸出.蔵書コード as "itemNumber.value",
         貸出.会員番号 as "memberNumber.value",
