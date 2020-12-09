@@ -1,6 +1,7 @@
 package library.application.service.holding;
 
 import library.LibraryDBTest;
+import library.application.service.item.ItemQueryService;
 import library.domain.model.book.item.Item;
 import library.domain.model.book.item.ItemNumber;
 import org.junit.jupiter.api.Test;

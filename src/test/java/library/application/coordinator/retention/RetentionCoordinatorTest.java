@@ -1,8 +1,8 @@
 package library.application.coordinator.retention;
 
 import library.LibraryDBTest;
+import library.application.service.book.BookQueryService;
 import library.application.service.member.MemberQueryService;
-import library.application.service.reservation.BookQueryService;
 import library.application.service.reservation.ReservationQueryService;
 import library.application.service.reservation.ReservationRecordService;
 import library.domain.model.book.bibliography.Book;

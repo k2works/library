@@ -1,24 +1,25 @@
 package library.application.coordinator.bookonloan;
 
-import library.application.service.bookonloan.LoanQueryService;
-import library.application.service.bookonloan.LoanRegisterService;
-import library.application.service.holding.ItemQueryService;
+import library.application.service.item.ItemQueryService;
+import library.application.service.loan.LoanQueryService;
+import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.loan.loan.Loan;
-import library.domain.model.loan.rule.*;
+import library.domain.model.loan.rule.CanLoan;
+import library.domain.model.loan.rule.LoanRequest;
+import library.domain.model.loan.rule.MemberAllBookOnLoans;
 import org.springframework.stereotype.Service;
 
 /**
- * 貸出図書登録コーディネーター
+ * 貸出コーディネーター
  */
 @Service
-public class LoanRegisterCoordinator {
+public class LoanCoordinator {
     MemberQueryService memberQueryService;
     ItemQueryService itemQueryService;
     LoanQueryService loanQueryService;
     LoanRegisterService loanRegisterService;
 
-    public LoanRegisterCoordinator(
+    public LoanCoordinator(
             MemberQueryService memberQueryService,
             ItemQueryService itemQueryService,
             LoanQueryService loanQueryService,
@@ -30,17 +31,18 @@ public class LoanRegisterCoordinator {
     }
 
     /**
-     * 図書の貸出を受付る
+     * 貸出制限を判断する
      */
-    public LoaningCard loaning(LoanRequest loanRequest) {
+    public CanLoan shouldRestrict(LoanRequest loanRequest) {
         MemberAllBookOnLoans memberAllBookOnLoans = loanQueryService.findMemberAllBookOnLoans(loanRequest.member());
+        return memberAllBookOnLoans.canBorrowBookToday();
+    }
 
-        if (memberAllBookOnLoans.canBorrowBookToday() == CanLoan.貸出不可) {
-            return new LoaningCard(RejectReason.貸出冊数超過);
-        }
-
-        Loan loan = loanRegisterService.registerLoan(loanRequest);
-        return new LoaningCard(loan);
+    /**
+     * 貸出を受付る
+     */
+    public void loan(LoanRequest loanRequest) {
+        loanRegisterService.registerLoan(loanRequest);
     }
 
 }
