@@ -2,14 +2,13 @@ package library.presentation.controller.reservation;
 
 import library.application.coordinator.retention.RetentionCoordinator;
 import library.domain.model.reservation.reservation.Reservations;
-import library.domain.model.reservation.retention.RetentionableReservations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 貸出図書一覧
+ * 貸出図書の一覧画面
  */
 @Controller
 @RequestMapping("reservation/list")
