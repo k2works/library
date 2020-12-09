@@ -29,18 +29,10 @@ public class Loan {
         this.loanDate = loanDate;
     }
 
-    public DueDate dueDate() {
-        return loanDate.dueDateWith(LoanPeriod.standard());
-    }
-
-    public DelayPeriod todayDelayPeriod() {
-        Date today = Date.now();
-        return delayPeriod(today);
-    }
-
-    public DelayPeriod delayPeriod(Date date) {
-        int delay = Period.between(dueDate().value().value(), date.value()).getDays();
-        return new DelayPeriod(new Days(delay));
+    public DaysLate daysLate(Date date) {
+        Date dueDate = loanDate.dueDate();
+        int delay = Period.between(dueDate.value(), date.value()).getDays();
+        return new DaysLate(new Days(delay));
     }
 
     public Member member() {

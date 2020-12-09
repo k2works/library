@@ -17,6 +17,10 @@ public class LoanDate {
     LoanDate() {
     }
 
+    public Date dueDate() {
+        return value.plusDays(LoanPeriod.standard());
+    }
+
     public LoanDate(Date value) {
         this.value = value;
     }
@@ -28,9 +32,5 @@ public class LoanDate {
     @Override
     public String toString() {
         return value.toString();
-    }
-
-    public DueDate dueDateWith(LoanPeriod loanPeriod) {
-        return new DueDate(value.plus(loanPeriod.value()));
     }
 }

@@ -1,6 +1,5 @@
 package library.domain.model.loan.rule;
 
-import library.domain.model.loan.loan.DelayPeriod;
 import library.domain.model.loan.loan.DelayStatus;
 import library.domain.model.loan.loan.Loans;
 import library.domain.model.member.Member;
@@ -30,7 +29,7 @@ public class MemberAllBookOnLoans {
     }
 
     LoanRestrictions loanRestrictions(Date date) {
-        DelayStatus delayStatus = worstDelayStatus(date);
+        DelayStatus delayStatus = loans.worst(date);
         MemberType memberType = member.memberType();
 
         if (memberType == MemberType.大人 && delayStatus == DelayStatus.遅延日数３日未満) {
@@ -48,17 +47,6 @@ public class MemberAllBookOnLoans {
         }
 
         return LoanRestrictions.貸出不可;
-    }
-
-    DelayStatus todayWorstDelayStatus() {
-        Date today = Date.now();
-        return worstDelayStatus(today);
-    }
-
-    DelayStatus worstDelayStatus(Date date) {
-        DelayPeriod worstDelayPeriod = loans.worstDelayPeriod(date);
-
-        return worstDelayPeriod.delayStatus();
     }
 
     public Loans bookOnLoans() {
