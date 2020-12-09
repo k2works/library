@@ -5,7 +5,7 @@ import library.domain.model.loan.loan.Loans;
 /**
  * 貸出制限
  */
-public enum LoanRestrictions {
+public enum RestrictionType {
     貸出５冊まで(5),
     貸出７冊まで(7),
     貸出４冊まで(4),
@@ -13,7 +13,7 @@ public enum LoanRestrictions {
 
     int limit;
 
-    LoanRestrictions(int limit) {
+    RestrictionType(int limit) {
         this.limit = limit;
     }
 
