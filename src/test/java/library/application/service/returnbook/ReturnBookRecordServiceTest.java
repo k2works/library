@@ -6,7 +6,6 @@ import library.application.service.bookonloan.LoanRegisterService;
 import library.application.service.holding.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.book.item.ItemNumber;
-import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.returned.ReturnDate;
 import library.domain.model.loan.returned.Returned;
 import library.domain.type.date.Date;
@@ -34,9 +33,10 @@ class ReturnBookRecordServiceTest {
 
     @Test
     void 返却を登録できる() {
-        Loan loan = loanQueryService.findLoanByItemNumber(new ItemNumber("1-A"));
+        ItemNumber itemNumber = new ItemNumber("1-A");
+        ReturnDate returnDate = new ReturnDate(Date.from("2020-02-28"));
 
-        Returned returned = new Returned(loan, new ReturnDate(Date.from("2020-02-20")));
+        Returned returned = new Returned(itemNumber, returnDate);
         returnBookRecordService.registerReturnBook(returned);
 
         assertThrows(IllegalArgumentException.class, () -> {

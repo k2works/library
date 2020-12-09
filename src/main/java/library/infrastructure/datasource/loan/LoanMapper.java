@@ -4,7 +4,6 @@ import library.domain.model.book.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.LoanDate;
 import library.domain.model.loan.loan.LoanNumber;
-import library.domain.model.loan.returned.ReturnDate;
 import library.domain.model.loan.returned.Returned;
 import library.domain.model.member.MemberNumber;
 import org.apache.ibatis.annotations.Mapper;
@@ -27,7 +26,7 @@ public interface LoanMapper {
 
     void insertReturnBook(
             @Param("loanNumber") LoanNumber loanNumber,
-            @Param("returnDate") ReturnDate returnDate);
+            @Param("returned") Returned returned);
 
     Optional<Loan> selectByItemNumber(@Param("itemNumber") ItemNumber itemNumber);
 
