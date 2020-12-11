@@ -42,6 +42,6 @@ class LoanRegisterServiceTest {
 
         assertAll(
                 () -> assertEquals(loan.member().number().value(), 1),
-                () -> assertEquals(loan.loanDate().toString(), "2020-02-20"));
+                () -> assertEquals(loan.date().toString(), "2020-02-20"));
     }
 }

@@ -1,7 +1,6 @@
 package library.domain.model.loan.loan;
 
 import library.domain.model.item.Item;
-import library.domain.model.item.ItemNumber;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.type.date.CurrentDate;
@@ -40,7 +39,7 @@ public class Loan {
         return member;
     }
 
-    public LoanDate loanDate() {
+    public LoanDate date() {
         return loanDate;
     }
 
@@ -48,9 +47,8 @@ public class Loan {
         return loanNumber;
     }
 
-    // TODO 削除：LoanData互換の暫定対応
-    public ItemNumber itemNumber() {
-        return item.itemNumber();
+    public Item item() {
+        return item;
     }
 
     public MemberNumber memberNumber() {
