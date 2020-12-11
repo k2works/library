@@ -1,15 +1,12 @@
 package library.domain.model.member;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * 会員番号
  */
 public class MemberNumber {
-    @NotNull(message = "会員番号を入力してください。")
-    int value;
+    Integer value;
 
-    public MemberNumber(int value) {
+    public MemberNumber(Integer value) {
         this.value = value;
     }
 
@@ -17,13 +14,17 @@ public class MemberNumber {
     MemberNumber() {
     }
 
-    public int value() {
+    public static MemberNumber empty() {
+        return new MemberNumber();
+    }
+
+    public Integer value() {
         return value;
     }
 
     @Override
     public String toString() {
-        if (value == 0) return "";
+        if (value == null || value == 0) return "";
         return Integer.toString(value);
     }
 }

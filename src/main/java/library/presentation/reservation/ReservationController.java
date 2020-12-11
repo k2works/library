@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +35,7 @@ public class ReservationController {
     String init(@RequestParam("book") BookNumber bookNumber, Model model) {
         Book book = bookQueryService.findBook(bookNumber);
         model.addAttribute("book", book);
-        model.addAttribute("member", new MemberNumber(0));
+        model.addAttribute("member", MemberNumber.empty());
         return "reservation/register/form";
     }
 

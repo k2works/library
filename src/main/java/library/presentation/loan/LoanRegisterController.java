@@ -50,7 +50,6 @@ public class LoanRegisterController {
     @PostMapping
     String register(@Validated @ModelAttribute("loaningOfBookForm") LoaningOfBookForm loaningOfBookForm,
                     BindingResult result,
-                    Model model,
                     RedirectAttributes attributes) {
         if (result.hasErrors()) return "loan/register/form";
 
