@@ -6,7 +6,7 @@ import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.item.Item;
-import library.domain.model.loan.rule.LoanRequest;
+import library.domain.model.loan.loan.LoanRequest;
 import library.domain.model.loan.rule.LoanStatus;
 import library.domain.model.loan.rule.RestrictionResult;
 import library.domain.model.member.Member;
@@ -69,8 +69,8 @@ public class LoanRegisterController {
     @GetMapping("completed")
     String completed(Model model, @RequestParam("memberNumber") MemberNumber memberNumber) {
         Member member = memberQueryService.findMember(memberNumber);
-        LoanStatus currentLoans = loanQueryService.findMemberAllBookOnLoans(member);
-        model.addAttribute("memberAllBookOnLoans", currentLoans);
+        LoanStatus loanStatus = loanQueryService.findMemberAllBookOnLoans(member);
+        model.addAttribute("memberAllBookOnLoans", loanStatus);
         return "bookonloan/register/completed";
     }
 

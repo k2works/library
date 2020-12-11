@@ -1,4 +1,3 @@
-
 package library.domain.model.loan.loan;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,21 +21,20 @@ public class LoanDate {
         this.value = value;
     }
 
+    DueDate dueDate() {
+        LocalDate dueDate = value.plusDays(LoanPeriod.standard().value());
+        return new DueDate(dueDate);
+    }
+    @Override
+    public String toString() {
+        return value.toString();
+    }
+
     public static LoanDate now() {
         return new LoanDate(LocalDate.now());
     }
 
     public static LoanDate parse(String dateText) {
         return new LoanDate(LocalDate.parse(dateText));
-    }
-
-    DueDate dueDate() {
-        LocalDate dueDate = value.plusDays(LoanPeriod.standard().value());
-        return new DueDate(dueDate);
-    }
-
-    @Override
-    public String toString() {
-        return value.toString();
     }
 }

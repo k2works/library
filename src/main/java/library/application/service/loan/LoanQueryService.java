@@ -26,7 +26,7 @@ public class LoanQueryService {
     }
 
     /**
-     * 蔵書の貸出を見つける
+     * 貸出を見つける
      */
     public Loan findLoanByItemNumber(ItemNumber itemNumber) {
         return loanRepository.findLoanByItemNumber(itemNumber);

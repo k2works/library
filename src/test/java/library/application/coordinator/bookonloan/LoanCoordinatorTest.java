@@ -7,7 +7,7 @@ import library.application.service.member.MemberQueryService;
 import library.domain.model.item.Item;
 import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.loan.LoanDate;
-import library.domain.model.loan.rule.LoanRequest;
+import library.domain.model.loan.loan.LoanRequest;
 import library.domain.model.loan.rule.RestrictionResult;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;

@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 貸出図書リスト
+ * 貸出のリスト
  */
 public class Loans {
     List<Loan> list;
@@ -22,7 +22,7 @@ public class Loans {
         return worstDays.delayStatus();
     }
 
-    private DaysLate worstDays(CurrentDate date) {
+    DaysLate worstDays(CurrentDate date) {
         return list.stream()
                 .map(loan -> loan.daysLate(date))
                 .max(Comparator.comparingInt(period -> period.intValue()))

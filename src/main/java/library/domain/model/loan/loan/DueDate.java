@@ -2,7 +2,7 @@ package library.domain.model.loan.loan;
 
 import java.time.LocalDate;
 
-public class DueDate {
+class DueDate {
     LocalDate value;
 
     DueDate(LocalDate value) {

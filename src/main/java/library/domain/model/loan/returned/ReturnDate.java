@@ -2,7 +2,6 @@ package library.domain.model.loan.returned;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -10,7 +9,6 @@ import java.time.LocalDate;
  * 返却日
  */
 public class ReturnDate {
-    @Valid
     @NotNull(message = "返却日を入力してください")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     LocalDate value;
@@ -31,7 +29,6 @@ public class ReturnDate {
     public static ReturnDate parse(String dateText) {
         return new ReturnDate(LocalDate.parse(dateText));
     }
-
     public static ReturnDate now() {
         return new ReturnDate(LocalDate.now());
     }

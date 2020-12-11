@@ -15,7 +15,6 @@ public class DaysLate {
     public int intValue() {
         return value.value();
     }
-
     public DelayStatus delayStatus() {
         return DelayStatus.level(value);
     }

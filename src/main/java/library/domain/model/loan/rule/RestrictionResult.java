@@ -1,7 +1,7 @@
 package library.domain.model.loan.rule;
 
 /**
- * 貸出可能
+ * 貸出可否
  */
 public enum RestrictionResult {
     貸出不可("これ以上本を貸し出すことができません。"),
