@@ -12,19 +12,20 @@ import java.util.List;
 public class ReservationDatasource implements ReservationRepository {
     ReservationMapper reservationMapper;
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     public ReservationDatasource(ReservationMapper reservationMapper) {
         this.reservationMapper = reservationMapper;
     }
 
     @Override
-    public void registerReservation(Reservation tryingToReserveBook) {
+    public void registerReservation(Reservation reservation) {
         Integer reservationId = reservationMapper.newReservationIdentifier();
 
-        System.out.println(tryingToReserveBook);
+        System.out.println(reservation);
         reservationMapper.insertReservation(
                 reservationId,
-                tryingToReserveBook.member().number(),
-                tryingToReserveBook.reservedBook().book().bookNumber());
+                reservation.member().number(),
+                reservation.book().bookNumber());
     }
 
     @Override

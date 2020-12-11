@@ -1,9 +1,6 @@
 package library.domain.model.reservation.reservation;
 
-import library.domain.model.item.bibliography.BookNumbers;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 貸出予約リスト
@@ -21,11 +18,5 @@ public class Reservations {
 
     public List<Reservation> asList() {
         return list;
-    }
-
-    public BookNumbers bookIds() {
-        return new BookNumbers(list.stream()
-            .map(reservedBook -> reservedBook.reservedBook().book().bookNumber())
-            .collect(Collectors.toList()));
     }
 }
