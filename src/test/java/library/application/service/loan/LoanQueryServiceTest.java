@@ -14,7 +14,6 @@ import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.loan.rule.LoanStatus;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
-import library.domain.type.date.Date;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -73,7 +72,7 @@ class LoanQueryServiceTest {
     private void registerBookOnLoan(ItemNumber itemNumber, int memberNumber) {
         Member member = memberQueryService.findMember(new MemberNumber(memberNumber));
         Item itemInStock = itemQueryService.findItemInStock(itemNumber);
-        LoanRequest loanRequest = new LoanRequest(member, itemInStock, new LoanDate(Date.from("2020-02-20")));
+        LoanRequest loanRequest = new LoanRequest(member, itemInStock, LoanDate.parse("2020-02-20"));
         loanRegisterService.registerLoan(loanRequest);
     }
 }

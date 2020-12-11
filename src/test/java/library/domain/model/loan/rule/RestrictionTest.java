@@ -8,7 +8,6 @@ import library.domain.model.member.MemberNumber;
 import library.domain.model.member.MemberType;
 import library.domain.model.member.Name;
 import library.domain.type.date.CurrentDate;
-import library.domain.type.date.Date;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -35,10 +34,10 @@ class RestrictionTest {
         MemberNumber memberNumber = new MemberNumber(1);
         Member member = new Member(memberNumber, new Name(""), memberType);
         List<Loan> loans = new ArrayList<>();
-        loans.add(new Loan(null, member, null, new LoanDate(Date.from(loanDate1))));
+        loans.add(new Loan(null, member, null, LoanDate.parse(loanDate1)));
 
         if (loanDate2 != null) {
-            loans.add(new Loan(null, member, null, new LoanDate(Date.from(loanDate2))));
+            loans.add(new Loan(null, member, null, LoanDate.parse(loanDate2)));
         }
 
         Restriction restriction = new Restriction(member, new Loans(loans), currentDate);
