@@ -60,7 +60,7 @@ public class ReservationRegisterController {
     public void initBinder(WebDataBinder binder) {
         binder.setAllowedFields(
                 "memberNumber.value",
-                "bookId.value"
+                "bookNumber.value"
         );
     }
 }

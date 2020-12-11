@@ -23,4 +23,12 @@ public class ReservationId {
     public int value() {
         return value;
     }
+
+
+    @Override
+    public String toString() {
+        return "ReservationId{" +
+                "value=" + value +
+                '}';
+    }
 }

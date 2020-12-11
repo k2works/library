@@ -29,4 +29,14 @@ public class Member {
     public MemberType type() {
         return memberType;
     }
+
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberNumber=" + memberNumber +
+                ", name=" + name +
+                ", memberType=" + memberType +
+                '}';
+    }
 }
