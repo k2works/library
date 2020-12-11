@@ -8,12 +8,13 @@ import library.domain.model.loan.returned.Returned;
 import library.domain.model.loan.rule.LoanRequest;
 import library.domain.model.loan.rule.LoanStatus;
 import library.domain.model.member.Member;
-import library.domain.type.date.Date;
+import library.domain.type.date.CurrentDate;
 import library.infrastructure.datasource.item.ItemMapper;
 import library.infrastructure.datasource.member.MemberMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -57,7 +58,7 @@ public class LoanDataSource implements LoanRepository {
     @Override
     public LoanStatus loanStatus(Member member) {
         List<Loan> loans = loanMapper.selectByMemberNumber(member.number());
-        return new LoanStatus(member, new Loans(loans), Date.now());
+        return new LoanStatus(member, new Loans(loans), new CurrentDate(LocalDate.now()));
     }
 
     @Override
