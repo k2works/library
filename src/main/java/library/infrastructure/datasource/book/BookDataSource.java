@@ -10,6 +10,7 @@ import java.util.List;
 public class BookDataSource implements BookRepository {
     BookMapper bookMapper;
 
+
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     public BookDataSource(BookMapper bookMapper) {
         this.bookMapper = bookMapper;

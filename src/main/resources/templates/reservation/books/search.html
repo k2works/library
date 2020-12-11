@@ -36,16 +36,12 @@
             <th>種別</th>
             <th></th>
             </thead>
-            <td>
-                <tr th:each="book : ${books.asList()}">
-                    <td th:text="${book.title()}"></td>
-                    <td th:text="${book.author()}"></td>
-                    <td th:text="${book.bookType()}"></td>
-                    <td><a buttonclass="" is-primary" th:href="@{/reservation/register(book=${book.bookNumber()})}">予約する
-                    </td>
-                    a>
-                </tr>
-                td></a></td>
+            <tbody>
+            <tr th:each="book : ${books.asList()}">
+                <td th:text="${book.title()}"></td>
+                <td th:text="${book.author()}"></td>
+                <td th:text="${book.bookType()}"></td>
+                <td><a class="button is-primary" th:href="@{/reservation/register(book=${book.bookNumber()})}">予約する</a></td>
             </tr>
             </tbody>
         </table>

@@ -14,7 +14,8 @@ import static library.domain.model.member.MemberType.子供;
 /**
  * 貸出制限の表条件
  */
-public class RestrictionTable {
+class RestrictionTable {
+
     Map<DelayStatus, Map<MemberType, RestrictionOfQuantity>> table = new EnumMap<>(DelayStatus.class);
 
     {
@@ -30,14 +31,14 @@ public class RestrictionTable {
 
     void define(DelayStatus delayStatus, MemberType memberType, RestrictionOfQuantity restrictionOfQuantity) {
         Map<MemberType, RestrictionOfQuantity> subMap = table.get(delayStatus);
-        if (subMap == null) {
+        if(subMap == null) {
             subMap = new EnumMap<>(MemberType.class);
         }
         subMap.put(memberType, restrictionOfQuantity);
         table.put(delayStatus, subMap);
     }
 
-    public RestrictionOfQuantity lookup(DelayStatus delayStatus, MemberType memberType) {
+    RestrictionOfQuantity lookup(DelayStatus delayStatus, MemberType memberType) {
         return table.get(delayStatus).get(memberType);
     }
 }

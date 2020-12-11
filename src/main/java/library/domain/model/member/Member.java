@@ -30,7 +30,6 @@ public class Member {
         return memberType;
     }
 
-
     @Override
     public String toString() {
         return "Member{" +

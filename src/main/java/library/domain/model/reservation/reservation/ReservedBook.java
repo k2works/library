@@ -25,7 +25,6 @@ public class ReservedBook {
         return book.bookNumber().sameValue(bookNumber);
     }
 
-
     @Override
     public String toString() {
         return "ReservedBook{" +
