@@ -7,7 +7,7 @@ import library.application.service.member.MemberQueryService;
 import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.loan.LoanDate;
 import library.domain.model.loan.loan.LoanRequest;
-import library.domain.model.loan.rule.RestrictionResult;
+import library.domain.model.loan.rule.Loanability;
 import library.domain.model.member.MemberNumber;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +34,9 @@ class LoanCoordinatorTest {
     void 図書を貸し出すことができる() {
         LoanRequest loanRequest =
                 generate(1, "2-A", "2020-02-20");
-        RestrictionResult restrictionResult = loanCoordinator.shouldRestrict(loanRequest);
+        Loanability loanability = loanCoordinator.loanability(loanRequest);
 
-        assertTrue(restrictionResult == RestrictionResult.貸出可能);
+        assertTrue(loanability == Loanability.貸出可能);
     }
 
     // FIXME 貸出可能になる
@@ -44,8 +44,8 @@ class LoanCoordinatorTest {
     void 貸出中の蔵書は貸し出すことができない() {
         LoanRequest loanRequest =
                 generate(2, "2-B", LoanDate.now().toString());
-        RestrictionResult restrictionResult = loanCoordinator.shouldRestrict(loanRequest);
-        assertTrue(restrictionResult != RestrictionResult.貸出可能);
+        Loanability loanability = loanCoordinator.loanability(loanRequest);
+        assertTrue(loanability != Loanability.貸出可能);
     }
 
     @Test
@@ -60,9 +60,9 @@ class LoanCoordinatorTest {
         LoanRequest loanRequest =
                 generate(3, "2-H", "2020-02-20");
 
-        RestrictionResult restrictionResult = loanCoordinator.shouldRestrict(loanRequest);
+        Loanability loanability = loanCoordinator.loanability(loanRequest);
 
-        assertTrue(restrictionResult != RestrictionResult.貸出可能);
+        assertTrue(loanability != Loanability.貸出可能);
     }
 
     private LoanRequest generate(int memberNumber, String itemNumber, String loanDate) {

@@ -27,7 +27,7 @@ public class LoanRequest {
     }
 
     @Deprecated
-    public LoanRequest() {
+    LoanRequest() {
     }
 
     public MemberNumber memberNumber() {
@@ -40,6 +40,10 @@ public class LoanRequest {
 
     public LoanDate loanDate() {
         return loanDate;
+    }
+
+    public static LoanRequest empty() {
+        return new LoanRequest();
     }
 
     @Override

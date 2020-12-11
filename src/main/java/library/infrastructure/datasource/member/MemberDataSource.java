@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 public class MemberDataSource implements MemberRepository {
     MemberMapper memberMapper;
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     public MemberDataSource(MemberMapper memberMapper) {
         this.memberMapper = memberMapper;
     }
@@ -16,6 +17,11 @@ public class MemberDataSource implements MemberRepository {
     @Override
     public void registerMember(Member member) {
         memberMapper.insertMember(member);
+    }
+
+    @Override
+    public boolean exists(MemberNumber memberNumber) {
+        return memberMapper.exists(memberNumber);
     }
 
     @Override
