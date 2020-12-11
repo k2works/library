@@ -4,6 +4,9 @@ import library.domain.model.item.bibliography.NumberOfBook;
 
 import java.util.List;
 
+/**
+ * 本の貸出可否の一覧
+ */
 public class BookAvailabilities {
     List<BookAvailability> list;
 
@@ -14,6 +17,7 @@ public class BookAvailabilities {
     public NumberOfBook numberOfBook() {
         return new NumberOfBook(list.size());
     }
+
     public int size() {
         return list.size();
     }

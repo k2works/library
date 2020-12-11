@@ -1,7 +1,10 @@
 package library.infrastructure.datasource.book;
 
 import library.application.repository.BookRepository;
-import library.domain.model.item.bibliography.*;
+import library.domain.model.item.bibliography.Book;
+import library.domain.model.item.bibliography.BookNumber;
+import library.domain.model.item.bibliography.Keyword;
+import library.domain.model.item.bibliography.NumberOfBook;
 import library.domain.model.reservation.availability.BookAvailabilities;
 import library.domain.model.reservation.availability.BookAvailability;
 import org.springframework.stereotype.Repository;
@@ -21,7 +24,6 @@ public class BookDataSource implements BookRepository {
     @Override
     public BookAvailabilities search(Keyword keyword) {
         List<BookAvailability> books = bookMapper.searchBooks(keyword, NumberOfBook.MAX_TO_SHOW + 1);
-        System.out.println(books);
         return new BookAvailabilities(books);
     }
 

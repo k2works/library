@@ -3,12 +3,13 @@ package library.infrastructure.datasource.loan;
 import library.application.repository.LoanRepository;
 import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
+import library.domain.model.loan.loan.LoanRequest;
 import library.domain.model.loan.loan.Loans;
 import library.domain.model.loan.returned.Returned;
-import library.domain.type.date.CurrentDate;
 import library.domain.model.loan.rule.LoanStatus;
-import library.domain.model.loan.loan.LoanRequest;
 import library.domain.model.member.Member;
+import library.domain.model.member.MemberNumber;
+import library.domain.type.date.CurrentDate;
 import library.infrastructure.datasource.item.ItemMapper;
 import library.infrastructure.datasource.member.MemberMapper;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,7 @@ public class LoanDataSource implements LoanRepository {
     @Override
     @Transactional
     public void registerLoan(LoanRequest loanRequest) {
-        ItemNumber itemNumber = loanRequest.item().itemNumber();
+        ItemNumber itemNumber = loanRequest.itemNumber();
 
         if (loanMapper.selectByItemNumber(itemNumber).isPresent()) {
             throw new RegisterLoanException(loanRequest);
@@ -42,7 +43,7 @@ public class LoanDataSource implements LoanRepository {
         Integer loanNumber = loanMapper.newLoanNumber();
         loanMapper.insertLoan(
                 loanNumber,
-                loanRequest.member().number(),
+                loanRequest.memberNumber(),
                 itemNumber,
                 loanRequest.loanDate());
 
@@ -61,8 +62,9 @@ public class LoanDataSource implements LoanRepository {
     }
 
     @Override
-    public LoanStatus loanStatus(Member member) {
-        List<Loan> loans = loanMapper.selectByMemberNumber(member.number());
+    public LoanStatus loanStatus(MemberNumber memberNumber) {
+        List<Loan> loans = loanMapper.selectByMemberNumber(memberNumber);
+        Member member = memberMapper.selectMember(memberNumber);
         return new LoanStatus(member, new Loans(loans), new CurrentDate(LocalDate.now()));
     }
 

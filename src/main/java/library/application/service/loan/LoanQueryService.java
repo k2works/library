@@ -1,10 +1,10 @@
 package library.application.service.loan;
 
 import library.application.repository.LoanRepository;
+import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.rule.LoanStatus;
-import library.domain.model.item.ItemNumber;
-import library.domain.model.member.Member;
+import library.domain.model.member.MemberNumber;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,8 +21,9 @@ public class LoanQueryService {
     /**
      * 会員の全貸出図書を一覧する
      */
-    public LoanStatus loanStatusOf(Member member) {
-        return loanRepository.loanStatus(member);
+    public LoanStatus loanStatusOf(MemberNumber memberNumber) {
+        LoanStatus loanStatus = loanRepository.loanStatus(memberNumber);
+        return loanStatus;
     }
 
     /**
