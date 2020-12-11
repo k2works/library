@@ -1,6 +1,7 @@
 package library.application.coordinator.bookonloan;
 
 import library.LibraryDBTest;
+import library.application.coordinator.loan.LoanCoordinator;
 import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.member.MemberQueryService;

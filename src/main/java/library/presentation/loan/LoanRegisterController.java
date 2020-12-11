@@ -1,6 +1,6 @@
 package library.presentation.loan;
 
-import library.application.coordinator.bookonloan.LoanCoordinator;
+import library.application.coordinator.loan.LoanCoordinator;
 import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
@@ -69,7 +69,7 @@ public class LoanRegisterController {
     @GetMapping("completed")
     String completed(Model model, @RequestParam("memberNumber") MemberNumber memberNumber) {
         Member member = memberQueryService.findMember(memberNumber);
-        LoanStatus loanStatus = loanQueryService.findMemberAllBookOnLoans(member);
+        LoanStatus loanStatus = loanQueryService.loanStatusOf(member);
         model.addAttribute("loanStatus", loanStatus);
         return "loan/register/completed";
     }
