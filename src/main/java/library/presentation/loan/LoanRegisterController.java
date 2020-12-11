@@ -1,7 +1,6 @@
 package library.presentation.loan;
 
 import library.application.coordinator.loan.LoanCoordinator;
-import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
@@ -20,6 +19,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import static library.domain.model.loan.rule.RestrictionResult.貸出可能;
+
 /**
  * 貸出の登録画面
  */
@@ -30,14 +31,12 @@ public class LoanRegisterController {
     LoanCoordinator loanCoordinator;
     LoanQueryService loanQueryService;
     MemberQueryService memberQueryService;
-    ItemQueryService itemQueryService;
 
-    public LoanRegisterController(LoanRegisterService loanRegisterService, LoanCoordinator loanCoordinator, LoanQueryService loanQueryService, MemberQueryService memberQueryService, ItemQueryService itemQueryService) {
+    public LoanRegisterController(LoanRegisterService loanRegisterService, LoanCoordinator loanCoordinator, LoanQueryService loanQueryService, MemberQueryService memberQueryService) {
         this.loanRegisterService = loanRegisterService;
         this.loanCoordinator = loanCoordinator;
         this.loanQueryService = loanQueryService;
         this.memberQueryService = memberQueryService;
-        this.itemQueryService = itemQueryService;
     }
 
     @GetMapping
@@ -61,7 +60,7 @@ public class LoanRegisterController {
 
         RestrictionResult restrictionResult = loanCoordinator.shouldRestrict(loanRequest);
 
-        if (restrictionResult != RestrictionResult.貸出可能) {
+        if (restrictionResult != 貸出可能) {
             result.addError(new ObjectError("error", restrictionResult.message()));
             return "loan/register/form";
         }
@@ -75,8 +74,8 @@ public class LoanRegisterController {
     }
 
     @GetMapping("completed")
-    String completed(Model model, @RequestParam("memberNumber") String memberNumberText) {
-        LoanStatus loanStatus = loanQueryService.loanStatusOf(new MemberNumber(Integer.parseInt(memberNumberText)));
+    String completed(@ModelAttribute("memeber") MemberNumber memberNumber, Model model) {
+        LoanStatus loanStatus = loanQueryService.loanStatusOf(memberNumber);
         model.addAttribute("loanStatus", loanStatus);
         return "loan/register/completed";
     }
