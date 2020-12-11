@@ -32,6 +32,11 @@ public class ReservationController {
     }
 
     @GetMapping
+    String redirectToSearch() {
+        return "redirect:/reservation/books/search";
+    }
+
+    @GetMapping(params = {"book"})
     String init(@RequestParam("book") BookNumber bookNumber, Model model) {
         Book book = bookQueryService.findBook(bookNumber);
         model.addAttribute("book", book);
@@ -45,7 +50,7 @@ public class ReservationController {
             @ModelAttribute("member") MemberNumber memberNumber,
             BindingResult bindingResult,
             Model model
-            ) {
+    ) {
 
         Book book = bookQueryService.findBook(bookNumber);
         if (bindingResult.hasErrors()) {
