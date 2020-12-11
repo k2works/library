@@ -3,8 +3,8 @@ package library.application.service.loan;
 import library.LibraryDBTest;
 import library.application.service.item.ItemQueryService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.book.item.Item;
-import library.domain.model.book.item.ItemNumber;
+import library.domain.model.item.Item;
+import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.loan.Loan;
 import library.domain.model.loan.loan.LoanDate;
 import library.domain.model.loan.rule.LoanRequest;
@@ -42,7 +42,7 @@ class LoanRegisterServiceTest {
         Loan loan = loanQueryService.findLoanByItemNumber(itemNumber);
 
         assertAll(
-                () -> assertEquals(loan.member().memberNumber().value(), 1),
+                () -> assertEquals(loan.member().number().value(), 1),
                 () -> assertEquals(loan.loanDate().toString(), "2020-02-20"));
     }
 }

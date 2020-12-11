@@ -5,10 +5,10 @@ import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
-import library.domain.model.book.item.Item;
-import library.domain.model.loan.rule.CurrentLoans;
+import library.domain.model.item.Item;
 import library.domain.model.loan.rule.LoanRequest;
-import library.domain.model.loan.rule.Restriction;
+import library.domain.model.loan.rule.LoanStatus;
+import library.domain.model.loan.rule.RestrictionResult;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import org.springframework.stereotype.Controller;
@@ -54,22 +54,22 @@ public class LoanRegisterController {
         Item itemInStock = itemQueryService.findItemInStock(loaningOfBookForm.itemNumber);
         LoanRequest loanRequest = new LoanRequest(member, itemInStock, loaningOfBookForm.loanDate);
 
-        Restriction restriction = loanCoordinator.shouldRestrict(loanRequest);
+        RestrictionResult restrictionResult = loanCoordinator.shouldRestrict(loanRequest);
 
-        if (restriction != Restriction.貸出可能) {
-            result.addError(new ObjectError("error", restriction.message()));
+        if (restrictionResult != RestrictionResult.貸出可能) {
+            result.addError(new ObjectError("error", restrictionResult.message()));
             return "bookonloan/register/form";
         }
 
         loanCoordinator.loan(loanRequest);
-        attributes.addAttribute("memberNumber", loanRequest.member().memberNumber());
+        attributes.addAttribute("memberNumber", loanRequest.member().number());
         return "redirect:/bookonloan/register/completed";
     }
 
     @GetMapping("completed")
     String completed(Model model, @RequestParam("memberNumber") MemberNumber memberNumber) {
         Member member = memberQueryService.findMember(memberNumber);
-        CurrentLoans currentLoans = loanQueryService.findMemberAllBookOnLoans(member);
+        LoanStatus currentLoans = loanQueryService.findMemberAllBookOnLoans(member);
         model.addAttribute("memberAllBookOnLoans", currentLoans);
         return "bookonloan/register/completed";
     }
