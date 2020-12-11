@@ -8,8 +8,7 @@ import java.util.Map;
 
 import static library.domain.model.loan.loan.DelayStatus.*;
 import static library.domain.model.loan.rule.RestrictionOfQuantity.*;
-import static library.domain.model.member.MemberType.大人;
-import static library.domain.model.member.MemberType.子供;
+import static library.domain.model.member.MemberType.*;
 
 /**
  * 貸出制限の表条件

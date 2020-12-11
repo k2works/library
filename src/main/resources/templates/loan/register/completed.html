@@ -15,14 +15,14 @@
   </div>
   <table class="table">
     <thead>
-      <th>蔵書コード</th>
+      <th>蔵書</th>
       <th>貸出日</th>
     </thead>
     <tbody>
-    <tr th:each="loan : ${loanStatus.loans().asList()}">
-      <td th:text="${loan.item().show()}"></td>
-      <td th:text="${loan.date().show()}"></td>
-    </tr>
+      <tr th:each="loan : ${loanStatus.loans().asList()}">
+        <td th:text="${loan.item().show()}"></td>
+        <td th:text="${loan.date().show()}"></td>
+      </tr>
     </tbody>
   </table>
 

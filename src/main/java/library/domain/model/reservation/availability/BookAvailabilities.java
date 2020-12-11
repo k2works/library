@@ -14,7 +14,6 @@ public class BookAvailabilities {
     public NumberOfBook numberOfBook() {
         return new NumberOfBook(list.size());
     }
-
     public int size() {
         return list.size();
     }

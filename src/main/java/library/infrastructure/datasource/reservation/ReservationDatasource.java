@@ -21,7 +21,6 @@ public class ReservationDatasource implements ReservationRepository {
     public void registerReservation(Reservation reservation) {
         Integer reservationId = reservationMapper.newReservationIdentifier();
 
-        System.out.println(reservation);
         reservationMapper.insertReservation(
                 reservationId,
                 reservation.member().number(),

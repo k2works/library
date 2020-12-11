@@ -3,11 +3,13 @@ package library.application.service.reservation;
 import library.LibraryDBTest;
 import library.application.service.book.BookQueryService;
 import library.application.service.member.MemberQueryService;
+import library.domain.model.item.bibliography.Book;
 import library.domain.model.item.bibliography.Keyword;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.model.reservation.availability.BookAvailability;
 import library.domain.model.reservation.reservation.Reservation;
+import library.domain.model.reservation.reservation.ReservedBook;
 import library.infrastructure.datasource.reservation.ReservationMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ class ReservationRecordServiceTest {
         Member member = memberQueryService.findMember(new MemberNumber(1));
         BookAvailability book = bookQueryService.search(new Keyword("ハンドブック")).asList().get(0);
 
-        Reservation tryingToReserveBook = Reservation.of(member, (book.book()));
+        Reservation tryingToReserveBook = Reservation.of(member, book.book());
         reservationRecordService.registerReservation(tryingToReserveBook);
 
         List<Reservation> result = reservationMapper.selectAllReservation();

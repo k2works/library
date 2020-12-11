@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class ReservationController {
             @ModelAttribute("member") MemberNumber memberNumber,
             BindingResult bindingResult,
             Model model
-    ) {
+            ) {
 
         Book book = bookQueryService.findBook(bookNumber);
         if (bindingResult.hasErrors()) {
@@ -58,7 +59,7 @@ public class ReservationController {
         if (member == null) {
             model.addAttribute("member", memberNumber);
             model.addAttribute("book", book);
-            bindingResult.addError(new FieldError(bindingResult.getObjectName(), "value", "その番号の会員はいません"));
+            bindingResult.addError(new FieldError( bindingResult.getObjectName(),"value","その番号の会員はいません"));
             return "reservation/register/form";
         }
 

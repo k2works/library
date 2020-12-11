@@ -1,12 +1,11 @@
 package library.application.coordinator.loan;
 
-import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
+import library.application.service.item.ItemQueryService;
 import library.application.service.member.MemberQueryService;
 import library.domain.model.loan.loan.LoanRequest;
-import library.domain.model.loan.rule.LoanStatus;
-import library.domain.model.loan.rule.RestrictionResult;
+import library.domain.model.loan.rule.*;
 import org.springframework.stereotype.Service;
 
 /**

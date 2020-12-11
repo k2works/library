@@ -32,7 +32,6 @@ public class Item {
         return String.format("[%s] %s",
                 itemNumber.toString(), book.show());
     }
-
     @Override
     public String toString() {
         return "Item{" +

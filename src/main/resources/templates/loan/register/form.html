@@ -2,21 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments/member/layout :: htmlhead(~{::title})">
   <meta charset="utf-8"/>
-  <title>本の貸出予約</title>
+  <title>貸出図書の登録</title>
 </head>
 <body>
-<header th:replace="_fragments/member/navigation::navigation('本の貸出予約')"></header>
+<header th:replace="_fragments/librarian/navigation::navigation('貸出図書の登録')"></header>
 
 <main class="container">
-  <header th:replace="_fragments/member/header::header('本の貸出予約 [取置の依頼]')"></header>
+  <header th:replace="_fragments/member/header::header('貸出図書の登録')"></header>
 
   <section class="attendanceInput has-text-centered">
-    <h6 class="title is-6" th:text="'予約する本：' + ${book.show()}">
-    </h6>
     <form id="custom-form" class="form" name="body"
           method="post" action="#"
-          th:action="@{/reservation/register}"
-          th:object="${member}">
+          th:object="${loaningOfBookForm}"
+          th:action="@{/loan/register}">
 
       <ul th:if="${#fields.hasGlobalErrors()}" class="notification is-danger">
         <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
@@ -26,18 +24,46 @@
         <div id="memberNumberField" class="field-body">
           <div class="field">
             <p class="control">
-              <input class="input" placeholder="会員番号" th:field="*{value}"
-                     type="text"/>
+              <input class="input" type="text" placeholder="1"
+                     th:field="*{memberNumber.value}"/>
             </p>
             <p class="help is-danger has-text-left"
-               th:if="${#fields.hasErrors('value')}">
-              <span th:errors="*{value}"></span>
+               th:if="${#fields.hasErrors('memberNumber.value')}">
+              <span th:errors="*{memberNumber.value}"></span>
             </p>
           </div>
         </div>
       </div>
 
-      <input name="book" th:value="${book.bookNumber()}" type="hidden">
+      <div th:replace="_fragments/member/field::macro('蔵書コード', ~{::div#holdingCodeField})">
+        <div id="holdingCodeField" class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="text" placeholder="1-A"
+                     th:field="*{itemNumber.value}"/>
+            </p>
+            <p class="help is-danger has-text-left"
+               th:if="${#fields.hasErrors('itemNumber.value')}">
+              <span th:errors="*{itemNumber.value}"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="_fragments/member/field::macro('貸出日', ~{::div#loanDateField})">
+        <div id="loanDateField" class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input" type="date" placeholder="2020-01-01"
+                     th:field="*{loanDate.value}"/>
+            </p>
+            <p class="help is-danger has-text-left"
+               th:if="${#fields.hasErrors('loanDate.value')}">
+              <span th:errors="*{loanDate.value}"></span>
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div class="formFooter has-text-centered">
         <button class="button is-primary is-outlined">登録</button>
