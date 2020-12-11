@@ -39,7 +39,7 @@
             <tr th:each="availability : ${availabilities.asList()}">
                 <td th:text="${availability.describeBook()}"></td>
                 <td th:text="${availability.showAvailability()}"></td>
-                <td><a class="button is-primary"
+                <td><a class="button is-primary is-small"
                        th:href="@{/reservation/register(book=${availability.bookNumber()})}"
                        th:if="${availability.isAvailable()}">予約する</a></td>
             </tr>
