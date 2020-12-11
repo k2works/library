@@ -1,4 +1,4 @@
-package library.presentation.controller.returnbook;
+package library.presentation.returnbook;
 
 import library.application.service.loan.LoanQueryService;
 import library.application.service.member.MemberQueryService;

@@ -1,4 +1,4 @@
-package library.presentation.controller.bookonloan;
+package library.presentation.loan;
 
 import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.loan.LoanDate;

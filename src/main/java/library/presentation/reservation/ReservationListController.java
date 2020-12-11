@@ -1,4 +1,4 @@
-package library.presentation.controller.reservation;
+package library.presentation.reservation;
 
 import library.application.coordinator.retention.RetentionCoordinator;
 import library.domain.model.reservation.reservation.Reservations;

@@ -1,4 +1,4 @@
-package library.presentation.controller.returnbook;
+package library.presentation.reservation;
 
 import library.LibraryDBTest;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @LibraryDBTest
 @AutoConfigureMockMvc
-class ReturnBookRegisterControllerTest {
+public class BookSearchControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
-    void 返却画面が表示できる() throws Exception {
+    void 本の検索画面が表示できる() throws Exception {
         mockMvc.perform(
-                get("/returnbook/register"))
+                get("/reservation/books/search"))
                 .andExpect(status().isOk());
     }
 }
