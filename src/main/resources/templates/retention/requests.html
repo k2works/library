@@ -27,9 +27,9 @@
             <td th:text="${reservation.member().number()}"></td>
             <td th:text="${reservation.showBook()}"></td>
             <td>
-                <button th:formaction="@{'/retentions/requests/' + ${reservation.number()}}" type="submit">取置</button>
-            </td>
-            <td>
+                <button th:formaction="'/retentions/requests/' + ${reservation.number()}" type="submit">取置
+                </button>
+
                 <button name="notAvailable" th:value="${reservation.number()}" type="submit">在庫なし</button>
             </td>
         </tr>
