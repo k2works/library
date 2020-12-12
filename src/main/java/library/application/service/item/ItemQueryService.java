@@ -18,7 +18,7 @@ public class ItemQueryService {
     }
 
     /**
-     *
+     * 蔵書の状態を調べる
      */
     public ItemStatus status(ItemNumber itemNumber) {
         return itemRepository.status(itemNumber);
