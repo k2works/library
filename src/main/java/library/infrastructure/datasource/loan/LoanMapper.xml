@@ -49,9 +49,9 @@
 
     <select id="selectByItemNumbers" resultMap="loan">
         SELECT 貸出番号 as "loanNumber.value",
-        蔵書番号 as "itemNumber.value",
-        会員番号 as "memberNumber.value",
-        貸出日 as "loanDate.value"
+               蔵書番号 as "itemNumber.value",
+               会員番号 as "memberNumber.value",
+               貸出日   as "loanDate.value"
         FROM 貸出.貸出履歴
         WHERE 蔵書番号 IN
         <foreach item="itemNumber" collection="itemNumbers" open="(" separator="," close=")">
@@ -76,7 +76,7 @@
 
     <select id="selectReturnedByItemNumbers" resultMap="returned">
         SELECT 貸出履歴.貸出番号 as "loanNumber.value",
-        返却履歴.返却日 as "returnDate.value"
+               返却履歴.返却日   as "returnDate.value"
         FROM 貸出.返却履歴
         INNER JOIN 貸出.貸出履歴 ON 返却履歴.貸出番号 = 貸出履歴.貸出番号
         WHERE 貸出履歴.蔵書番号 IN

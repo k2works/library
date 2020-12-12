@@ -23,7 +23,6 @@ public class ItemQueryService {
     public ItemStatus status(ItemNumber itemNumber) {
         return itemRepository.status(itemNumber);
     }
-
     /**
      * 蔵書を見つける
      */

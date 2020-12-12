@@ -15,10 +15,10 @@
     <resultMap id="reservation" type="library.domain.model.reservation.reservation.Reservation">
         <association property="member"
                      column="memberNumber.value"
-                     select="library.infrastructure.datasource.member.MemberMapper.selectMember"/>
+                     select="library.infrastructure.datasource.member.MemberMapper.selectMember" />
         <association property="book"
                      column="bookNumber.value"
-                     select="library.infrastructure.datasource.book.BookMapper.findBook"/>
+                     select="library.infrastructure.datasource.book.BookMapper.findBook" />
     </resultMap>
 
     <select id="selectAllReservation" resultMap="reservation">

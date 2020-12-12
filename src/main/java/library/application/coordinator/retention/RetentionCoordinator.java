@@ -58,7 +58,6 @@ public class RetentionCoordinator {
     public ItemStatus itemStatus(ItemNumber itemNumber) {
         return itemQueryService.status(itemNumber);
     }
-
     /**
      * 取り置く
      */

@@ -9,6 +9,5 @@ import library.domain.model.item.ItemStatus;
  */
 public interface ItemRepository {
     ItemStatus status(ItemNumber itemNumber);
-
     Item findBy(ItemNumber itemNumber);
 }

@@ -42,7 +42,7 @@ public class LoanRegisterController {
         if (coordinator.invalidMember(loanRequest)) {
             bindingResult.addError(
                     new FieldError(bindingResult.getObjectName(),
-                            "memberNumber.value", "この番号の会員はいません"));
+                    "memberNumber.value", "この番号の会員はいません"));
             return "loan/register/form";
         }
 

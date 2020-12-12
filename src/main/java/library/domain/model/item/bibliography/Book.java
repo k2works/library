@@ -31,7 +31,6 @@ public class Book {
     public String show() {
         return String.format("%s (%s)", title, author);
     }
-
     public boolean isSameBook(Book other) {
         return bookNumber().sameValue(other.bookNumber);
     }

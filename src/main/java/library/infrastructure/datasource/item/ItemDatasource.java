@@ -19,13 +19,12 @@ public class ItemDatasource implements ItemRepository {
 
     @Override
     public ItemStatus status(ItemNumber itemNumber) {
-        if (!itemMapper.exists(itemNumber)) return 未登録;
+        if (! itemMapper.exists(itemNumber)) return 未登録;
         if (itemMapper.loanable(itemNumber)) return 貸出可能;
         if (itemMapper.loaned(itemNumber)) return 貸出中;
         if (itemMapper.retained(itemNumber)) return 取置中;
         return 貸出不可;
     }
-
     @Override
     public Item findBy(ItemNumber itemNumber) {
         return itemMapper.selectItem(itemNumber);

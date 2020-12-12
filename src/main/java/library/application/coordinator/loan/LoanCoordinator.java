@@ -30,7 +30,7 @@ public class LoanCoordinator {
      * 会員番号の有効性を確認する
      */
     public boolean invalidMember(LoanRequest loanRequest) {
-        return !memberQueryService.exists(loanRequest.memberNumber());
+        return ! memberQueryService.exists(loanRequest.memberNumber());
     }
 
     /**

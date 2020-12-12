@@ -33,7 +33,7 @@ class LoanCoordinatorTest {
                 generate(1, "2-A", "2020-02-20");
         Loanability loanability = loanCoordinator.loanability(loanRequest);
 
-        assertSame(loanability, Loanability.貸出可能);
+        assertSame(loanability , Loanability.貸出可能);
     }
 
     // FIXME 貸出可能になる
@@ -42,7 +42,7 @@ class LoanCoordinatorTest {
         LoanRequest loanRequest =
                 generate(2, "2-B", LoanDate.now().toString());
         Loanability loanability = loanCoordinator.loanability(loanRequest);
-        assertNotSame(loanability, Loanability.貸出可能);
+        assertNotSame(loanability , Loanability.貸出可能);
     }
 
     @Test

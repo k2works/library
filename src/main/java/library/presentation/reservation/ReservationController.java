@@ -50,7 +50,7 @@ public class ReservationController {
             @ModelAttribute("member") MemberNumber memberNumber,
             BindingResult bindingResult,
             Model model
-    ) {
+            ) {
 
         Book book = bookQueryService.findBook(bookNumber);
         if (bindingResult.hasErrors()) {
