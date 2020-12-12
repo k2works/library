@@ -17,12 +17,10 @@ public class RetentionCoordinator {
     }
 
     /**
-     * 取置可能な予約を一覧する
-     * TODO: UCでは予約「図書」となっているが、図書ではない
-     * TODO: 仕様の再定義から：現在は仮実装
+     * 予約(取置依頼)を一覧する
      */
-    public Reservations retention() {
+    public Reservations retentions() {
         List<Reservation> reservations = Collections.emptyList();
-        return new Reservations(reservations);
+        return reservationQueryService.findReservations();
     }
 }

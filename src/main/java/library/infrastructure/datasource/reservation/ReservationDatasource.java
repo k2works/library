@@ -1,7 +1,6 @@
 package library.infrastructure.datasource.reservation;
 
 import library.application.repository.ReservationRepository;
-import library.domain.model.member.Member;
 import library.domain.model.reservation.reservation.Reservation;
 import library.domain.model.reservation.reservation.Reservations;
 import org.springframework.stereotype.Repository;
@@ -23,8 +22,8 @@ public class ReservationDatasource implements ReservationRepository {
 
         reservationMapper.insertReservation(
                 reservationId,
-                reservation.member().number(),
-                reservation.book().bookNumber());
+                reservation.memberNumber(),
+                reservation.bookNumber());
     }
 
     @Override
@@ -36,11 +35,5 @@ public class ReservationDatasource implements ReservationRepository {
     @Override
     public void cancelReservation(Reservation reservation) {
         reservationMapper.insertCancelReservation(reservation.reservationId());
-    }
-
-    @Override
-    public Reservations findReservationsByMember(Member member) {
-        List<Reservation> reservations = reservationMapper.selectReservationsByMemberNumber(member.number());
-        return new Reservations(reservations);
     }
 }
