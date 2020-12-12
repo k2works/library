@@ -33,11 +33,17 @@ public class Reservation {
     public MemberNumber memberNumber() {
         return member.number();
     }
+
     public BookNumber bookNumber() {
         return book.bookNumber();
     }
+
     public String showBook() {
         return book.show();
+    }
+
+    public Book book() {
+        return book;
     }
 
     public ReservationNumber number() {
