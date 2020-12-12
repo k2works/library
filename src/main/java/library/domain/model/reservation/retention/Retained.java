@@ -2,7 +2,8 @@ package library.domain.model.reservation.retention;
 
 import library.domain.model.item.Item;
 import library.domain.model.reservation.reservation.Reservation;
-import library.domain.type.date.Date;
+
+import java.time.LocalDate;
 
 /**
  * 取置
@@ -17,7 +18,7 @@ public class Retained {
     }
 
     public boolean isExpired() {
-        Date today = Date.now();
+        LocalDate today = LocalDate.now();
         return retainedDate.value.isBefore(today);
     }
 
