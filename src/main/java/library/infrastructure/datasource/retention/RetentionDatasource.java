@@ -11,7 +11,6 @@ import library.infrastructure.datasource.item.ItemMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -30,18 +29,23 @@ public class RetentionDatasource implements RetentionRepository {
     public void registerRetention(Retention retention) {
         ReservationNumber reservationNumber = retention.reservationNumber();
         ItemNumber itemNumber = retention.itemNumber();
+        RetainedDate retainedDate = RetainedDate.now();
 
-        retentionMapper.insert取置履歴(reservationNumber, itemNumber, RetainedDate.now());
+        // 取置の発生の記録
+        retentionMapper.insert取置履歴(reservationNumber, itemNumber, retainedDate);
+
+        // 予約の状態
+        retentionMapper.insert取置済(reservationNumber, itemNumber, retainedDate);
         retentionMapper.delete取置依頼中(reservationNumber);
 
+        // 蔵書の状態
         itemMapper.delete貸出可能(itemNumber);
         itemMapper.insert取置中(itemNumber);
     }
 
-    // TODO 実装
     @Override
     public Retentions retentions() {
-        List<Retained> list = new ArrayList<>();
+        List<Retained> list = retentionMapper.select取置済();
         return new Retentions(list);
     }
 }

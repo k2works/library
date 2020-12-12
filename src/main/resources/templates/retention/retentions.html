@@ -11,8 +11,8 @@
   | <a th:href="@{/retentions}">取置中の一覧</a>
 </nav>
 <h1>取置一覧</h1>
-  <p th:text="${retentions.showCount()}">件</p>
-  <form>
+<p th:text="${retentions.showCount()}">件</p>
+<form>
   <table class="table">
     <thead>
     <tr>
@@ -27,14 +27,14 @@
       <td th:text="${retention.reservedBook().showBook()}"></td>
       <td th:text="${retention.retainedDate()}"></td>
       <td>
-        <button type="submit" name="retention" value="${reservation.number()}">取置</button>
+        <button name="retention" type="submit" value="${reservation.number()}">貸出</button>
       </td>
       <td>
-        <button type="submit" name="notAvailable" value="${reservation.number()}">在庫なし</button>
+        <button name="notAvailable" type="submit" value="${reservation.number()}">期限切れ</button>
       </td>
     </tr>
     </tbody>
   </table>
-  </form>
+</form>
 </body>
 </html>
