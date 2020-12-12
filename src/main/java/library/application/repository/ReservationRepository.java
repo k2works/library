@@ -7,6 +7,5 @@ public interface ReservationRepository {
     void registerReservation(Reservation tryingToReserveBook);
 
     Reservations findReservations();
-
     void cancelReservation(Reservation reservation);
 }
