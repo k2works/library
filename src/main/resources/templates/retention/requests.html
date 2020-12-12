@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8"/>
   <title>予約(取置依頼)一覧</title>
@@ -7,12 +7,12 @@
 </head>
 <body>
 <nav>
-    <a th:href="@{/retainedList/requests}">予約(取置依頼)の一覧</a>
-    | <a th:href="@{/retainedList}">取置中の一覧</a>
+  <a th:href="@{/retentions/requests}">予約(取置依頼)の一覧</a>
+  | <a th:href="@{/retentions}">取置中の一覧</a>
 </nav>
 <h1>予約(取置依頼)一覧</h1>
-  <p th:text="${reservations.numberOfReservation()}">件</p>
-  <form method="get">
+<p th:text="${reservations.numberOfReservation()}">件</p>
+<form method="get">
   <table class="table">
     <thead>
     <tr>
@@ -27,14 +27,14 @@
       <td th:text="${reservation.member().number()}"></td>
       <td th:text="${reservation.showBook()}"></td>
       <td>
-          <button th:formaction="'/retainedList/requests/' + ${reservation.number()}" type="submit">取置
-          </button>
+        <button th:formaction="'/retentions/requests/' + ${reservation.number()}" type="submit">取置
+        </button>
 
         <button type="submit" name="notAvailable" th:value="${reservation.number()}">在庫なし</button>
       </td>
     </tr>
     </tbody>
   </table>
-  </form>
+</form>
 </body>
 </html>

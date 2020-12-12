@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="utf-8">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8"/>
   <title>取置一覧</title>
@@ -7,8 +7,8 @@
 </head>
 <body>
 <nav>
-  <a th:href="@{/retainedList/requests}">予約(取置依頼)の一覧</a>
-  | <a th:href="@{/retainedList}">取置中の一覧</a>
+  <a th:href="@{/retentions/requests}">予約(取置依頼)の一覧</a>
+  | <a th:href="@{/retentions}">取置中の一覧</a>
 </nav>
 <h1>取置一覧</h1>
 <p th:text="${retainedList.showCount()}">件</p>
