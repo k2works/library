@@ -43,7 +43,7 @@ public class Reservation {
         return book.show();
     }
 
-    public ReservationNumber reservationNumber() {
+    public ReservationNumber number() {
         return reservationNumber;
     }
 

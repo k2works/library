@@ -3,6 +3,7 @@ package library.application.coordinator.retention;
 import library.application.service.reservation.ReservationQueryService;
 import library.application.service.retention.RetentionQueryService;
 import library.application.service.retention.RetentionRecordService;
+import library.domain.model.reservation.reservation.Reservation;
 import library.domain.model.reservation.reservation.ReservationNumber;
 import library.domain.model.reservation.reservation.Reservations;
 import library.domain.model.reservation.retention.Retained;
@@ -28,14 +29,20 @@ public class RetentionCoordinator {
      * 予約(取置依頼)を一覧する
      */
     public Reservations reservations() {
-        return reservationQueryService.findReservations();
+        return reservationQueryService.reservations();
+    }
+
+    /**
+     * 取り置く予約を取得する
+     */
+    public Reservation reservationOf(ReservationNumber reservationNumber) {
+        return reservationQueryService.reservationOf(reservationNumber);
     }
 
     /**
      * 取り置く
      */
     public void retain(ReservationNumber reservationNumber) {
-        // TODO ファクトリー
         Retained retained = new Retained();
         retentionRecordService.registerRetention(retained);
     }

@@ -1,7 +1,7 @@
 package library.domain.model.reservation.reservation;
 
 /**
- * 貸出予約ID
+ * 予約番号
  */
 public class ReservationNumber {
     // TODO: UUIDに変更する
@@ -11,13 +11,13 @@ public class ReservationNumber {
     ReservationNumber() {
     }
 
-    public ReservationNumber(int value) {
-        this.value = value;
+    public ReservationNumber(String textValue) {
+        this.value = Integer.parseInt(textValue);
     }
 
     public static ReservationNumber generate() {
         // TODO: UUID生成処理
-        return new ReservationNumber(0);
+        return new ReservationNumber("0");
     }
 
     public int value() {
@@ -26,8 +26,6 @@ public class ReservationNumber {
 
     @Override
     public String toString() {
-        return "ReservationId{" +
-                "value=" + value +
-                '}';
+        return Integer.toString(value);
     }
 }

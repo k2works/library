@@ -1,3 +1,4 @@
+
 package library.application.service.reservation;
 
 import library.LibraryDBTest;
@@ -62,6 +63,6 @@ class ReservationRecordServiceTest {
 
         List<Reservation> reservations = reservationMapper.selectAllReservation();
 
-        assertTrue(reservations.stream().noneMatch(r -> r.reservationNumber().value() == reservation.reservationNumber().value()));
+        assertTrue(reservations.stream().noneMatch(r -> r.number().value() == reservation.number().value()));
     }
 }

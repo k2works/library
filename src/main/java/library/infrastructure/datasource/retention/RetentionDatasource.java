@@ -20,7 +20,7 @@ public class RetentionDatasource implements RetentionRepository {
     @Override
     public void registerRetention(Retained retained) {
         retentionMapper.insertRetainedHolding(
-                retained.reservedBook().reservationNumber(),
+                retained.reservedBook().number(),
                 retained.holding().itemNumber(),
                 retained.retainedDate());
     }

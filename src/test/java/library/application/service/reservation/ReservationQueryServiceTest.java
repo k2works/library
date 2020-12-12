@@ -1,4 +1,3 @@
-
 package library.application.service.reservation;
 
 import library.LibraryDBTest;
@@ -37,7 +36,7 @@ class ReservationQueryServiceTest {
         Reservation tryingToReserveBook = Reservation.of(member, book.book());
         reservationRecordService.registerReservation(tryingToReserveBook);
 
-        Reservations reservations = reservationQueryService.findReservations();
+        Reservations reservations = reservationQueryService.reservations();
 
         assertAll(
                 () -> assertEquals("1件", reservations.numberOfReservation().toString()));

@@ -1,6 +1,8 @@
 package library.application.service.reservation;
 
 import library.application.repository.ReservationRepository;
+import library.domain.model.reservation.reservation.Reservation;
+import library.domain.model.reservation.reservation.ReservationNumber;
 import library.domain.model.reservation.reservation.Reservations;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,14 @@ public class ReservationQueryService {
     /**
      * 予約(取置依頼)を一覧する
      */
-    public Reservations findReservations() {
+    public Reservations reservations() {
         return reservationRepository.findReservations();
+    }
+
+    /**
+     * 予約を見つける
+     */
+    public Reservation reservationOf(ReservationNumber reservationNumber) {
+        return reservationRepository.reservationOf(reservationNumber);
     }
 }
