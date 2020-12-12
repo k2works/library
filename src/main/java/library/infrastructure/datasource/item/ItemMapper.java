@@ -23,4 +23,8 @@ public interface ItemMapper {
     void insert貸出中(ItemNumber itemNumber);
 
     void delete貸出中(ItemNumber itemNumber);
+
+    void insert取置中(ItemNumber itemNumber);
+
+    void delete取置中(ItemNumber itemNumber);
 }
