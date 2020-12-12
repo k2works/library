@@ -30,7 +30,7 @@ class ReservationQueryServiceTest {
     BookQueryService bookQueryService;
 
     @Test
-    void 予約図書一覧を取得することができる() {
+    void 予約を一覧できる() {
         Member member = memberQueryService.findMember(new MemberNumber(1));
         BookAvailability book = bookQueryService.search(new Keyword("ハンドブック")).asList().get(0);
         Reservation tryingToReserveBook = Reservation.of(member, book.book());

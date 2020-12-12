@@ -61,6 +61,7 @@ public class LoanDataSource implements LoanRepository {
         itemMapper.insert貸出可能(itemNumber);
     }
 
+
     @Override
     public LoanStatus loanStatus(MemberNumber memberNumber) {
         List<Loan> loans = loanMapper.selectByMemberNumber(memberNumber);

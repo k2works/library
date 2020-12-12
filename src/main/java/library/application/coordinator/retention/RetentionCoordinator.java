@@ -1,13 +1,12 @@
 package library.application.coordinator.retention;
 
 import library.application.service.reservation.ReservationQueryService;
-import library.domain.model.reservation.reservation.Reservation;
 import library.domain.model.reservation.reservation.Reservations;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-
+/**
+ * 取置業務
+ */
 @Service
 public class RetentionCoordinator {
     ReservationQueryService reservationQueryService;
@@ -19,8 +18,7 @@ public class RetentionCoordinator {
     /**
      * 予約(取置依頼)を一覧する
      */
-    public Reservations retentions() {
-        List<Reservation> reservations = Collections.emptyList();
+    public Reservations reservations() {
         return reservationQueryService.findReservations();
     }
 }

@@ -60,7 +60,6 @@ class LoanQueryServiceTest {
         ItemNumber itemNumber = new ItemNumber("2-B");
         registerLoan(itemNumber, 2);
         returnBookRecordService.registerReturnBook(new Returned(itemNumber, ReturnDate.parse("2020-02-21")));
-
         LoanStatus loanStatus = loanQueryService.loanStatusOf(new MemberNumber(2));
 
         assertEquals(loanStatus.count(), 0);

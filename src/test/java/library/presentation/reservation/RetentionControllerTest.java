@@ -15,6 +15,7 @@ class RetentionControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    // TODO 予約したその結果の取得をテストする
     @Test
     void 予約図書一覧画面を表示できる() throws Exception {
         mockMvc.perform(

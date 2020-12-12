@@ -26,7 +26,6 @@ public class Reservation {
     public static Reservation of(Member member, Book book) {
         return new Reservation(ReservationId.generate(), member, book);
     }
-
     public Member member() {
         return member;
     }
@@ -34,11 +33,9 @@ public class Reservation {
     public MemberNumber memberNumber() {
         return member.number();
     }
-
     public BookNumber bookNumber() {
         return book.bookNumber();
     }
-
     public String showBook() {
         return book.show();
     }

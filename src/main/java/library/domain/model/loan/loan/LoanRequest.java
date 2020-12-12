@@ -1,4 +1,3 @@
-
 package library.domain.model.loan.loan;
 
 import library.domain.model.item.ItemNumber;
@@ -29,7 +28,6 @@ public class LoanRequest {
     @Deprecated
     LoanRequest() {
     }
-
     public MemberNumber memberNumber() {
         return memberNumber;
     }

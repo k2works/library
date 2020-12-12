@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MemberMapper {
-    boolean exists(MemberNumber memberNumber);
 
+    boolean exists(MemberNumber memberNumber);
     Member selectMember(MemberNumber memberNumber);
 
     void insertMember(Member member);

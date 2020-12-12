@@ -12,7 +12,6 @@ public enum Availability {
     Availability(String label) {
         this.label = label;
     }
-
     public static Availability availability(int loanable) {
         if (loanable > 0) return 予約できる;
         return 予約できない;

@@ -10,7 +10,7 @@ import static library.domain.model.reservation.availability.Availability.予約�
  */
 public class BookAvailability {
     Book book;
-    int loanableItem;
+    int loanableItems;
 
     public String showAvailability() {
         return availability().show();
@@ -21,7 +21,7 @@ public class BookAvailability {
     }
 
     private Availability availability() {
-        return Availability.availability(loanableItem);
+        return Availability.availability(loanableItems);
     }
 
     public String describeBook() {
@@ -41,7 +41,7 @@ public class BookAvailability {
     public String toString() {
         return "BookAvailability{" +
                 "book=" + book +
-                ", loanable=" + loanableItem +
+                ", loanable=" + loanableItems +
                 '}';
     }
 }

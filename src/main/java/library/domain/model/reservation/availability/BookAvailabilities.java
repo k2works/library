@@ -17,7 +17,6 @@ public class BookAvailabilities {
     public NumberOfBook numberOfBook() {
         return new NumberOfBook(list.size());
     }
-
     public int size() {
         return list.size();
     }
@@ -25,7 +24,6 @@ public class BookAvailabilities {
     public List<BookAvailability> asList() {
         return list;
     }
-
 
     @Override
     public String toString() {

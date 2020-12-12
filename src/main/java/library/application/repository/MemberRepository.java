@@ -11,6 +11,5 @@ public interface MemberRepository {
     void registerMember(Member member);
 
     boolean exists(MemberNumber memberNumber);
-
     Member findMember(MemberNumber memberNumber);
 }

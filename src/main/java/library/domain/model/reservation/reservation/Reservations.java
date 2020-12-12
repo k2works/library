@@ -22,7 +22,7 @@ public class Reservations {
 
     @Override
     public String toString() {
-        return "Reservation{" +
+        return "Reservations{" +
                 "list=" + list +
                 '}';
     }

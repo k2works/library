@@ -23,7 +23,6 @@ public class MemberDataSource implements MemberRepository {
     public boolean exists(MemberNumber memberNumber) {
         return memberMapper.exists(memberNumber);
     }
-
     @Override
     public Member findMember(MemberNumber memberNumber) {
         return memberMapper.selectMember(memberNumber);
