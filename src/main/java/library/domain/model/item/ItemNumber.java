@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
  * 蔵書番号
  */
 public class ItemNumber {
-    @NotBlank(message = "蔵書コードを入力してください。")
+    @NotBlank(message = "蔵書番号を入力してください。")
     String value;
 
     public ItemNumber(String value) {
@@ -17,12 +17,12 @@ public class ItemNumber {
     ItemNumber() {
     }
 
-    public static ItemNumber empty() {
-        return new ItemNumber("");
-    }
-
     public boolean sameValue(ItemNumber other) {
         return value.equals(other.value);
+    }
+
+    public static ItemNumber empty() {
+        return new ItemNumber("");
     }
 
     @Override
