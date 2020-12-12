@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 public class RetentionDatasource implements RetentionRepository {
     RetentionMapper retentionMapper;
 
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     public RetentionDatasource(RetentionMapper retentionMapper) {
         this.retentionMapper = retentionMapper;
     }
