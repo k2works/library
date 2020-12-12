@@ -1,6 +1,5 @@
 package library.application.coordinator.loan;
 
-import library.application.service.item.ItemQueryService;
 import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
@@ -15,17 +14,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoanCoordinator {
     MemberQueryService memberQueryService;
-    ItemQueryService itemQueryService;
     LoanQueryService loanQueryService;
     LoanRegisterService loanRegisterService;
 
     public LoanCoordinator(
             MemberQueryService memberQueryService,
-            ItemQueryService itemQueryService,
             LoanQueryService loanQueryService,
             LoanRegisterService loanRegisterService) {
         this.memberQueryService = memberQueryService;
-        this.itemQueryService = itemQueryService;
         this.loanQueryService = loanQueryService;
         this.loanRegisterService = loanRegisterService;
     }
