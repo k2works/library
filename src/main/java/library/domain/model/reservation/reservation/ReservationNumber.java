@@ -3,21 +3,21 @@ package library.domain.model.reservation.reservation;
 /**
  * 貸出予約ID
  */
-public class ReservationId {
+public class ReservationNumber {
     // TODO: UUIDに変更する
     int value;
 
     @Deprecated
-    ReservationId() {
+    ReservationNumber() {
     }
 
-    public ReservationId(int value) {
+    public ReservationNumber(int value) {
         this.value = value;
     }
 
-    public static ReservationId generate() {
+    public static ReservationNumber generate() {
         // TODO: UUID生成処理
-        return new ReservationId(0);
+        return new ReservationNumber(0);
     }
 
     public int value() {
