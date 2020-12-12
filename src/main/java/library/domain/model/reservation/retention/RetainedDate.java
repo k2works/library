@@ -1,4 +1,3 @@
-
 package library.domain.model.reservation.retention;
 
 import library.domain.type.date.Date;

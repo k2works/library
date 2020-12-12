@@ -5,11 +5,11 @@
 <mapper namespace="library.infrastructure.datasource.item.ItemMapper">
     <select id="selectItem" resultType="library.domain.model.item.Item">
         SELECT
-        登録.蔵書番号 as "itemNumber.value",
-        本.本番号 as "book.bookNumber.value",
-        本.タイトル as "book.title.value",
-        本.著者 as "book.author.value",
-        本.本種別 as "book.bookType"
+            登録.蔵書番号 as "itemNumber.value",
+            本.本番号 as "book.bookNumber.value",
+            本.タイトル as "book.title.value",
+            本.著者 as "book.author.value",
+            本.本種別 as "book.bookType"
         FROM 蔵書.登録
         INNER JOIN 蔵書.本 on (登録.本番号 = 本.本番号)
         WHERE 登録.蔵書番号 = #{value}

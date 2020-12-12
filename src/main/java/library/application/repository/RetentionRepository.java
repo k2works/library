@@ -9,6 +9,5 @@ import library.domain.model.reservation.retention.Retentions;
 public interface RetentionRepository {
 
     void registerRetention(Retained retained);
-
     Retentions retentions();
 }

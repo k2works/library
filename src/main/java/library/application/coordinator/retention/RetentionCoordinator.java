@@ -46,7 +46,6 @@ public class RetentionCoordinator {
         Retained retained = new Retained();
         retentionRecordService.registerRetention(retained);
     }
-
     /**
      * 取置を一覧する
      */

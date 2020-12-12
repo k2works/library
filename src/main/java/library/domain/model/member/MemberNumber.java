@@ -24,7 +24,6 @@ public class MemberNumber {
     public static MemberNumber empty() {
         return new MemberNumber();
     }
-
     @Override
     public String toString() {
         if (value == null || value == 0) return "";

@@ -41,4 +41,4 @@
     <insert id="cancelReservation">
         INSERT INTO 予約.取消履歴(予約番号) VALUES (#{value})
     </insert>
-</mapper>>
+</mapper>
