@@ -1,3 +1,4 @@
+
 package library.domain.model.reservation.retention;
 
 import library.domain.model.item.ItemNumber;
@@ -8,7 +9,7 @@ import javax.validation.Valid;
 public class Retention {
     ReservationNumber reservationNumber;
     @Valid
-    ItemNumber itemNumber;
+    ItemNumber itemNumber = ItemNumber.empty();
 
     public ReservationNumber reservationNumber() {
         return reservationNumber;

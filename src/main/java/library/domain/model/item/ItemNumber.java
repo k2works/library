@@ -17,12 +17,16 @@ public class ItemNumber {
     ItemNumber() {
     }
 
-    @Override
-    public String toString() {
-        return value;
+    public static ItemNumber empty() {
+        return new ItemNumber("");
     }
 
     public boolean sameValue(ItemNumber other) {
         return value.equals(other.value);
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }
