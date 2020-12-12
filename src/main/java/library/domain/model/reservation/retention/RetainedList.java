@@ -7,15 +7,15 @@ import java.util.List;
 /**
  * 取置の一覧
  */
-public class Retentions {
+public class RetainedList {
     List<Retained> list;
 
-    public Retentions(List<Retained> list) {
+    public RetainedList(List<Retained> list) {
         this.list = list;
     }
 
-    public static Retentions empty() {
-        return new Retentions(List.of());
+    public static RetainedList empty() {
+        return new RetainedList(List.of());
     }
 
     public boolean notContains(Item item) {

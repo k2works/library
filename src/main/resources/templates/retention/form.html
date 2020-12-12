@@ -7,21 +7,21 @@
 </head>
 <body>
 <nav>
-  <a th:href="@{/retentions/requests}">予約(取置依頼)の一覧</a>
-  | <a th:href="@{/retentions}">取置中の一覧</a>
+    <a th:href="@{/retainedList/requests}">予約(取置依頼)の一覧</a>
+    | <a th:href="@{/retainedList}">取置中の一覧</a>
 </nav>
 <h1>取置の登録</h1>
-<form method="post" th:action="@{/retentions}" th:object="${retention}">
-  <p th:text="${reservation.showBook()}"></p>
-  <label for="item">取り置く蔵書番号</label>
-  <input id="item" name="itemNumber.value" th:value="*{itemNumber()}"
-         type="text">
-  <p th:if="${#fields.hasErrors('itemNumber.value')}">
-    <mark>
-      <!--/*@thymesVar id="itemNumber" type="library.domain.model.item.ItemNumber"*/-->
-      <span th:errors="*{itemNumber.value}"></span>
-    </mark>
-  </p>
+<form method="post" th:action="@{/retainedList}" th:object="${retention}">
+    <p th:text="${reservation.showBook()}"></p>
+    <label for="item">取り置く蔵書番号</label>
+    <input id="item" name="itemNumber.value" th:value="*{itemNumber()}"
+           type="text">
+    <p th:if="${#fields.hasErrors('itemNumber.value')}">
+        <mark>
+            <!--/*@thymesVar id="itemNumber" type="library.domain.model.item.ItemNumber"*/-->
+            <span th:errors="*{itemNumber.value}"></span>
+        </mark>
+    </p>
   <input name="reservationNumber.value" th:value="${reservation.number()}" type="hidden">
   <input type="submit" value="取置">
 </form>

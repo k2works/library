@@ -5,8 +5,8 @@ import library.domain.model.item.ItemNumber;
 import library.domain.model.reservation.reservation.ReservationNumber;
 import library.domain.model.reservation.retention.Retained;
 import library.domain.model.reservation.retention.RetainedDate;
+import library.domain.model.reservation.retention.RetainedList;
 import library.domain.model.reservation.retention.Retention;
-import library.domain.model.reservation.retention.Retentions;
 import library.infrastructure.datasource.item.ItemMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,8 +44,8 @@ public class RetentionDatasource implements RetentionRepository {
     }
 
     @Override
-    public Retentions retentions() {
+    public RetainedList retentions() {
         List<Retained> list = retentionMapper.select取置済();
-        return new Retentions(list);
+        return new RetainedList(list);
     }
 }
