@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8"/>
-  <title>取置一覧</title>
+  <title>取置済一覧</title>
   <link th:replace="_fragments/counter/head :: css-dark">
 </head>
 <body>
@@ -10,7 +10,7 @@
   <a th:href="@{/retentions/requests}">予約(取置依頼)の一覧</a>
   | <a th:href="@{/retentions}">取置中の一覧</a>
 </nav>
-<h1>取置一覧</h1>
+<h1>取置済一覧</h1>
 <p th:text="${retainedList.showCount()}">件</p>
 <form>
   <table class="table">
@@ -18,23 +18,24 @@
     <tr>
       <th>会員</th>
       <th>本</th>
+      <th>取置日</th>
       <th></th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="retention : ${retainedList.asList()}">
-      <td th:text="${retention.reservedBook().showBook()}"></td>
-      <td th:text="${retention.retainedDate()}"></td>
+    <tr th:each="retained : ${retainedList.asList()}">
+      <td th:text="${retained.memberNumber()}"></td>
+      <td th:text="${retained.showBook()}"></td>
+      <td th:text="${retained.retainedDate()}"></td>
       <td>
-        <button name="retention" type="submit" value="${reservation.number()}">貸出</button>
+        <button name="loan" th:value="${retained.itemNumber()}" type="submit">貸出</button>
       </td>
       <td>
-        <button name="notAvailable" type="submit" value="${reservation.number()}">期限切れ</button>
+        <button name="expired" th:value="${retained.itemNumber()}" type="submit">期限切れ</button>
       </td>
     </tr>
     </tbody>
   </table>
 </form>
 </body>
-</html>

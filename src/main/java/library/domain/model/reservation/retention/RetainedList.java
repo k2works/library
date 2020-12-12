@@ -1,7 +1,5 @@
 package library.domain.model.reservation.retention;
 
-import library.domain.model.item.Item;
-
 import java.util.List;
 
 /**
@@ -16,10 +14,6 @@ public class RetainedList {
 
     public static RetainedList empty() {
         return new RetainedList(List.of());
-    }
-
-    public boolean notContains(Item item) {
-        return list.stream().noneMatch(retained -> retained.isA(item));
     }
 
     public List<Retained> asList() {
