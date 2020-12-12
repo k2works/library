@@ -17,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @LibraryDBTest
 class ReservationRecordServiceTest {
     @Autowired
@@ -48,7 +49,7 @@ class ReservationRecordServiceTest {
     }
 
     @Test
-    void 貸出予約を取り消すことができる() {
+    void 予約を取り消すことができる() {
         Member member = memberQueryService.findMember(new MemberNumber(2));
         BookAvailability book = bookQueryService.search(new Keyword("ハンドブック")).asList().get(0);
 
