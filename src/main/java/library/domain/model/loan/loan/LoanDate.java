@@ -30,6 +30,7 @@ public class LoanDate {
     public String show() {
         return value.format(DateTimeFormatter.ofPattern("M月d日(E)"));
     }
+
     @Override
     public String toString() {
         return value.toString();
@@ -37,6 +38,10 @@ public class LoanDate {
 
     public static LoanDate now() {
         return new LoanDate(LocalDate.now());
+    }
+
+    public static LoanDate from(LocalDate localDate) {
+        return new LoanDate(localDate);
     }
 
     public static LoanDate parse(String dateText) {

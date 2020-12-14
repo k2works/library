@@ -1,6 +1,8 @@
 package library.domain.model.reservation.retention;
 
 import library.domain.model.item.ItemNumber;
+import library.domain.model.loan.loan.LoanDate;
+import library.domain.model.loan.loan.LoanRequest;
 import library.domain.model.member.MemberNumber;
 import library.domain.model.reservation.reservation.Reservation;
 
@@ -37,6 +39,10 @@ public class Retained {
 
     public ItemNumber itemNumber() {
         return itemNumber;
+    }
+
+    public LoanRequest toLoanRequest() {
+        return new LoanRequest(reservation.memberNumber(), itemNumber, LoanDate.from(retainedDate.value));
     }
 
     @Override
