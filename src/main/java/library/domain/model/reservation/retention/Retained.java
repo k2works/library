@@ -9,7 +9,7 @@ import library.domain.model.reservation.reservation.Reservation;
 import java.time.LocalDate;
 
 /**
- * 取置済
+ * 準備完了
  */
 public class Retained {
     Reservation reservation;

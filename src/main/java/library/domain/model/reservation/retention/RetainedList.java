@@ -3,7 +3,7 @@ package library.domain.model.reservation.retention;
 import java.util.List;
 
 /**
- * 取置の一覧
+ * 準備完了の一覧
  */
 public class RetainedList {
     List<Retained> list;
