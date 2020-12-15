@@ -10,5 +10,5 @@ import library.domain.model.member.MemberStatus;
 public interface MemberRepository {
     MemberStatus status(MemberNumber memberNumber);
 
-    Member findMember(MemberNumber memberNumber);
+    Member findBy(MemberNumber memberNumber);
 }
