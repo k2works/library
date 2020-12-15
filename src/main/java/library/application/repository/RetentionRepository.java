@@ -10,9 +10,11 @@ import library.domain.model.reservation.retention.Retention;
  */
 public interface RetentionRepository {
 
-    void registerRetention(Retention retention);
+    void retained(Retention retention);
 
-    void loaned(ItemNumber itemNumber);
+    void loan(ItemNumber itemNumber);
+
+    void expire(ItemNumber itemNumber);
 
     RetainedList retentions();
 
