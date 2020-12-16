@@ -1,4 +1,3 @@
-
 package library.application.coordinator.retention;
 
 import library.application.service.item.ItemQueryService;
@@ -85,12 +84,12 @@ public class RetentionCoordinator {
      * 貸し出す
      */
     public void loan(ItemNumber itemNumber) {
-        retentionRecordService.releaseAndLoan(itemNumber);
-
         // 貸出の実行
         Retained retained = retentionQueryService.findBy(itemNumber);
         LoanRequest loanRequest = retained.toLoanRequest();
         loanRegisterService.loaned(loanRequest);
+
+        retentionRecordService.releaseForLoan(itemNumber);
     }
 
     /**
