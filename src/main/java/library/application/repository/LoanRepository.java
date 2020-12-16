@@ -8,7 +8,7 @@ import library.domain.model.loan.rule.LoanStatus;
 import library.domain.model.member.MemberNumber;
 
 /**
- * 貸出図書リポジトリ
+ * 貸出リポジトリ
  */
 public interface LoanRepository {
 

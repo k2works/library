@@ -8,7 +8,7 @@ import library.domain.model.member.MemberNumber;
 import org.springframework.stereotype.Service;
 
 /**
- * 貸出参照サービス
+ * 会員の貸出を一覧する
  */
 @Service
 public class LoanQueryService {
