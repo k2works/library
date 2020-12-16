@@ -1,6 +1,10 @@
 package library.domain.model.item;
 
 import library.domain.model.item.bibliography.Book;
+import library.domain.model.item.bibliography.BookMatching;
+
+import static library.domain.model.item.bibliography.BookMatching.一致;
+import static library.domain.model.item.bibliography.BookMatching.不一致;
 
 /**
  * 蔵書
@@ -23,14 +27,16 @@ public class Item {
         return itemNumber;
     }
 
-    public boolean isSameBook(Book other) {
-        return this.book.isSameBook(other);
+    public BookMatching isSameBook(Book other) {
+        boolean result = this.book.isSameBook(other);
+        return result ? 一致 : 不一致;
     }
 
     public String show() {
         return String.format("[%s] %s",
                 itemNumber.toString(), book.show());
     }
+
     @Override
     public String toString() {
         return "Item{" +
