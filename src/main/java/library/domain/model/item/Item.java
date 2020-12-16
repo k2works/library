@@ -22,7 +22,6 @@ public class Item {
     public Book book() {
         return book;
     }
-
     public ItemNumber itemNumber() {
         return itemNumber;
     }
@@ -31,7 +30,6 @@ public class Item {
         return String.format("[%s] %s",
                 itemNumber.toString(), book.show());
     }
-
     @Override
     public String toString() {
         return "Item{" +

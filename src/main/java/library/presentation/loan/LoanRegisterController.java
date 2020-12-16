@@ -1,4 +1,4 @@
- package library.presentation.loan;
+package library.presentation.loan;
 
 import library.application.coordinator.loan.LoanCoordinator;
 import library.domain.model.loan.loan.LoanRequest;

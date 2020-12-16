@@ -22,8 +22,8 @@
     </thead>
     <tbody>
     <tr th:each="loan : ${loanStatus.loans().asList()}">
-      <td th:text="${loan.item().show()}"></td>
-      <td th:text="${loan.date().show()}"></td>
+        <td th:text="${loan.item().show()}"></td>
+        <td th:text="${loan.date().show()}"></td>
     </tr>
     </tbody>
   </table>

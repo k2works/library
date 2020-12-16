@@ -25,7 +25,6 @@ public class Book {
     public boolean isSame(Book other) {
         return bookNumber.sameValue(other.bookNumber);
     }
-
     public Title title() {
         return title;
     }

@@ -1,4 +1,4 @@
-package library.domain.model.reservation.reservation;
+package library.domain.model.reservation.request;
 
 import library.domain.model.item.bibliography.Book;
 import library.domain.model.item.bibliography.BookNumber;
@@ -38,9 +38,11 @@ public class Reservation {
     public MemberNumber memberNumber() {
         return member.number();
     }
+
     public BookNumber bookNumber() {
         return book.bookNumber();
     }
+
     public String showBook() {
         return book.show();
     }

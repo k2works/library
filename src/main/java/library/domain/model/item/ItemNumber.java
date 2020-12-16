@@ -24,7 +24,6 @@ public class ItemNumber {
     public static ItemNumber empty() {
         return new ItemNumber("");
     }
-
     @Override
     public String toString() {
         return value;

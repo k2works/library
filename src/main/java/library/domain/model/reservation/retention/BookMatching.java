@@ -15,11 +15,11 @@ public enum BookMatching {
         this.description = description;
     }
 
-    public static BookMatching isSame(Book one, Book another) {
-        return one.isSame(another) ? 一致 : 不一致;
-    }
-
     public String description() {
         return description;
+    }
+
+    public static BookMatching isSame(Book one, Book another) {
+        return one.isSame(another) ? 一致 : 不一致;
     }
 }
