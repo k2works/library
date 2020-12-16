@@ -1,4 +1,3 @@
-
 package library.application.repository;
 
 import library.domain.model.item.ItemNumber;
@@ -15,9 +14,9 @@ public interface RetentionRepository {
 
     void release(ItemNumber itemNumber);
 
-    void recordLoan(ItemNumber itemNumber);
+    void loaned(Retained retained);
 
-    void recordExpire(Retained retained);
+    void expired(Retained retained);
 
 
     RetainedList retentions();

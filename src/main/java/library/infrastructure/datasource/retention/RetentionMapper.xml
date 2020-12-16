@@ -36,23 +36,28 @@
 
     <select id="selectAll準備完了" resultMap="準備完了">
         SELECT
-        蔵書番号 AS "itemNumber.value",
-        予約番号 AS "reservation",
-        取置日 AS "retainedDate.value"
+            蔵書番号 AS "itemNumber.value",
+            予約番号 AS "reservation",
+            取置日 AS "retainedDate.value"
         FROM 予約.準備完了
         ORDER BY 取置日
     </select>
 
     <select id="select準備完了" resultMap="準備完了">
         SELECT
-        蔵書番号 AS "itemNumber.value",
-        予約番号 AS "reservation",
-        取置日 AS "retainedDate.value"
+            蔵書番号 AS "itemNumber.value",
+            予約番号 AS "reservation",
+            取置日 AS "retainedDate.value"
         FROM 予約.準備完了
         WHERE 蔵書番号 = #{value}
     </select>
 
-    <insert id="insert取置期限切れ">
+    <insert id="insert取置貸出履歴">
+        INSERT INTO 予約.取置貸出履歴(予約番号, 蔵書番号)
+        VALUES (#{reservationNumber.value}, #{itemNumber.value})
+    </insert>
+
+    <insert id="insert取置期限切れ履歴">
         INSERT INTO 予約.取置期限切れ履歴(予約番号) VALUES (#{value})
     </insert>
 </mapper>
