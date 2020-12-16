@@ -96,21 +96,32 @@ CREATE TABLE 予約.取置履歴 (
 
 -- 準備完了 蔵書でユニーク（同じ蔵書を同時に取置はできない）
 CREATE TABLE 予約.準備完了 (
-     蔵書番号 VARCHAR(40) PRIMARY KEY REFERENCES 蔵書.登録,
-     予約番号 INTEGER NOT NULL REFERENCES 予約.予約履歴,
-     取置日 DATE NOT NULL,
-     登録日時 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     FOREIGN KEY (予約番号, 蔵書番号) REFERENCES 予約.取置履歴(予約番号, 蔵書番号)
+                         蔵書番号 VARCHAR(40) PRIMARY KEY REFERENCES 蔵書.登録,
+                         予約番号 INTEGER   NOT NULL REFERENCES 予約.予約履歴,
+                         取置日  DATE      NOT NULL,
+                         登録日時 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                         FOREIGN KEY (予約番号, 蔵書番号) REFERENCES 予約.取置履歴 (予約番号, 蔵書番号)
 );
 
 -- 蔵書スキーマでも取置状態を管理する(貸出可否の判断用）
-CREATE TABLE 蔵書.取置中 (
+CREATE TABLE 蔵書.取置中
+(
     蔵書番号 VARCHAR(40) PRIMARY KEY REFERENCES 予約.準備完了,
     登録日時 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+--　取置を貸し出した記録
+CREATE TABLE 予約.取置貸出履歴
+(
+    予約番号 INTEGER PRIMARY KEY,
+    蔵書番号 VARCHAR(40) NOT NULL,
+    登録日時 TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (予約番号, 蔵書番号) REFERENCES 予約.取置履歴 (予約番号, 蔵書番号)
+);
+
 -- 取置の期限切れ
-CREATE TABLE 予約.取置期限切れ履歴 (
-   予約番号 INTEGER PRIMARY KEY REFERENCES 予約.取置履歴,
-   登録日時 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE 予約.取置期限切れ履歴
+(
+    予約番号 INTEGER PRIMARY KEY REFERENCES 予約.取置履歴,
+    登録日時 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 )
