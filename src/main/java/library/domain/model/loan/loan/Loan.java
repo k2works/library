@@ -4,9 +4,6 @@ import library.domain.model.item.Item;
 import library.domain.model.member.Member;
 import library.domain.model.member.MemberNumber;
 import library.domain.type.date.CurrentDate;
-import library.domain.type.date.Days;
-
-import java.time.Period;
 
 /**
  * 貸出
@@ -29,11 +26,9 @@ public class Loan {
     }
 
     public DaysLate daysLate(CurrentDate date) {
-        DueDate dueDate = loanDate.dueDate();
-        int delay = Period.between(dueDate.value(), date.value()).getDays();
-        return new DaysLate(new Days(delay));
+        DueDate dueDate = DueDate.from(loanDate);
+        return dueDate.daysLate(date.value());
     }
-
 
     public Member member() {
         return member;

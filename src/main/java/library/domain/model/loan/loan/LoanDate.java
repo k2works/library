@@ -22,11 +22,6 @@ public class LoanDate {
         this.value = value;
     }
 
-    DueDate dueDate() {
-        LocalDate dueDate = value.plusDays(LoanPeriod.standard().value());
-        return new DueDate(dueDate);
-    }
-
     public String show() {
         return value.format(DateTimeFormatter.ofPattern("M月d日(E)"));
     }

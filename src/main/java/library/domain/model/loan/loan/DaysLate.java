@@ -15,7 +15,13 @@ public class DaysLate {
     public int intValue() {
         return value.value();
     }
+
     public DelayStatus delayStatus() {
         return DelayStatus.level(value);
+    }
+
+    static DaysLate from(long delays) {
+        Days days = new Days((int) delays);
+        return new DaysLate(days);
     }
 }
