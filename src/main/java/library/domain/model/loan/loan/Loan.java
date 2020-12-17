@@ -6,7 +6,7 @@ import library.domain.model.member.MemberNumber;
 import library.domain.type.date.CurrentDate;
 
 /**
- * 貸出
+ * *貸出
  */
 public class Loan {
     LoanNumber loanNumber;

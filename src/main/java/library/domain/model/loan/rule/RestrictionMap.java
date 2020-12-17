@@ -12,7 +12,7 @@ import static library.domain.model.member.MemberType.大人;
 import static library.domain.model.member.MemberType.子供;
 
 /**
- * 貸出制限の表条件
+ * *貸出制限の表条件
  */
 class RestrictionMap {
 
