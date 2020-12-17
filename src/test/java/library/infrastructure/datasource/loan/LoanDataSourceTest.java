@@ -3,7 +3,7 @@ package library.infrastructure.datasource.loan;
 import library.LibraryDBTest;
 import library.application.service.returns.ReturnBookRecordService;
 import library.domain.model.item.ItemNumber;
-import library.domain.model.loan.loan.Loan;
+import library.domain.model.loan.Loan;
 import library.domain.model.loan.returned.ReturnDate;
 import library.domain.model.loan.returned.Returned;
 import org.junit.jupiter.api.Test;

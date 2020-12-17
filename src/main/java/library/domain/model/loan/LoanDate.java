@@ -1,4 +1,4 @@
-package library.domain.model.loan.loan;
+package library.domain.model.loan;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

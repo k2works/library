@@ -1,12 +1,12 @@
 package library.domain.model.loan.rule;
 
-import library.domain.model.loan.loan.DelayStatus;
+import library.domain.model.loan.delay.DelayStatus;
 import library.domain.model.member.MemberType;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static library.domain.model.loan.loan.DelayStatus.*;
+import static library.domain.model.loan.delay.DelayStatus.*;
 import static library.domain.model.loan.rule.RestrictionOfQuantity.*;
 import static library.domain.model.member.MemberType.大人;
 import static library.domain.model.member.MemberType.子供;

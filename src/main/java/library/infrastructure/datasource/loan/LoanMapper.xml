@@ -7,13 +7,13 @@
         SELECT NEXTVAL('貸出.貸出番号')
     </select>
 
-    <resultMap id="loan" type="library.domain.model.loan.loan.Loan">
+    <resultMap id="loan" type="library.domain.model.loan.Loan">
         <association property="member"
                      column="memberNumber.value"
-                     select="library.infrastructure.datasource.member.MemberMapper.selectMember" />
+                     select="library.infrastructure.datasource.member.MemberMapper.selectMember"/>
         <association property="item"
                      column="itemNumber.value"
-                     select="library.infrastructure.datasource.item.ItemMapper.selectItem" />
+                     select="library.infrastructure.datasource.item.ItemMapper.selectItem"/>
     </resultMap>
 
 

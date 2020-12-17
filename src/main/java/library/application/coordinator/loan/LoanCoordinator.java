@@ -4,7 +4,7 @@ import library.application.service.loan.LoanQueryService;
 import library.application.service.loan.LoanRegisterService;
 import library.application.service.member.MemberQueryService;
 import library.application.service.returns.ReturnBookRecordService;
-import library.domain.model.loan.loan.LoanRequest;
+import library.domain.model.loan.LoanRequest;
 import library.domain.model.loan.returned.Returned;
 import library.domain.model.loan.rule.LoanStatus;
 import library.domain.model.loan.rule.Loanability;
