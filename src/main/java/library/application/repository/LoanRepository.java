@@ -3,9 +3,9 @@ package library.application.repository;
 import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.Loan;
 import library.domain.model.loan.LoanRequest;
-import library.domain.model.loan.returned.Returned;
 import library.domain.model.loan.rule.LoanStatus;
 import library.domain.model.member.MemberNumber;
+import library.domain.model.returned.Returned;
 
 /**
  * 貸出リポジトリ

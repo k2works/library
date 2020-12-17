@@ -4,8 +4,8 @@ import library.domain.model.item.ItemNumber;
 import library.domain.model.loan.Loan;
 import library.domain.model.loan.LoanDate;
 import library.domain.model.loan.LoanNumber;
-import library.domain.model.loan.returned.Returned;
 import library.domain.model.member.MemberNumber;
+import library.domain.model.returned.Returned;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
