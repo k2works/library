@@ -1,3 +1,14 @@
 build/
 .idea/
 .gradle/
+
+.fake
+.ionide
+
+.classpath
+.project
+*.class
+.settings
+.vscode
+
+bin
