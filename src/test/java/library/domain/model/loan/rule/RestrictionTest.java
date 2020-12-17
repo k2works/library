@@ -1,47 +1,39 @@
 package library.domain.model.loan.rule;
 
-import library.domain.model.loan.Loan;
-import library.domain.model.loan.LoanDate;
-import library.domain.model.loan.Loans;
-import library.domain.model.member.Member;
-import library.domain.model.member.MemberNumber;
+import library.domain.model.loan.delay.DelayStatus;
 import library.domain.model.member.MemberType;
-import library.domain.model.member.Name;
-import library.domain.type.date.CurrentDate;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static library.domain.model.loan.delay.DelayStatus.*;
+import static library.domain.model.loan.rule.RestrictionOfQuantity.*;
+import static library.domain.model.member.MemberType.大人;
+import static library.domain.model.member.MemberType.子供;
 
-class RestrictionTest {
+/**
+ * *貸出制限の表条件
+ */
+class RestrictionMap {
 
-    @ParameterizedTest
-    @CsvSource({
-            "大人, 2020-01-04, , 貸出５冊まで",
-            "大人, 2020-01-04, 2020-01-05, 貸出不可",
-            "大人, 2020-01-04, 2020-01-02, 貸出不可",
-            "大人, 2020-01-04, 2020-01-01, 貸出不可",
-            "子供, 2020-01-04, , 貸出７冊まで",
-            "子供, 2020-01-04, 2020-01-05, 貸出４冊まで",
-            "子供, 2020-01-04, 2020-01-02, 貸出４冊まで",
-            "子供, 2020-01-04, 2020-01-01, 貸出不可"
-    })
-    void 貸出制限の判定ができる(MemberType memberType, String loanDate1, String loanDate2, RestrictionOfQuantity expected) {
-        CurrentDate currentDate = CurrentDate.parse("2020-01-20");
-        MemberNumber memberNumber = new MemberNumber(1);
-        Member member = new Member(memberNumber, new Name(""), memberType);
-        List<Loan> loans = new ArrayList<>();
-        loans.add(new Loan(null, member, null, LoanDate.parse(loanDate1)));
+    Map<DelayOfMember, RestrictionOfQuantity> map = new HashMap<>();
 
-        if (loanDate2 != null) {
-            loans.add(new Loan(null, member, null, LoanDate.parse(loanDate2)));
-        }
+    {
+        define(遅延日数合計３日未満, 大人, 貸出５冊まで);
+        define(遅延日数合計３日未満, 子供, 貸出７冊まで);
 
-        Restriction restriction = new Restriction(member, new Loans(loans), currentDate);
+        define(遅延日数合計７日未満, 大人, 貸出不可);
+        define(遅延日数合計７日未満, 子供, 貸出４冊まで);
 
-        assertEquals(expected, restriction.ofQuantity());
+        define(それ以外, 大人, 貸出不可);
+        define(それ以外, 子供, 貸出不可);
+    }
+
+    void define(DelayStatus delayStatus, MemberType memberType, RestrictionOfQuantity restrictionOfQuantity) {
+        map.put(new DelayOfMember(delayStatus, memberType), restrictionOfQuantity);
+    }
+
+    RestrictionOfQuantity of(DelayOfMember delayOfMember) {
+        return map.get(delayOfMember);
     }
 }
