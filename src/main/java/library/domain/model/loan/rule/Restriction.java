@@ -1,3 +1,4 @@
+
 package library.domain.model.loan.rule;
 
 import library.domain.model.loan.Loans;
@@ -23,7 +24,7 @@ class Restriction {
     static final RestrictionMap map = new RestrictionMap();
 
     RestrictionOfQuantity ofQuantity() {
-        DelayStatus delayStatus = new Dues(loans).worst(date);
+        DelayStatus delayStatus = new Dues(loans).delayStatus(date);
         DelayOfMember delayOfMember = new DelayOfMember(delayStatus, member.type());
         return map.of(delayOfMember);
     }
