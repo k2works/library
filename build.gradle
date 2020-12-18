@@ -21,6 +21,7 @@ repositories {
 }
 
 dependencies {
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
     implementation platform("org.springframework.boot:spring-boot-dependencies:2.3.3.RELEASE")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
