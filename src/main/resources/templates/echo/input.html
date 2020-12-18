@@ -5,7 +5,7 @@
 <form method="post" th:action="@{/echo}" th:object="${echoForm}">
     <div>テキストを入力してください</div>
     <div>
-        <input th:type="text">
+        <input th:field="*{text}" th:type="text">
         <input th:type="submit">
     </div>
 </form>
