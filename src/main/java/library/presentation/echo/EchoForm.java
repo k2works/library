@@ -1,4 +1,4 @@
-package library.presentation;
+package library.presentation.echo;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
