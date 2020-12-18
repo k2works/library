@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id 'org.dddjava.jig-gradle-plugin' version '2020.11.2.1'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
 sourceCompatibility = '11'
@@ -17,6 +18,13 @@ repositories {
     mavenLocal()
     maven {
         url "https://dl.bintray.com/jignite/maven/"
+    }
+}
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
     }
 }
 
