@@ -5,7 +5,10 @@
 <form method="post" th:action="@{/echo}" th:object="${echoForm}">
     <div>テキストを入力してください</div>
     <div>
-        <input th:field="*{text}" th:type="text">
+        <input th:errorclass="error-field" th:field="*{text}" th:type="text">
+        <span th:errors="*{text}" th:if="${#fields.hasErrors('text')}">Name error</span>
+    </div>
+    <div>
         <input th:type="submit">
     </div>
 </form>
