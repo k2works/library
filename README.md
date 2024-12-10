@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/09a82a26f83b115a8331/maintainability)](https://codeclimate.com/github/k2works/library/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/09a82a26f83b115a8331/test_coverage)](https://codeclimate.com/github/k2works/library/test_coverage)
+
 # 図書館の司書業務を支援するソフトウェア
 
 ## 司書業務とアプリケーションの対象範囲
